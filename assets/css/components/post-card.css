@@ -1,0 +1,156 @@
+.post-card {
+    background: #252525;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 165, 126, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    display: flex;
+    /* Bật flexbox để sắp xếp các phần bên trong */
+    flex-direction: column;
+    /* Sắp xếp theo chiều dọc */
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-color: rgba(197, 165, 126, 0.4);
+}
+
+.post-image-link,
+.post-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-image {
+    width: 100%;
+    background: #333;
+    display: block;
+}
+
+.post-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.post-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    /* Giúp phần content chiếm không gian còn lại */
+}
+
+/* Post Author Info */
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.post-author img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid rgba(197, 165, 126, 0.5);
+    object-fit: cover;
+}
+
+.author-details h4 {
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.author-details p {
+    color: #888;
+    font-size: 0.9rem;
+    margin: 0.2rem 0 0 0;
+}
+
+/* Post Content Typography */
+.post-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #c5a57e;
+}
+
+.post-description {
+    color: rgba(224, 224, 224, 0.8);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #8ab6c4;
+}
+
+/* Post Actions Area */
+.post-actions {
+    border-top: 1px solid rgba(197, 165, 126, 0.2);
+    padding: 10px 1.5rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: auto;
+    /* Đẩy phần actions xuống cuối card */
+}
+
+.action-button {
+    background: none;
+    border: none;
+    color: #bbb;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.action-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #c5a57e;
+}
+
+/* Reactions Pop-up (Giữ nguyên) */
+.reactions-container {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    background: #333;
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    gap: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+}
+
+.action-button:hover .reactions-container {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -5px);
+}
+
+.reaction {
+    font-size: 1.8rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.reaction:hover {
+    transform: scale(1.3) translateY(-3px);
+}

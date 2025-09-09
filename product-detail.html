@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Tác phẩm - Tranh Sơn Dầu Trừu Tượng</title>
+
+    <link rel="stylesheet" href="assets/css/base/base.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/post-card.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+
+    <link rel="stylesheet" href="assets/css/pages/product-detail.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#notifications" class="nav-icon">🔔</a></li>
+                    <li class="nav-search">
+                        <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm...">
+                    </li>
+                    <li><a href="#create" class="nav-button">Đăng Bài</a></li>
+                    <li><a href="#shop">Cửa Hàng</a></li>
+                    <li><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
+                    <li><a href="login.html" class="nav-button">Đăng Nhập</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="product-detail-page">
+        <div class="detail-container">
+            <!-- Hình ảnh -->
+            <div class="product-image-gallery">
+                <img src="https://thegioihoihoa.com/cdn/shop/products/BhTORQCZTP_960x.jpg?v=1630214240"
+                    alt="Tranh Sơn Dầu Trừu Tượng" class="main-image">
+            </div>
+
+            <!-- Thông tin sản phẩm -->
+            <div class="product-info">
+                <div class="artist-info">
+                    <a href="profile.html">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                            alt="Avatar Nghệ sĩ" class="artist-avatar">
+                    </a>
+                    <div>
+                        <a href="profile.html">
+                            <h3 class="artist-name">Elena Rodriguez</h3>
+                        </a>
+                        <a href="#" class="follow-button">Theo dõi</a>
+                    </div>
+                </div>
+
+                <h1 class="product-title">Tranh Sơn Dầu Trừu Tượng</h1>
+                <p class="product-price">2,500,000 VNĐ</p>
+
+                <div class="action-buttons">
+                    <button class="btn btn-secondary">Thêm vào giỏ hàng</button>
+                    <button class="btn btn-primary">Mua ngay</button>
+                </div>
+
+                <div class="product-description">
+                    <h4>Mô tả tác phẩm</h4>
+                    <p>Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo, thể hiện cảm xúc sâu sắc qua màu
+                        sắc và kỹ thuật độc đáo. Vẽ trên canvas chất lượng cao, dùng sơn dầu bền màu theo thời gian.</p>
+                </div>
+
+                <div class="product-meta">
+                    <p><strong>Thể loại:</strong> <a href="#">Hội họa</a></p>
+                    <div class="tags-container">
+                        <strong>Hashtags:</strong>
+                        <a href="#" class="tag">#trừutượng</a>
+                        <a href="#" class="tag">#hiệnđại</a>
+                        <a href="#" class="tag">#sơndầu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bình luận -->
+        <section class="comment-section">
+            <h2 class="comment-heading">
+                Bình luận <span class="comment-count-badge">3</span>
+            </h2>
+
+            <div class="comment-form">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2080&auto=format&fit=crop"
+                    alt="Your Avatar" class="user-avatar">
+                <div class="textarea-wrapper">
+                    <textarea id="comment-input" rows="3" placeholder="Viết bình luận của bạn..."></textarea>
+                    <button class="btn btn-primary">Gửi</button>
+                </div>
+            </div>
+
+            <div class="comment-list">
+                <div class="comment-item">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+                        alt="Avatar" class="user-avatar">
+                    <div class="comment-content">
+                        <p class="comment-author">Kenji Watanabe</p>
+                        <p class="comment-text">Màu sắc tuyệt vời! Tôi thực sự ấn tượng với cách phối màu.</p>
+                        <div class="comment-meta">
+                            <span class="comment-time">1 giờ trước</span>
+                            <a href="#" class="reply-button">Phản hồi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment-item comment-reply">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+                        alt="Avatar" class="user-avatar">
+                    <div class="comment-content">
+                        <p class="comment-author">Marcus Cole</p>
+                        <p class="comment-text">Đồng ý, tranh nhìn rất có chiều sâu.</p>
+                        <div class="comment-meta">
+                            <span class="comment-time">30 phút trước</span>
+                            <a href="#" class="reply-button">Phản hồi</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comment-item">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                        alt="Avatar" class="user-avatar">
+                    <div class="comment-content">
+                        <p class="comment-author">Elena Rodriguez</p>
+                        <p class="comment-text">Tác phẩm này mang lại cho tôi rất nhiều cảm xúc, mạnh mẽ và lôi cuốn.
+                        </p>
+                        <div class="comment-meta">
+                            <span class="comment-time">3 giờ trước</span>
+                            <a href="#" class="reply-button">Phản hồi</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sản phẩm liên quan -->
+        <section class="related-products">
+            <h2>Tác phẩm liên quan</h2>
+            <div class="related-products-slider">
+                <article class="post-card">
+                    <a href="#" class="post-image-link">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1512413223388-c941ac439f43?q=80&w=1964&auto=format=fit=crop"
+                                alt="Vũ Điệu Màu Sắc">
+                        </div>
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-author">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format=fit=crop"
+                                alt="Avatar">
+                            <h4>Kenji Watanabe</h4>
+                        </div>
+                        <a href="#" class="post-title-link">
+                            <h3>Vũ Điệu Màu Sắc</h3>
+                        </a>
+                        <div class="price">1,800,000 VNĐ</div>
+                    </div>
+                </article>
+                <article class="post-card">
+                    <a href="#" class="post-image-link">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format=fit=crop"
+                                alt="Ký Ức Vỡ Nát">
+                        </div>
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-author">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                alt="Avatar">
+                            <h4>Elena Rodriguez</h4>
+                        </div>
+                        <a href="#" class="post-title-link">
+                            <h3>Ký Ức Vỡ Nát</h3>
+                        </a>
+                        <div class="price">3,200,000 VNĐ</div>
+                    </div>
+                </article>
+                <article class="post-card">
+                    <a href="#" class="post-image-link">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b?q=80&w=1974&auto=format=fit=crop"
+                                alt="Bình Yên Ven Hồ">
+                        </div>
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-author">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+                                alt="Avatar">
+                            <h4>Marcus Cole</h4>
+                        </div>
+                        <a href="#" class="post-title-link">
+                            <h3>Bình Yên Ven Hồ</h3>
+                        </a>
+                        <div class="price">2,100,000 VNĐ</div>
+                    </div>
+                </article>
+                <article class="post-card">
+                    <a href="#" class="post-image-link">
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1579965342575-5f3d15d35c5b?q=80&w=1974&auto=format&fit=crop"
+                                alt="Dòng Chảy Thời Gian">
+                        </div>
+                    </a>
+                    <div class="post-card-content">
+                        <div class="post-author">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+                                alt="Avatar">
+                            <h4>Kenji Watanabe</h4>
+                        </div>
+                        <a href="#" class="post-title-link">
+                            <h3>Dòng Chảy Thời Gian</h3>
+                        </a>
+                        <div class="price">4,500,000 VNĐ</div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về ArtistryNetwork</h3>
+                <p style="color: rgba(224, 224, 224, 0.8); line-height: 1.6;">
+                    Chúng tôi là cộng đồng nghệ thuật hàng đầu, kết nối những tâm hồn yêu nghệ thuật và tạo ra không
+                    gian sáng tạo đầy cảm hứng.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Youtube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Danh Mục</h3>
+                <a href="#">Tranh Sơn Dầu</a> <a href="#">Tranh Thủy Mặc</a> <a href="#">Điêu Khắc</a>
+                <a href="#">Nghệ Thuật Số</a> <a href="#">Nhiếp Ảnh</a> <a href="#">Thủ Công Mỹ Nghệ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Dịch Vụ</h3>
+                <a href="#">Bán Tác Phẩm</a> <a href="#">Thuê Triển Lãm</a> <a href="#">Khóa Học Nghệ Thuật</a>
+                <a href="#">Tư Vấn Sưu Tập</a> <a href="#">Định Giá Tác Phẩm</a> <a href="#">Bảo Quản Tranh</a>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <address style="color: rgba(224, 224, 224, 0.8); line-height: 1.6; font-style: normal;">
+                    📍 123 Đường Nghệ Thuật, Quận 1, TP.HCM<br>
+                    📞 (+84) 123 456 789<br>
+                    ✉️ info@artistrynetwork.vn<br>
+                    🕒 T2-T7: 9:00 - 18:00
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ArtistryNetwork. Tất cả quyền được bảo lưu. | Thiết kế với ❤️ cho cộng đồng nghệ thuật Việt
+                Nam</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

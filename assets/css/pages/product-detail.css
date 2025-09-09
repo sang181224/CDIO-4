@@ -1,0 +1,452 @@
+/* --- Giữ nguyên: Bố cục chính của trang --- */
+.product-detail-page {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    color: #e0e0e0;
+}
+
+.detail-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* --- Giữ nguyên: Cột trái - Thư viện ảnh --- */
+.product-image-gallery .main-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    background-color: #2a2a2a;
+    border: 1px solid rgba(197, 165, 126, 0.2);
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.product-image-gallery .main-image:hover {
+    transform: scale(1.03);
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.product-thumbnails img {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    cursor: pointer;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.product-thumbnails img:hover,
+.product-thumbnails img.active {
+    /* Thêm class active cho ảnh nhỏ được chọn */
+    border-color: #c5a57e;
+    transform: scale(1.05);
+}
+
+/* --- Giữ nguyên: Cột phải - Thông tin tác phẩm --- */
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.artist-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #c5a57e;
+    object-fit: cover;
+}
+
+.artist-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.follow-button {
+    background: none;
+    border: 1px solid #c5a57e;
+    color: #c5a57e;
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 0.25rem;
+    display: inline-block;
+}
+
+.follow-button:hover {
+    background-color: #c5a57e;
+    color: #1a1a1a;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    color: #c5a57e;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #8ab6c4;
+    margin-bottom: 2rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #c5a57e, #a38561);
+    color: #1a1a1a;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 165, 126, 0.3);
+}
+
+.btn-secondary {
+    background: #2a2a2a;
+    color: #c5a57e;
+    border: 1px solid #c5a57e;
+}
+
+.btn-secondary:hover {
+    background: #c5a57e;
+    color: #1a1a1a;
+}
+
+.product-description h4 {
+    font-size: 1.2rem;
+    color: #c5a57e;
+    margin-bottom: 0.5rem;
+}
+
+.product-description p {
+    line-height: 1.7;
+    color: rgba(224, 224, 224, 0.8);
+    margin-bottom: 1.5rem;
+}
+
+.product-meta p {
+    margin-bottom: 0.5rem;
+}
+
+.product-meta a {
+    color: #8ab6c4;
+    text-decoration: none;
+}
+
+.product-meta a:hover {
+    text-decoration: underline;
+}
+
+.tags-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #333;
+    color: #bbb;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+/* --- Giữ nguyên & Tinh chỉnh: Khu vực bình luận --- */
+.comment-section {
+    padding-top: 3rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(197, 165, 126, 0.2);
+}
+
+.comment-heading {
+    font-size: 1.8rem;
+    color: #c5a57e;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.comment-count-badge {
+    background-color: #c5a57e;
+    color: #1a1a1a;
+    font-size: 1rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.comment-form {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+}
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid #444;
+}
+
+.textarea-wrapper {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.comment-form textarea {
+    width: 100%;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px 15px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: all 0.3s ease;
+    margin-bottom: 0.75rem;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #c5a57e;
+    box-shadow: 0 0 10px rgba(197, 165, 126, 0.2);
+}
+
+.comment-form .btn {
+    padding: 8px 24px;
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.comment-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: #252525;
+    border-radius: 15px;
+    border: 1px solid #333;
+    transition: border-color 0.3s ease;
+}
+
+.comment-item:hover {
+    border-color: rgba(197, 165, 126, 0.3);
+}
+
+.comment-content {
+    width: 100%;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #e0e0e0;
+    margin: 0 0 0.5rem 0;
+}
+
+.comment-text {
+    color: #bbb;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.comment-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.comment-time {
+    color: #888;
+}
+
+.reply-button {
+    color: #aaa;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.reply-button:hover {
+    color: #c5a57e;
+}
+
+.comment-item.comment-reply {
+    margin-left: 50px;
+    background-color: #2a2a2a;
+    border-left: 3px solid #c5a57e;
+}
+
+/* --- Cải tiến & Thêm mới: Khu vực tác phẩm liên quan --- */
+.related-products {
+    padding-top: 3rem;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(197, 165, 126, 0.2);
+}
+
+.related-products h2 {
+    font-size: 1.8rem;
+    color: #c5a57e;
+    margin-bottom: 2rem;
+}
+
+.related-products-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    scroll-snap-type: x mandatory;
+}
+
+.related-products-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.related-products-slider::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+
+.related-products-slider::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+.related-products-slider::-webkit-scrollbar-thumb:hover {
+    background: #c5a57e;
+}
+
+.related-products-slider .post-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    /* Ghi đè margin từ post-card.css */
+}
+.related-products-slider .post-image {
+    height: 200px;
+}
+
+.related-products-slider .post-image img {
+    width: 100%;
+    height: 100%; /* Sửa height thành 100% */
+    object-fit: cover; /* Đảm bảo ảnh cover hết khung, không bị méo */
+}
+.related-products-slider .post-card-content {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.related-products-slider .post-author {
+    margin-bottom: 0.75rem;
+}
+
+.related-products-slider .post-author img {
+    width: 30px;
+    height: 30px;
+}
+
+.related-products-slider .post-author h4 {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #ccc;
+}
+
+.related-products-slider .post-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.related-products-slider .price {
+    margin-top: auto; 
+    padding-top: 0.75rem;
+    font-size: 1rem;
+}
+
+/* --- Giữ nguyên: Responsive chung cho toàn trang --- */
+@media (max-width: 992px) {
+    .detail-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-detail-page {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 100px;
+    }
+
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .comment-item.comment-reply {
+        margin-left: 20px;
+    }
+}

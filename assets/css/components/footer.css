@@ -1,0 +1,71 @@
+/* Footer */
+.footer {
+    background: #151515;
+    padding: 60px 0 20px 0;
+    border-top: 1px solid rgba(197, 165, 126, 0.3);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.footer-section h3 {
+    color: #c5a57e;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.footer-section p {
+    color: rgba(224, 224, 224, 0.8);
+    line-height: 1.6;
+}
+
+.footer-section a {
+    color: rgba(224, 224, 224, 0.8);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #c5a57e;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #c5a57e, #3a6b7e);
+    border-radius: 50%;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 2rem 1rem 0 1rem;
+    /* Thêm padding hông cho mobile */
+    margin-top: 2rem;
+    /* Thêm margin top để tách biệt rõ hơn */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}

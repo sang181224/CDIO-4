@@ -1,0 +1,356 @@
+.profile-page {
+    padding-top: 80px;
+    /* Khoảng trống cho header */
+}
+
+/* --- 1. Profile Header --- */
+.profile-header {
+    background-color: #252525;
+}
+
+.profile-cover-photo {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-info-bar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+}
+
+.profile-avatar-container {
+    margin-top: -75px;
+    /* Kéo avatar lên trên */
+    border: 5px solid #252525;
+    border-radius: 50%;
+    background-color: #252525;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details {
+    margin-left: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+.profile-level {
+    color: #c5a57e;
+    margin: 0.25rem 0 0.75rem 0;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 1.5rem;
+    color: #aaa;
+}
+
+.profile-stats strong {
+    color: #e0e0e0;
+}
+
+.profile-actions {
+    margin-left: auto;
+    padding-bottom: 1rem;
+}
+
+.btn-profile {
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary-profile {
+    background: linear-gradient(45deg, #c5a57e, #a38561);
+    color: #1a1a1a;
+}
+
+.btn-primary-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 165, 126, 0.3);
+}
+
+.btn-secondary-profile {
+    border: 1px solid #c5a57e;
+    background: none;
+    color: #c5a57e;
+}
+
+.btn-secondary-profile:hover {
+    background: #c5a57e;
+    color: #1a1a1a;
+}
+
+
+/* --- 2. Profile Tabs --- */
+.profile-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 0 2rem;
+    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    display: flex;
+    gap: 2rem;
+}
+
+.tab-item {
+    padding: 0.5rem 0;
+    text-decoration: none;
+    color: #aaa;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease;
+}
+
+.tab-item:hover {
+    color: #e0e0e0;
+}
+
+.tab-item.active {
+    color: #c5a57e;
+    border-bottom-color: #c5a57e;
+}
+
+
+/* --- 3. Profile Content --- */
+.profile-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Tái sử dụng layout Masonry */
+.profile-artwork-grid {
+    column-count: 1;
+    column-gap: 1.5rem;
+}
+
+.profile-artwork-grid .post-card {
+    /* Đảm bảo flexbox để đẩy nội dung xuống dưới */
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-artwork-grid .post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Đảm bảo ảnh lấp đầy khung */
+}
+
+.profile-artwork-grid .post-card-content {
+    flex-grow: 1;
+    /* Cho phép nội dung co giãn */
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-artwork-grid .price {
+    margin-top: auto;
+    /* Đẩy giá xuống cuối */
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .profile-artwork-grid {
+        column-count: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-cover-photo {
+        height: 200px;
+    }
+
+    .profile-info-bar {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .profile-avatar-container {
+        margin-top: -60px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-details {
+        margin-left: 0;
+        padding-bottom: 0;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+
+    .profile-actions {
+        margin: 1.5rem 0 1rem 0;
+        width: 100%;
+    }
+
+    .btn-profile {
+        width: 100%;
+    }
+
+    .profile-tabs {
+        justify-content: center;
+    }
+
+    .profile-artwork-grid {
+        column-count: 1;
+    }
+}
+
+/* --- CSS cho các Tab Content --- */
+
+/* Mặc định ẩn tất cả các tab-pane */
+.tab-pane {
+    display: none;
+}
+
+/* Chỉ hiển thị tab-pane có class 'active' */
+.tab-pane.active {
+    display: block;
+}
+
+/* Tab Giới thiệu */
+.about-section {
+    background-color: #252525;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-section h3 {
+    color: #c5a57e;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.artist-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #444;
+}
+.about-section .skill {
+    margin-left: 7px;
+}
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các tag tự xuống dòng */
+    gap: 0.75rem;
+    /* Tạo khoảng cách đều cả chiều ngang và dọc */
+    margin-top: 0.5rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #333;
+    color: #bbb;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid #444;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    background-color: #c5a57e;
+    border-color: #c5a57e;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    cursor: default;
+    /* Giữ con trỏ mặc định */
+}
+
+/* Tab Dự án */
+.project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.project-card {
+    background-color: #252525;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #c5a57e;
+}
+
+.project-info h4 {
+    font-size: 1.3rem;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.project-info p {
+    margin: 0.25rem 0;
+    color: #aaa;
+}
+
+.project-role {
+    font-style: italic;
+}
+
+.project-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.project-status.in-progress {
+    background-color: rgba(138, 182, 196, 0.2);
+    color: #8ab6c4;
+}
+
+.project-status.completed {
+    background-color: rgba(197, 165, 126, 0.2);
+    color: #c5a57e;
+}
+
+/* Tab Đã thích (Coming soon) */
+.coming-soon {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    padding: 4rem 0;
+}
