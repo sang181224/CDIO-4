@@ -1,0 +1,222 @@
+.cart-page {
+    padding-top: 120px;
+    padding-bottom: 4rem;
+    background-color: #1f1f1f;
+    min-height: 100vh;
+}
+
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.cart-container h1 {
+    font-size: 2.5rem;
+    color: #c5a57e;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    padding-bottom: 1rem;
+}
+
+.cart-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* --- Cột trái: Danh sách sản phẩm --- */
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-item-header {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #444;
+}
+
+.select-all-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.select-all-container label {
+    cursor: pointer;
+    color: #ccc;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: auto 100px 1fr auto auto;
+    /* Checkbox | Ảnh | Chi tiết | Giá | Xóa */
+    gap: 1.5rem;
+    align-items: center;
+    background-color: #252525;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.cart-checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #333;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #555;
+    border-radius: 4px;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.cart-checkbox::before {
+    content: "";
+    width: 0.8em;
+    height: 0.8em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #c5a57e;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.cart-checkbox:checked::before {
+    transform: scale(1);
+}
+
+.item-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.item-details h4 {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin: 0 0 0.25rem 0;
+}
+
+.item-details p {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 0;
+}
+
+.item-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e0e0e0;
+    white-space: nowrap;
+}
+
+.item-remove button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.item-remove button:hover {
+    color: #c5a57e;
+}
+
+/* --- Cột phải: Tóm tắt đơn hàng --- */
+.cart-summary {
+    background-color: #252525;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.cart-summary h2 {
+    font-size: 1.5rem;
+    color: #c5a57e;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #444;
+}
+
+.summary-row,
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
+.summary-total {
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+    margin-top: 1.5rem;
+}
+
+.summary-total strong {
+    color: #e0e0e0;
+}
+
+.btn-checkout {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 14px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .cart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 0 1rem;
+    }
+
+    .cart-item {
+        grid-template-columns: auto 80px 1fr auto;
+        /* Checkbox | Ảnh | Chi tiết | Xóa */
+        grid-template-areas:
+            "select img details remove"
+            "select img price price";
+        align-items: flex-start;
+        row-gap: 0.5rem;
+    }
+
+    .item-select {
+        grid-area: select;
+    }
+
+    .item-image {
+        grid-area: img;
+    }
+
+    .item-details {
+        grid-area: details;
+    }
+
+    .item-remove {
+        grid-area: remove;
+    }
+
+    .item-price {
+        grid-area: price;
+        padding-top: 0.5rem;
+        font-size: 1.2rem;
+    }
+}

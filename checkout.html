@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - ArtistryNetwork</title>
+
+    <link rel="stylesheet" href="assets/css/base/base.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/button.css">
+
+    <link rel="stylesheet" href="assets/css/pages/checkout.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#notifications" class="nav-icon">🔔</a></li>
+                    <li class="nav-search">
+                        <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm...">
+                    </li>
+                    <li><a href="#create" class="nav-button">Đăng Bài</a></li>
+                    <li><a href="#shop">Cửa Hàng</a></li>
+                    <li><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
+                    <li><a href="login.html" class="nav-button">Đăng Nhập</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="checkout-page">
+        <div class="checkout-container">
+            <h1>Thông tin Thanh toán</h1>
+            <div class="checkout-grid">
+                <div class="customer-details">
+                    <h3>Thông tin người nhận</h3>
+                    <form class="checkout-form">
+                        <div class="form-group">
+                            <label for="fullname">Họ và Tên</label>
+                            <input type="text" id="fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+
+                        <h3>Địa chỉ giao hàng</h3>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ</label>
+                            <input type="text" id="address" placeholder="Số nhà, tên đường" required>
+                        </div>
+                        <div class="form-group-grid">
+                            <div class="form-group">
+                                <label for="city">Tỉnh / Thành phố</label>
+                                <select id="city" required>
+                                    <option value="">Chọn Tỉnh / Thành phố</option>
+                                    <option value="danang">Đà Nẵng</option>
+                                    <option value="hanoi">Hà Nội</option>
+                                    <option value="hcm">TP. Hồ Chí Minh</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="district">Quận / Huyện</label>
+                                <select id="district" required>
+                                    <option value="">Chọn Quận / Huyện</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Ghi chú (tùy chọn)</label>
+                            <textarea id="notes" rows="3"
+                                placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng..."></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="order-summary">
+                    <h3>Đơn hàng của bạn</h3>
+                    <div class="order-items">
+                        <div class="order-item">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format&fit=crop"
+                                alt="Tác phẩm">
+                            <div class="order-item-info">
+                                <h4>Ký Ức Vỡ Nát</h4>
+                                <span>3,200,000 VNĐ</span>
+                            </div>
+                        </div>
+                        <div class="order-item">
+                            <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b?q=80&w=1974&auto=format&fit=crop"
+                                alt="Tác phẩm">
+                            <div class="order-item-info">
+                                <h4>Bình Yên Ven Hồ</h4>
+                                <span>2,100,000 VNĐ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <span>5,300,000 VNĐ</span>
+                    </div>
+                    <div class="summary-total">
+                        <strong>Tổng cộng</strong>
+                        <strong>5,300,000 VNĐ</strong>
+                    </div>
+
+                    <h3>Phương thức thanh toán</h3>
+                    <div class="payment-methods">
+                        <div class="payment-option">
+                            <input type="radio" id="cod" name="payment" value="cod" checked>
+                            <label for="cod">Thanh toán khi nhận hàng (COD)</label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="bank" name="payment" value="bank">
+                            <label for="bank">Chuyển khoản ngân hàng</label>
+                            <div class="payment-info">
+                                <p>Vui lòng chuyển khoản đến STK:</p>
+                                <p><strong>123456789 - NGUYEN VAN A - Ngân hàng Vietcombank</strong></p>
+                                <p>Nội dung: Thanh toán đơn hàng #[mã đơn hàng]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary btn-checkout">Đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về ArtistryNetwork</h3>
+                <p style="color: rgba(224, 224, 224, 0.8); line-height: 1.6;">
+                    Chúng tôi là cộng đồng nghệ thuật hàng đầu, kết nối những tâm hồn yêu nghệ thuật và tạo ra không
+                    gian sáng tạo đầy cảm hứng.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Youtube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Danh Mục</h3>
+                <a href="#">Tranh Sơn Dầu</a> <a href="#">Tranh Thủy Mặc</a> <a href="#">Điêu Khắc</a>
+                <a href="#">Nghệ Thuật Số</a> <a href="#">Nhiếp Ảnh</a> <a href="#">Thủ Công Mỹ Nghệ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Dịch Vụ</h3>
+                <a href="#">Bán Tác Phẩm</a> <a href="#">Thuê Triển Lãm</a> <a href="#">Khóa Học Nghệ Thuật</a>
+                <a href="#">Tư Vấn Sưu Tập</a> <a href="#">Định Giá Tác Phẩm</a> <a href="#">Bảo Quản Tranh</a>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <address style="color: rgba(224, 224, 224, 0.8); line-height: 1.6; font-style: normal;">
+                    📍 123 Đường Nghệ Thuật, Quận 1, TP.HCM<br>
+                    📞 (+84) 123 456 789<br>
+                    ✉️ info@artistrynetwork.vn<br>
+                    🕒 T2-T7: 9:00 - 18:00
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ArtistryNetwork. Tất cả quyền được bảo lưu. | Thiết kế với ❤️ cho cộng đồng nghệ thuật Việt
+                Nam</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

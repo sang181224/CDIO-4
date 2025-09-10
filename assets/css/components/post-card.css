@@ -154,3 +154,41 @@
 .reaction:hover {
     transform: scale(1.3) translateY(-3px);
 }
+.post-card {
+    position: relative;
+}
+
+.card-edit-button {
+    position: absolute; /* Định vị nút tuyệt đối so với card */
+    top: 1rem;
+    right: 1rem;
+    z-index: 10; /* Đảm bảo nút nổi lên trên ảnh */
+    
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    
+    /* Mặc định ẩn đi */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+/* Khi di chuột vào card, nút sẽ hiện ra */
+.post-card:hover .card-edit-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-edit-button a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.card-edit-button a:hover {
+    color: #c5a57e;
+}

@@ -1,0 +1,236 @@
+.upload-page {
+    padding-top: 120px;
+    padding-bottom: 4rem;
+    background-color: #1f1f1f;
+}
+
+.upload-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #252525;
+    padding: 2rem 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(197, 165, 126, 0.2);
+}
+
+.upload-container h1 {
+    font-size: 2.5rem;
+    color: #c5a57e;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.upload-subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 3rem;
+}
+
+/* --- Form Styling --- */
+.upload-form .form-group {
+    margin-bottom: 2rem;
+}
+
+.upload-form label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.upload-form input[type="text"],
+.upload-form input[type="number"],
+.upload-form textarea,
+.upload-form select {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.upload-form input:focus,
+.upload-form textarea:focus,
+.upload-form select:focus {
+    outline: none;
+    border-color: #c5a57e;
+    box-shadow: 0 0 10px rgba(197, 165, 126, 0.2);
+}
+
+.upload-form textarea {
+    resize: vertical;
+}
+
+/* --- Image Uploader --- */
+.drop-zone {
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.drop-zone:hover {
+    border-color: #c5a57e;
+    background-color: #2a2a2a;
+}
+
+.upload-icon {
+    font-size: 3rem;
+}
+
+.drop-zone p {
+    color: #aaa;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.btn-browse-file {
+    background: none;
+    border: 1px solid #c5a57e;
+    color: #c5a57e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.image-preview {
+    margin-top: 1rem;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+}
+
+/* --- Form Grid for Category & Price --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.price-input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.price-input-wrapper input {
+    border: none;
+    background: none;
+    box-shadow: none;
+}
+
+.price-input-wrapper span {
+    padding: 0 1rem;
+    color: #888;
+}
+
+/* --- Tag Input --- */
+.tag-input-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+}
+
+.tag-input-container input {
+    border: none;
+    background: none;
+    outline: none;
+    flex-grow: 1;
+    padding: 2px;
+}
+
+.tag-item {
+    background-color: #c5a57e;
+    color: #1a1a1a;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.upload-form small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+
+/* --- Action Buttons --- */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 3rem;
+    border-top: 1px solid #444;
+    padding-top: 2rem;
+}
+
+/* --- Thêm style cho các nút ở trang Edit --- */
+
+.form-actions {
+    /* Căn chỉnh lại để chứa 3 nút */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Nút xóa sẽ nằm bên trái, tách biệt với 2 nút kia */
+.btn-delete {
+    margin-right: auto;
+    background: none;
+    border: 1px solid #995a5a;
+    color: #e09898;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #995a5a;
+    color: #fff;
+}
+
+/* Ghi đè lại để nút Hủy (btn-secondary) trông đẹp hơn */
+.form-actions .btn-secondary {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-weight: normal;
+}
+
+.form-actions .btn-secondary:hover {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .upload-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}

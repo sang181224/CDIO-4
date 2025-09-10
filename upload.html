@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng tải Tác phẩm - ArtistryNetwork</title>
+
+    <link rel="stylesheet" href="assets/css/base/base.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/button.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+
+    <link rel="stylesheet" href="assets/css/pages/upload.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#notifications" class="nav-icon">🔔</a></li>
+                    <li class="nav-search">
+                        <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm...">
+                    </li>
+                    <li><a href="#create" class="nav-button">Đăng Bài</a></li>
+                    <li><a href="#shop">Cửa Hàng</a></li>
+                    <li><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
+                    <li><a href="login.html" class="nav-button">Đăng Nhập</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="upload-page">
+        <div class="upload-container">
+            <h1>Đăng tải Tác phẩm mới</h1>
+            <p class="upload-subtitle">Chia sẻ tác phẩm của bạn với cộng đồng nghệ thuật</p>
+
+            <form class="upload-form">
+                <div class="form-group image-uploader">
+                    <label for="artwork-image">Ảnh tác phẩm (Bắt buộc)</label>
+                    <div class="drop-zone">
+                        <div class="drop-zone-prompt">
+                            <span class="upload-icon">🖼️</span>
+                            <p>Kéo và thả ảnh vào đây, hoặc</p>
+                            <button type="button" class="btn-browse-file">Chọn file</button>
+                        </div>
+                        <input type="file" id="artwork-image" accept="image/*" hidden required>
+                    </div>
+                    <div id="image-preview" class="image-preview" hidden></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-title">Tên tác phẩm (Bắt buộc)</label>
+                    <input type="text" id="artwork-title" placeholder="Ví dụ: Hoàng hôn trên biển" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-description">Mô tả</label>
+                    <textarea id="artwork-description" rows="6"
+                        placeholder="Chia sẻ câu chuyện, cảm hứng hoặc kỹ thuật bạn đã sử dụng..."></textarea>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="artwork-category">Thể loại</label>
+                        <select id="artwork-category">
+                            <option value="">-- Chọn thể loại --</option>
+                            <option value="1">Hội họa</option>
+                            <option value="2">Điêu khắc</option>
+                            <option value="3">Nhiếp ảnh</option>
+                            <option value="4">Kỹ thuật số</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="artwork-price">Giá bán</label>
+                        <div class="price-input-wrapper">
+                            <input type="number" id="artwork-price" placeholder="Để trống nếu không bán" min="0">
+                            <span>VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="artwork-tags">Hashtags (Tối đa 5)</label>
+                    <div id="tag-container" class="tag-input-container">
+                        <input type="text" id="artwork-tags" placeholder="Nhập tag rồi nhấn Enter...">
+                    </div>
+                    <small>Các tag giúp tác phẩm của bạn dễ được tìm thấy hơn. Ví dụ: #trừutượng, #phongcảnh...</small>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary">Lưu nháp</button>
+                    <button type="submit" class="btn btn-primary">Đăng tải</button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về ArtistryNetwork</h3>
+                <p style="color: rgba(224, 224, 224, 0.8); line-height: 1.6;">
+                    Chúng tôi là cộng đồng nghệ thuật hàng đầu, kết nối những tâm hồn yêu nghệ thuật và tạo ra không
+                    gian sáng tạo đầy cảm hứng.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Youtube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Danh Mục</h3>
+                <a href="#">Tranh Sơn Dầu</a> <a href="#">Tranh Thủy Mặc</a> <a href="#">Điêu Khắc</a>
+                <a href="#">Nghệ Thuật Số</a> <a href="#">Nhiếp Ảnh</a> <a href="#">Thủ Công Mỹ Nghệ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Dịch Vụ</h3>
+                <a href="#">Bán Tác Phẩm</a> <a href="#">Thuê Triển Lãm</a> <a href="#">Khóa Học Nghệ Thuật</a>
+                <a href="#">Tư Vấn Sưu Tập</a> <a href="#">Định Giá Tác Phẩm</a> <a href="#">Bảo Quản Tranh</a>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <address style="color: rgba(224, 224, 224, 0.8); line-height: 1.6; font-style: normal;">
+                    📍 123 Đường Nghệ Thuật, Quận 1, TP.HCM<br>
+                    📞 (+84) 123 456 789<br>
+                    ✉️ info@artistrynetwork.vn<br>
+                    🕒 T2-T7: 9:00 - 18:00
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ArtistryNetwork. Tất cả quyền được bảo lưu. | Thiết kế với ❤️ cho cộng đồng nghệ thuật Việt
+                Nam</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

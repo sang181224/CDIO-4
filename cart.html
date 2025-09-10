@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - ArtistryNetwork</title>
+
+    <link rel="stylesheet" href="assets/css/base/base.css">
+    <link rel="stylesheet" href="assets/css/components/header.css">
+    <link rel="stylesheet" href="assets/css/components/footer.css">
+    <link rel="stylesheet" href="assets/css/components/button.css">
+
+    <link rel="stylesheet" href="assets/css/pages/cart.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Trang Chủ</a></li>
+                    <li><a href="#notifications" class="nav-icon">🔔</a></li>
+                    <li class="nav-search">
+                        <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm...">
+                    </li>
+                    <li><a href="#create" class="nav-button">Đăng Bài</a></li>
+                    <li><a href="#shop">Cửa Hàng</a></li>
+                    <li><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
+                    <li><a href="login.html" class="nav-button">Đăng Nhập</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </header>
+
+    <main class="cart-page">
+        <div class="cart-container">
+            <h1>Giỏ hàng của bạn</h1>
+
+            <div class="cart-grid">
+                <div class="cart-items">
+                    <div class="cart-item-header">
+                        <div class="select-all-container">
+                            <input type="checkbox" id="select-all-checkbox" class="cart-checkbox">
+                            <label for="select-all-checkbox">Chọn tất cả (2 sản phẩm)</label>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-select">
+                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format&fit=crop"
+                                alt="Tác phẩm Ký Ức Vỡ Nát">
+                        </div>
+                        <div class="item-details">
+                            <h4>Ký Ức Vỡ Nát</h4>
+                            <p>bởi Elena Rodriguez</p>
+                        </div>
+                        <div class="item-price" data-price="3200000">3,200,000 VNĐ</div>
+                        <div class="item-remove">
+                            <button title="Xóa sản phẩm">🗑️</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-select">
+                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b?q=80&w=1974&auto=format&fit=crop"
+                                alt="Tác phẩm Bình Yên Ven Hồ">
+                        </div>
+                        <div class="item-details">
+                            <h4>Bình Yên Ven Hồ</h4>
+                            <p>bởi Marcus Cole</p>
+                        </div>
+                        <div class="item-price" data-price="2100000">2,100,000 VNĐ</div>
+                        <div class="item-remove">
+                            <button title="Xóa sản phẩm">🗑️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <h2>Tóm tắt đơn hàng</h2>
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <span>5,300,000 VNĐ</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Phí vận chuyển</span>
+                        <span>Miễn phí</span>
+                    </div>
+                    <div class="summary-total">
+                        <strong>Tổng tiền</strong>
+                        <strong>5,300,000 VNĐ</strong>
+                    </div>
+                    <button class="btn btn-primary btn-checkout">Tiến hành Thanh toán</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Về ArtistryNetwork</h3>
+                <p style="color: rgba(224, 224, 224, 0.8); line-height: 1.6;">
+                    Chúng tôi là cộng đồng nghệ thuật hàng đầu, kết nối những tâm hồn yêu nghệ thuật và tạo ra không
+                    gian sáng tạo đầy cảm hứng.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Youtube">📺</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Danh Mục</h3>
+                <a href="#">Tranh Sơn Dầu</a> <a href="#">Tranh Thủy Mặc</a> <a href="#">Điêu Khắc</a>
+                <a href="#">Nghệ Thuật Số</a> <a href="#">Nhiếp Ảnh</a> <a href="#">Thủ Công Mỹ Nghệ</a>
+            </div>
+            <div class="footer-section">
+                <h3>Dịch Vụ</h3>
+                <a href="#">Bán Tác Phẩm</a> <a href="#">Thuê Triển Lãm</a> <a href="#">Khóa Học Nghệ Thuật</a>
+                <a href="#">Tư Vấn Sưu Tập</a> <a href="#">Định Giá Tác Phẩm</a> <a href="#">Bảo Quản Tranh</a>
+            </div>
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <address style="color: rgba(224, 224, 224, 0.8); line-height: 1.6; font-style: normal;">
+                    📍 123 Đường Nghệ Thuật, Quận 1, TP.HCM<br>
+                    📞 (+84) 123 456 789<br>
+                    ✉️ info@artistrynetwork.vn<br>
+                    🕒 T2-T7: 9:00 - 18:00
+                </address>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ArtistryNetwork. Tất cả quyền được bảo lưu. | Thiết kế với ❤️ cho cộng đồng nghệ thuật Việt
+                Nam</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html>
