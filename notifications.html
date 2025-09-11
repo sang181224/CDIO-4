@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng - ArtistryNetwork</title>
+    <title>Thông báo - ArtistryNetwork</title>
 
     <link rel="stylesheet" href="assets/css/base/base.css">
     <link rel="stylesheet" href="assets/css/components/header.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/button.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/pages/cart.css">
+    <link rel="stylesheet" href="assets/css/pages/notifications.css">
 </head>
 
 <body>
@@ -61,72 +61,49 @@
         </div>
     </header>
 
-    <main class="cart-page">
-        <div class="cart-container">
-            <h1>Giỏ hàng của bạn</h1>
+    <main class="notifications-page">
+        <div class="notifications-container">
+            <div class="notifications-header">
+                <h1>Thông báo</h1>
+                <button class="mark-all-read-btn">Đánh dấu tất cả là đã đọc</button>
+            </div>
 
-            <div class="cart-grid">
-                <div class="cart-items">
-                    <div class="cart-item-header">
-                        <div class="select-all-container">
-                            <input type="checkbox" id="select-all-checkbox" class="cart-checkbox">
-                            <label for="select-all-checkbox">Chọn tất cả (2 sản phẩm)</label>
-                        </div>
+            <div class="notification-list">
+                <a href="#" class="notification-item unread">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop"
+                        alt="Avatar" class="noti-avatar">
+                    <div class="noti-content">
+                        <p><strong>Kenji Watanabe</strong> đã bình luận về tác phẩm của bạn: <strong>Vũ Điệu Của Sắc
+                                Màu</strong>.</p>
+                        <span class="noti-time">5 phút trước</span>
                     </div>
+                    <div class="unread-dot"></div>
+                </a>
 
-                    <div class="cart-item">
-                        <div class="item-select">
-                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
-                        </div>
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format&fit=crop"
-                                alt="Tác phẩm Ký Ức Vỡ Nát">
-                        </div>
-                        <div class="item-details">
-                            <h4>Ký Ức Vỡ Nát</h4>
-                            <p>bởi Elena Rodriguez</p>
-                        </div>
-                        <div class="item-price" data-price="3200000">3,200,000 VNĐ</div>
-                        <div class="item-remove">
-                            <button title="Xóa sản phẩm">🗑️</button>
-                        </div>
+                <a href="#" class="notification-item unread">
+                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop"
+                        alt="Avatar" class="noti-avatar">
+                    <div class="noti-content">
+                        <p><strong>Marcus Cole</strong> đã thích tác phẩm của bạn: <strong>Bình Yên Ven Hồ</strong>.</p>
+                        <span class="noti-time">1 giờ trước</span>
                     </div>
+                    <div class="unread-dot"></div>
+                </a>
 
-                    <div class="cart-item">
-                        <div class="item-select">
-                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
-                        </div>
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b?q=80&w=1974&auto=format&fit=crop"
-                                alt="Tác phẩm Bình Yên Ven Hồ">
-                        </div>
-                        <div class="item-details">
-                            <h4>Bình Yên Ven Hồ</h4>
-                            <p>bởi Marcus Cole</p>
-                        </div>
-                        <div class="item-price" data-price="2100000">2,100,000 VNĐ</div>
-                        <div class="item-remove">
-                            <button title="Xóa sản phẩm">🗑️</button>
-                        </div>
+                <a href="#" class="notification-item">
+                    <i class="fa-solid fa-receipt noti-icon"></i>
+                    <div class="noti-content">
+                        <p>Đơn hàng <strong>#AN-12345</strong> của bạn đã được giao thành công.</p>
+                        <span class="noti-time">Hôm qua</span>
                     </div>
-                </div>
-
-                <div class="cart-summary">
-                    <h2>Tóm tắt đơn hàng</h2>
-                    <div class="summary-row">
-                        <span>Tạm tính</span>
-                        <span>5,300,000 VNĐ</span>
+                </a>
+                <a href="#" class="notification-item">
+                    <i class="fa-solid fa-bullhorn noti-icon"></i>
+                    <div class="noti-content">
+                        <p>Sự kiện triển lãm "Mùa Thu Sáng Tạo" sẽ diễn ra vào tuần tới!</p>
+                        <span class="noti-time">2 ngày trước</span>
                     </div>
-                    <div class="summary-row">
-                        <span>Phí vận chuyển</span>
-                        <span>Miễn phí</span>
-                    </div>
-                    <div class="summary-total">
-                        <strong>Tổng tiền</strong>
-                        <strong>5,300,000 VNĐ</strong>
-                    </div>
-                    <button class="btn btn-primary btn-checkout">Tiến hành Thanh toán</button>
-                </div>
+                </a>
             </div>
         </div>
     </main>
@@ -173,7 +150,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/cart.js"></script>
 </body>
 
 </html>

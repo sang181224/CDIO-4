@@ -140,10 +140,7 @@
 }
 
 /* Tái sử dụng layout Masonry */
-.profile-artwork-grid {
-    column-count: 1;
-    column-gap: 1.5rem;
-}
+
 
 .profile-artwork-grid .post-card {
     /* Đảm bảo flexbox để đẩy nội dung xuống dưới */
@@ -170,12 +167,6 @@
     /* Đẩy giá xuống cuối */
 }
 
-/* --- Responsive --- */
-@media (max-width: 992px) {
-    .profile-artwork-grid {
-        column-count: 1;
-    }
-}
 
 @media (max-width: 768px) {
     .profile-cover-photo {
@@ -218,10 +209,6 @@
 
     .profile-tabs {
         justify-content: center;
-    }
-
-    .profile-artwork-grid {
-        column-count: 1;
     }
 }
 
@@ -266,9 +253,11 @@
     padding-top: 1.5rem;
     border-top: 1px solid #444;
 }
+
 .about-section .skill {
     margin-left: 7px;
 }
+
 .skills-container {
     display: flex;
     flex-wrap: wrap;
@@ -353,4 +342,188 @@
     font-size: 1.2rem;
     color: #888;
     padding: 4rem 0;
+}
+
+/* --- CSS cho Tab Đơn hàng --- */
+
+.order-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.order-card {
+    background-color: #252525;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    /* Cho phép xuống dòng trên mobile */
+}
+
+.order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.order-id {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+.order-date,
+.order-total {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.order-status {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.order-status.completed {
+    background-color: rgba(197, 165, 126, 0.2);
+    color: #c5a57e;
+}
+
+.order-status.processing {
+    background-color: rgba(138, 182, 196, 0.2);
+    color: #8ab6c4;
+}
+
+.order-status.cancelled {
+    background-color: rgba(225, 81, 49, 0.2);
+    color: #e15131;
+}
+
+.btn-view-order {
+    text-decoration: none;
+    color: #bbb;
+    font-weight: 500;
+    border: 1px solid #555;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-view-order:hover {
+    background-color: #c5a57e;
+    border-color: #c5a57e;
+    color: #1a1a1a;
+}
+
+/* --- CSS cho Tab Bản nháp --- */
+
+.draft-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.draft-card {
+    background-color: #252525;
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.draft-card img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.draft-info {
+    flex-grow: 1;
+}
+
+.draft-info h4 {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin: 0 0 0.25rem 0;
+}
+
+.draft-info p {
+    font-size: 0.9rem;
+    color: #888;
+    margin: 0;
+}
+
+.draft-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-draft-edit,
+.btn-draft-delete {
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #555;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    background: none;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.btn-draft-edit {
+    color: #c5a57e;
+    border-color: #c5a57e;
+}
+
+.btn-draft-edit:hover {
+    background-color: #c5a57e;
+    color: #1a1a1a;
+}
+
+.btn-draft-delete {
+    color: #aaa;
+    border-color: #555;
+}
+
+.btn-draft-delete:hover {
+    background-color: #995a5a;
+    border-color: #995a5a;
+    color: #fff;
+}
+
+.btn-draft-publish {
+    text-decoration: none;
+    font-weight: bold;
+    /* Chữ đậm hơn để làm nổi bật */
+    border: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    /* Dùng lại style của nút chính */
+    background: linear-gradient(45deg, #c5a57e, #a38561);
+    color: #1a1a1a;
+}
+
+.btn-draft-publish:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(197, 165, 126, 0.2);
 }

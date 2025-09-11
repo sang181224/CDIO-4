@@ -17,18 +17,40 @@
 <body>
     <header class="header">
         <div class="nav-container">
-            <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            <a href="index.html">
+                <img class="logo" src="assets/images/logomain.jpg" alt="ArtistryNetwork Logo">
+            </a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="/index.html">Trang Chủ</a></li>
-                    <li><a href="#notifications" class="nav-icon">🔔</a></li>
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="shop.html">Cửa Hàng</a></li>
+
                     <li class="nav-search">
                         <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm...">
                     </li>
-                    <li><a href="./upload.html" class="nav-button">Đăng Bài</a></li>
-                    <li><a href="#shop">Cửa Hàng</a></li>
-                    <li><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
-                    <li><a href="login.html" class="nav-button">Đăng Nhập</a></li>
+
+                    <li class="nav-user-actions">
+                        <a href="upload.html" class="nav-button">Đăng Bài</a>
+                    </li>
+                    <li class="nav-user-actions">
+                        <a href="notifications.html" class="nav-icon" title="Thông báo">🔔</a>
+                    </li>
+                    <li class="nav-user-profile">
+                        <a href="profile.html" class="user-avatar-link">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                alt="User Avatar" class="header-avatar">
+                            <span>Elena Rodriguez</span>
+                        </a>
+                        <div class="profile-dropdown">
+                            <a href="profile.html">Hồ sơ của tôi</a>
+                            <a href="#">Lịch sử đơn hàng</a>
+                            <a href="#">Cài đặt</a>
+                            <a href="#">Đăng xuất</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-guest"><a href="register.html" class="nav-button-outline">Đăng Ký</a></li>
+                    <li class="nav-guest"><a href="login.html" class="nav-button">Đăng Nhập</a></li>
                 </ul>
             </nav>
             <button class="hamburger-menu" aria-label="Toggle menu">

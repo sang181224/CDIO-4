@@ -7,7 +7,6 @@
 
 html {
     scroll-behavior: smooth;
-    /* Cho phép cuộn mượt khi bấm vào link neo */
 }
 
 body {
@@ -19,7 +18,9 @@ body {
 
 a {
     text-decoration: none;
+    /* Đảm bảo mọi thẻ a đều không có gạch chân mặc định */
 }
+
 
 /* --- Các Animation dùng chung --- */
 @keyframes fadeInUp {
@@ -55,21 +56,5 @@ a {
 
     50% {
         transform: translateY(-20px) rotate(5deg);
-    }
-}
-
-/* --- Responsive CHUNG NHẤT --- */
-/* Quy tắc chuyển đổi từ menu desktop sang mobile */
-@media (max-width: 992px) {
-    .nav-menu {
-        display: none;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .mobile-nav {
-        display: flex;
     }
 }

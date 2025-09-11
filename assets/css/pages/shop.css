@@ -29,28 +29,8 @@
     margin: 0 auto;
 }
 
-/* --- Lưới Tác phẩm --- */
-.shop-artwork-grid .artwork-list {
-    column-count: 2;
-    /* Layout Masonry */
-    column-gap: 1.5rem;
-}
-
 /* --- Phân trang --- */
 .pagination {
     margin-top: 3rem;
     /* Tách biệt với lưới tác phẩm */
-}
-
-/* --- Responsive --- */
-@media (max-width: 992px) {
-    .shop-artwork-grid .artwork-list {
-        column-count: 2;
-    }
-}
-
-@media (max-width: 768px) {
-    .shop-artwork-grid .artwork-list {
-        column-count: 1;
-    }
 }

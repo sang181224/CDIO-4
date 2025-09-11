@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng - ArtistryNetwork</title>
+    <title>Chi tiết Đơn hàng #AN-12345 - ArtistryNetwork</title>
 
     <link rel="stylesheet" href="assets/css/base/base.css">
     <link rel="stylesheet" href="assets/css/components/header.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
-    <link rel="stylesheet" href="assets/css/components/button.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/pages/cart.css">
+    <link rel="stylesheet" href="assets/css/pages/order-detail.css">
 </head>
 
 <body>
@@ -61,72 +61,68 @@
         </div>
     </header>
 
-    <main class="cart-page">
-        <div class="cart-container">
-            <h1>Giỏ hàng của bạn</h1>
+    <main class="order-detail-page">
+        <div class="order-container">
+            <div class="order-header">
+                <div class="order-header-info">
+                    <h1>Chi tiết Đơn hàng</h1>
+                    <p>Mã đơn hàng: <strong>#AN-12345</strong></p>
+                    <span>Ngày đặt: 10/09/2025</span>
+                </div>
+                <div class="order-status completed">Đã giao thành công</div>
+            </div>
 
-            <div class="cart-grid">
-                <div class="cart-items">
-                    <div class="cart-item-header">
-                        <div class="select-all-container">
-                            <input type="checkbox" id="select-all-checkbox" class="cart-checkbox">
-                            <label for="select-all-checkbox">Chọn tất cả (2 sản phẩm)</label>
-                        </div>
+            <div class="order-grid">
+                <div class="order-customer-info">
+                    <div class="info-box">
+                        <h3>Thông tin người nhận</h3>
+                        <p><strong>Tên:</strong> Elena Rodriguez</p>
+                        <p><strong>Email:</strong> elena.r@artistry.vn</p>
+                        <p><strong>Điện thoại:</strong> (+84) 987 654 321</p>
                     </div>
-
-                    <div class="cart-item">
-                        <div class="item-select">
-                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
-                        </div>
-                        <div class="item-image">
-                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format&fit=crop"
-                                alt="Tác phẩm Ký Ức Vỡ Nát">
-                        </div>
-                        <div class="item-details">
-                            <h4>Ký Ức Vỡ Nát</h4>
-                            <p>bởi Elena Rodriguez</p>
-                        </div>
-                        <div class="item-price" data-price="3200000">3,200,000 VNĐ</div>
-                        <div class="item-remove">
-                            <button title="Xóa sản phẩm">🗑️</button>
-                        </div>
+                    <div class="info-box">
+                        <h3>Địa chỉ giao hàng</h3>
+                        <p>123 Đường Nghệ Thuật, Phường ABC, Quận 1, TP. Hồ Chí Minh</p>
                     </div>
+                </div>
 
-                    <div class="cart-item">
-                        <div class="item-select">
-                            <input type="checkbox" class="cart-checkbox item-checkbox" checked>
+                <div class="order-items-summary">
+                    <h3>Các tác phẩm trong đơn hàng</h3>
+                    <div class="order-items-list">
+                        <div class="order-item-row">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format=fit=crop"
+                                alt="Tác phẩm">
+                            <p>Ký Ức Vỡ Nát</p>
+                            <span>3,200,000 VNĐ</span>
                         </div>
-                        <div class="item-image">
+                        <div class="order-item-row">
                             <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b?q=80&w=1974&auto=format&fit=crop"
-                                alt="Tác phẩm Bình Yên Ven Hồ">
+                                alt="Tác phẩm">
+                            <p>Bình Yên Ven Hồ</p>
+                            <span>2,100,000 VNĐ</span>
                         </div>
-                        <div class="item-details">
-                            <h4>Bình Yên Ven Hồ</h4>
-                            <p>bởi Marcus Cole</p>
+                    </div>
+                    <div class="order-totals">
+                        <div class="summary-row">
+                            <span>Tạm tính</span>
+                            <span>5,300,000 VNĐ</span>
                         </div>
-                        <div class="item-price" data-price="2100000">2,100,000 VNĐ</div>
-                        <div class="item-remove">
-                            <button title="Xóa sản phẩm">🗑️</button>
+                        <div class="summary-row">
+                            <span>Phí vận chuyển</span>
+                            <span>0 VNĐ</span>
+                        </div>
+                        <div class="summary-total">
+                            <strong>Tổng cộng</strong>
+                            <strong>5,300,000 VNĐ</strong>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="cart-summary">
-                    <h2>Tóm tắt đơn hàng</h2>
-                    <div class="summary-row">
-                        <span>Tạm tính</span>
-                        <span>5,300,000 VNĐ</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Phí vận chuyển</span>
-                        <span>Miễn phí</span>
-                    </div>
-                    <div class="summary-total">
-                        <strong>Tổng tiền</strong>
-                        <strong>5,300,000 VNĐ</strong>
-                    </div>
-                    <button class="btn btn-primary btn-checkout">Tiến hành Thanh toán</button>
-                </div>
+            <div class="order-payment-info info-box">
+                <h3>Thông tin thanh toán</h3>
+                <p><strong>Phương thức:</strong> Thanh toán khi nhận hàng (COD)</p>
+                <p><strong>Trạng thái:</strong> Đã thanh toán</p>
             </div>
         </div>
     </main>
@@ -173,7 +169,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/cart.js"></script>
 </body>
 
 </html>

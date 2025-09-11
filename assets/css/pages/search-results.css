@@ -1,0 +1,56 @@
+.search-results-page {
+    padding-top: 80px;
+}
+
+/* --- Tiêu đề trang --- */
+.search-header {
+    padding: 3rem 2rem;
+    background-color: #1f1f1f;
+    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    text-align: center;
+}
+
+.search-header-content p {
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+.search-header-content h1 {
+    font-size: 3rem;
+    color: #c5a57e;
+    margin: 0.5rem 0;
+}
+
+.search-header-content span {
+    color: #888;
+}
+
+/* --- Khu vực không có kết quả --- */
+.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: #252525;
+    border-radius: 15px;
+    height: 100%;
+}
+
+.no-results-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.no-results h2 {
+    font-size: 2rem;
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+}
+
+.no-results p {
+    color: #aaa;
+    max-width: 400px;
+    line-height: 1.6;
+}

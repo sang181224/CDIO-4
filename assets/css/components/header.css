@@ -3,12 +3,18 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(26, 26, 26, 0.9);
+    background: rgba(26, 26, 26, 0.8);
+    padding: 1.5rem 0;
     backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1rem 0;
     border-bottom: 1px solid rgba(197, 165, 126, 0.3);
-    transition: background-color 0.3s ease;
+    transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+.header.header-scrolled {
+    background: #1a1a1a;
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .nav-container {
@@ -101,13 +107,12 @@
 
 .nav-button {
     background: linear-gradient(45deg, #c5a57e, #a38561);
-    color: #1a1a1a;
+    color: #1a1a1a !important;
 }
 
 .nav-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(197, 165, 126, 0.3);
-    color: #1a1a1a !important;
 }
 
 .nav-button-outline {
@@ -116,6 +121,86 @@
 }
 
 .nav-button-outline:hover {
+    background-color: #c5a57e;
+    color: #1a1a1a !important;
+}
+
+/* --- Logic Ẩn/Hiện cho Trạng thái Đăng nhập --- */
+.nav-user-actions,
+.nav-user-profile {
+    display: none;
+}
+
+.nav-guest {
+    display: list-item;
+}
+
+.header.logged-in .nav-user-actions,
+.header.logged-in .nav-user-profile {
+    display: flex;
+}
+
+.header.logged-in .nav-guest {
+    display: none;
+}
+
+/* --- Style cho Khu vực User đã đăng nhập --- */
+.nav-user-profile {
+    position: relative;
+    align-items: center;
+}
+
+.user-avatar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 5px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.user-avatar-link:hover {
+    background-color: #2a2a2a;
+}
+
+.header-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: #252525;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-user-profile:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.profile-dropdown a:hover {
     background-color: #c5a57e;
     color: #1a1a1a !important;
 }
@@ -207,8 +292,6 @@
 
 /* --- Responsive RIÊNG cho Header --- */
 @media (max-width: 992px) {
-
-    /* Các quy tắc này được chuyển từ base.css vào đây */
     .nav-menu {
         display: none;
     }
@@ -223,8 +306,6 @@
 }
 
 @media (max-width: 768px) {
-
-    /* Quy tắc này được chuyển từ base.css vào đây */
     .nav-container {
         padding: 0 1rem;
     }

@@ -1,71 +1,57 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+document.addEventListener('DOMContentLoaded', () => {
 
-        // Lấy mobile nav elements bên trong function để đảm bảo chúng tồn tại khi script chạy
-        const mobileNav = document.querySelector('.mobile-nav');
-        const hamburger = document.querySelector('.hamburger-menu');
-
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-            // Đóng menu di động sau khi nhấp vào link (nếu đang mở)
-            if (mobileNav && mobileNav.classList.contains('show-nav')) {
-                mobileNav.classList.remove('show-nav');
-                hamburger.classList.remove('open');
-            }
-        }
-    });
-});
-
-// Header background change on scroll
-window.addEventListener('scroll', function () {
+    // --- 1. Header tự động thay đổi khi cuộn trang ---
     const header = document.querySelector('.header');
-    if (header) { // Thêm kiểm tra null an toàn
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(20, 20, 20, 0.95)';
-        } else {
-            header.style.background = 'rgba(26, 26, 26, 0.9)';
-        }
+    if (header) {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Kiểm tra lần đầu khi tải trang
+    }
+
+    // --- 2. Logic cho Menu Mobile (Hamburger) ---
+    const hamburger = document.querySelector('.hamburger-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (hamburger && mobileNav) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('show-nav');
+        });
+
+        // Thêm: Đóng menu khi bấm vào một link trong mobile nav
+        const mobileLinks = mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('show-nav');
+            });
+        });
+    }
+
+    // --- 3. Hiệu ứng Hiện Card khi cuộn tới (Intersection Observer) ---
+    const cards = document.querySelectorAll('.post-card');
+    if (cards.length > 0) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            observer.observe(card);
+        });
     }
 });
-
-// Animation on scroll for post cards (Intersection Observer)
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver(function (entries, observer) { // Thêm observer vào params callback
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.post-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(50px)';
-    card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-    observer.observe(card);
-});
-
-/* --- JavaScript cho Mobile Menu --- */
-const hamburger = document.querySelector('.hamburger-menu');
-const mobileNav = document.querySelector('.mobile-nav');
-
-if (hamburger && mobileNav) { // Thêm kiểm tra null an toàn
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('open');
-        mobileNav.classList.toggle('show-nav');
-    });
-}
-
