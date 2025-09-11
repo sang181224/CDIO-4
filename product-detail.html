@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/components/post-card.css">
     <link rel="stylesheet" href="assets/css/components/button.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="assets/css/pages/product-detail.css">
 </head>
 
@@ -65,7 +65,25 @@
 
                 <h1 class="product-title">Tranh Sơn Dầu Trừu Tượng</h1>
                 <p class="product-price">2,500,000 VNĐ</p>
-
+                <div class="product-social-actions">
+                    <button class="action-button like-button">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <span>Thích</span>
+                        <div class="reaction-popup">
+                            <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like" title="Thích"></i>
+                            <i class="fa-solid fa-heart reaction-icon" data-reaction="love" title="Yêu thích"></i>
+                            <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                title="Haha"></i>
+                            <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow" title="Wow"></i>
+                            <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad" title="Buồn"></i>
+                            <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry" title="Phẫn nộ"></i>
+                        </div>
+                    </button>
+                    <button class="action-button">
+                        <i class="fa-solid fa-share"></i>
+                        <span>Chia sẻ</span>
+                    </button>
+                </div>
                 <div class="action-buttons">
                     <button class="btn btn-secondary">Thêm vào giỏ hàng</button>
                     <button class="btn btn-primary">Mua ngay</button>
@@ -274,6 +292,7 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/post-card.js"></script>
 </body>
 
 </html>

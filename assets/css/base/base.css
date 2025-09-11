@@ -1,4 +1,4 @@
-/* Reset CSS */
+/* --- Reset & Nền tảng chung --- */
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +7,7 @@
 
 html {
     scroll-behavior: smooth;
+    /* Cho phép cuộn mượt khi bấm vào link neo */
 }
 
 body {
@@ -16,46 +17,59 @@ body {
     overflow-x: hidden;
 }
 
-/* Reusable Section Title */
-.section-title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 3rem;
-    background: linear-gradient(45deg, #c5a57e, #e0e0e0);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+a {
+    text-decoration: none;
 }
 
-/* Keyframe Animations */
+/* --- Các Animation dùng chung --- */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
 }
 
-/* --- Responsive Media Queries --- */
+/* --- Responsive CHUNG NHẤT --- */
+/* Quy tắc chuyển đổi từ menu desktop sang mobile */
 @media (max-width: 992px) {
-    .nav-menu { display: none; }
-    .hamburger-menu { display: flex; }
-    .mobile-nav { display: flex; }
-    .feed-layout { grid-template-columns: 1fr; }
-    .sidebar { position: static; margin-bottom: 2rem; }
-}
+    .nav-menu {
+        display: none;
+    }
 
-@media (max-width: 768px) {
-    .section-title { font-size: 2rem; }
-    .floating-art { display: none; }
-    .feed-layout, .nav-container { padding: 0 1rem; }
-    .banner h1 { font-size: 2.5rem; }
-    .banner p { font-size: 1.1rem; }
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
 }

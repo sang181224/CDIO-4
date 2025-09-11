@@ -1,4 +1,4 @@
-/* Header */
+/* --- Cấu trúc Header chính --- */
 .header {
     position: fixed;
     top: 0;
@@ -8,15 +8,17 @@
     z-index: 1000;
     padding: 1rem 0;
     border-bottom: 1px solid rgba(197, 165, 126, 0.3);
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .nav-container {
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    transition: padding 0.3s ease;
 }
 
 .logo {
@@ -24,7 +26,7 @@
     z-index: 101;
 }
 
-/* Desktop Navigation Menu */
+/* --- Menu Desktop --- */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -44,7 +46,6 @@
     color: #c5a57e;
 }
 
-/* Hover underline effect */
 .nav-menu a:not(.nav-button):not(.nav-button-outline):not(.nav-icon)::after {
     content: '';
     position: absolute;
@@ -87,7 +88,6 @@
     line-height: 1;
 }
 
-/* CTA Buttons */
 .nav-button,
 .nav-button-outline {
     padding: 8px 18px;
@@ -120,7 +120,7 @@
     color: #1a1a1a !important;
 }
 
-/* Hamburger Icon */
+/* --- Menu Mobile (Hamburger & Panel) --- */
 .hamburger-menu {
     display: none;
     flex-direction: column;
@@ -157,7 +157,6 @@
     transform: rotate(-45deg);
 }
 
-/* Mobile Navigation Panel */
 .mobile-nav {
     display: none;
     position: fixed;
@@ -204,4 +203,29 @@
     width: 80%;
     text-align: center;
     margin: 0 auto;
+}
+
+/* --- Responsive RIÊNG cho Header --- */
+@media (max-width: 992px) {
+
+    /* Các quy tắc này được chuyển từ base.css vào đây */
+    .nav-menu {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Quy tắc này được chuyển từ base.css vào đây */
+    .nav-container {
+        padding: 0 1rem;
+    }
 }

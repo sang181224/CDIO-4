@@ -1,6 +1,7 @@
-/* --- Giữ nguyên: Bố cục chính của trang --- */
+/* --- Bố cục chính của trang --- */
 .product-detail-page {
     padding-top: 120px;
+    padding-bottom: 4rem;
     max-width: 1200px;
     margin: 0 auto;
     padding-left: 2rem;
@@ -15,7 +16,7 @@
     margin-bottom: 4rem;
 }
 
-/* --- Giữ nguyên: Cột trái - Thư viện ảnh --- */
+/* --- Cột trái: Thư viện ảnh --- */
 .product-image-gallery .main-image {
     width: 100%;
     height: auto;
@@ -48,12 +49,11 @@
 
 .product-thumbnails img:hover,
 .product-thumbnails img.active {
-    /* Thêm class active cho ảnh nhỏ được chọn */
     border-color: #c5a57e;
     transform: scale(1.05);
 }
 
-/* --- Giữ nguyên: Cột phải - Thông tin tác phẩm --- */
+/* --- Cột phải: Thông tin tác phẩm --- */
 .product-info {
     display: flex;
     flex-direction: column;
@@ -110,15 +110,26 @@
     font-size: 2rem;
     font-weight: bold;
     color: #8ab6c4;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
+/* --- Khu vực nút tương tác xã hội --- */
+.product-social-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #444;
+}
+
+/* --- Khu vực nút mua hàng --- */
 .action-buttons {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
 }
 
+/* --- Mô tả và thông tin meta --- */
 .product-description h4 {
     font-size: 1.2rem;
     color: #c5a57e;
@@ -160,7 +171,7 @@
     text-decoration: none;
 }
 
-/* --- Giữ nguyên & Tinh chỉnh: Khu vực bình luận --- */
+/* --- Khu vực bình luận --- */
 .comment-section {
     padding-top: 3rem;
     margin-top: 4rem;
@@ -295,7 +306,7 @@
     border-left: 3px solid #c5a57e;
 }
 
-/* --- Cải tiến & Thêm mới: Khu vực tác phẩm liên quan --- */
+/* --- Khu vực tác phẩm liên quan --- */
 .related-products {
     padding-top: 3rem;
     margin-top: 4rem;
@@ -340,19 +351,20 @@
     margin-bottom: 0;
     display: flex;
     flex-direction: column;
-    /* Ghi đè margin từ post-card.css */
 }
+
 .related-products-slider .post-image {
     height: 200px;
 }
 
 .related-products-slider .post-image img {
     width: 100%;
-    height: 100%; /* Sửa height thành 100% */
-    object-fit: cover; /* Đảm bảo ảnh cover hết khung, không bị méo */
+    height: 100%;
+    object-fit: cover;
 }
+
 .related-products-slider .post-card-content {
-    flex-grow: 1; 
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -379,12 +391,12 @@
 }
 
 .related-products-slider .price {
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 0.75rem;
     font-size: 1rem;
 }
 
-/* --- Giữ nguyên: Responsive chung cho toàn trang --- */
+/* --- Responsive chung cho toàn trang --- */
 @media (max-width: 992px) {
     .detail-container {
         grid-template-columns: 1fr;

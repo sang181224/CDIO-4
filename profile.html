@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/components/post-card.css">
     <link rel="stylesheet" href="assets/css/components/footer.css">
     <link rel="stylesheet" href="assets/css/pages/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -78,100 +79,521 @@
                 <div class="profile-artwork-grid">
                     <article class="post-card">
                         <div class="card-edit-button">
-                            <a href="edit-artwork.html?id=[mã_tác_phẩm]">✏️ Chỉnh sửa</a>
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
                         </div>
-                        <a href="tac-pham.html" class="post-image-link">
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5"
-                                    alt="Tác phẩm nghệ thuật Trừu tượng">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk7c8bl-2398e43a-e80d-4aba-ba08-fc98ee6bb375.png/v1/fill/w_1190,h_672,q_70,strp/beneath_the_mist__a_secret_by_linaewendreams_dk7c8bl-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs3YzhibC0yMzk4ZTQzYS1lODBkLTRhYmEtYmEwOC1mYzk4ZWU2YmIzNzUucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ZW4wGgSORVY1U0hwn8Be8WCS-9P6EUhEBW0MYJWZDUY"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 15 phút trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Vũ Điệu Của Sắc Màu</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo,
-                                thể
-                                hiện cảm xúc sâu sắc...</p>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
                             <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
                     <article class="post-card">
                         <div class="card-edit-button">
-                            <a href="edit-artwork.html?id=[mã_tác_phẩm]">✏️ Chỉnh sửa</a>
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
                         </div>
-                        <a href="tac-pham.html" class="post-image-link">
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b"
-                                    alt="Tác phẩm nghệ thuật Tĩnh vật">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk86sxh-c1fdb3a8-4e94-4267-9bb3-4f10f8c4fa26.png/v1/fill/w_1190,h_672,q_70,strp/_before_the_silence_fades_by_linaewendreams_dk86sxh-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs4NnN4aC1jMWZkYjNhOC00ZTk0LTQyNjctOWJiMy00ZjEwZjhjNGZhMjYucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.usWy9oxfc2DuX0myc1lJVO1wMgsLiA_Pm9X1DIrIXeg"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 2 giờ trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Bình Yên Ven Hồ</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Một bức tranh tĩnh vật mang lại cảm giác bình yên và thư thái...
-                            </p>
-                            <div class="price">2,100,000 VNĐ</div>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
                     <article class="post-card">
                         <div class="card-edit-button">
-                            <a href="edit-artwork.html?id=[mã_tác_phẩm]">✏️ Chỉnh sửa</a>
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
                         </div>
-                        <a href="tac-pham.html" class="post-image-link">
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968"
-                                    alt="Tác phẩm nghệ thuật Phong cảnh">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk54bj4-e96eba4e-5c61-47c0-9695-99dcbdcf3b7b.png/v1/fill/w_1190,h_672,q_70,strp/the_shape_of_what_remains_by_linaewendreams_dk54bj4-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs1NGJqNC1lOTZlYmE0ZS01YzYxLTQ3YzAtOTY5NS05OWRjYmRjZjNiN2IucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.5grn6yvD8R7JY12cXLjLo8RcxSukRD1o_-h9MwZe7Eg"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 5 giờ trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Xưởng Vẽ Mùa Thu</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Cảnh sắc mùa thu tuyệt đẹp được tái hiện qua từng nét cọ...</p>
-                            <div class="price">1,800,000 VNĐ</div>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk8g1ac-a3c6b469-98c2-4a9f-bc3e-d625c8a58a86.png/v1/fill/w_1197,h_668,q_70,strp/no_one_saw_him_leave_by_linaewendreams_dk8g1ac-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA3MSIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs4ZzFhYy1hM2M2YjQ2OS05OGMyLTRhOWYtYmMzZS1kNjI1YzhhNThhODYucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.x4PZl8uKVZL-xR7LbThDaFUNhRflm9Uc1LCre3GB0yQ"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkcntyq-f7764514-f35f-4bf8-9d44-35dd432be8f8.png/v1/fill/w_1190,h_672,q_70,strp/_sea_at_the_end_of_the_tracks_by_linaewendreams_dkcntyq-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtjbnR5cS1mNzc2NDUxNC1mMzVmLTRiZjgtOWQ0NC0zNWRkNDMyYmU4ZjgucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.EgTm4GH5SNsWd0Q9NDp_zjLM0tq-WcNL8C_shDcB9RM"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkbfjp0-3385d6dc-e628-4990-8a5d-3e8e14ae1f05.png/v1/fill/w_1190,h_672,q_70,strp/_the_last_platform_by_linaewendreams_dkbfjp0-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtiZmpwMC0zMzg1ZDZkYy1lNjI4LTQ5OTAtOGE1ZC0zZThlMTRhZTFmMDUucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.jujOkvU6KCwfrUnMhqC7j1C6ct92DuDykcaAZLU4jOA"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/djqdfxy-82c26d2f-6300-447f-8f17-637d9ee57a83.png/v1/fill/w_1189,h_672,q_70,strp/the_stone_that_speaks_at_dusk_by_linaewendreams_djqdfxy-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NiIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGpxZGZ4eS04MmMyNmQyZi02MzAwLTQ0N2YtOGYxNy02MzdkOWVlNTdhODMucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.zWuphivHJJ0ZOFH89JohjcrqiJRz4ztehns9pq2NLl0"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkeaqr3-4bb22366-3876-4f0e-9746-3a3cae72d57c.png/v1/fill/w_1190,h_672,q_70,strp/_the_forest_that_lingers_by_linaewendreams_dkeaqr3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtlYXFyMy00YmIyMjM2Ni0zODc2LTRmMGUtOTc0Ni0zYTNjYWU3MmQ1N2MucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.MR8EKmyEJN4WbGnElgYpS1oza09rAVO-mB2KWWBu9Fo"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
@@ -235,92 +657,522 @@
             <div id="tab-liked" class="tab-pane">
                 <div class="profile-artwork-grid">
                     <article class="post-card">
-                        <a href="tac-pham.html" class="post-image-link">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5"
-                                    alt="Tác phẩm nghệ thuật Trừu tượng">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk7c8bl-2398e43a-e80d-4aba-ba08-fc98ee6bb375.png/v1/fill/w_1190,h_672,q_70,strp/beneath_the_mist__a_secret_by_linaewendreams_dk7c8bl-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs3YzhibC0yMzk4ZTQzYS1lODBkLTRhYmEtYmEwOC1mYzk4ZWU2YmIzNzUucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ZW4wGgSORVY1U0hwn8Be8WCS-9P6EUhEBW0MYJWZDUY"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 15 phút trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Vũ Điệu Của Sắc Màu</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo,
-                                thể
-                                hiện cảm xúc sâu sắc...</p>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
                             <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
                     <article class="post-card">
-                        <a href="tac-pham.html" class="post-image-link">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1578926375323-222d78d16b9b"
-                                    alt="Tác phẩm nghệ thuật Tĩnh vật">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk86sxh-c1fdb3a8-4e94-4267-9bb3-4f10f8c4fa26.png/v1/fill/w_1190,h_672,q_70,strp/_before_the_silence_fades_by_linaewendreams_dk86sxh-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs4NnN4aC1jMWZkYjNhOC00ZTk0LTQyNjctOWJiMy00ZjEwZjhjNGZhMjYucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.usWy9oxfc2DuX0myc1lJVO1wMgsLiA_Pm9X1DIrIXeg"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 2 giờ trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Bình Yên Ven Hồ</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Một bức tranh tĩnh vật mang lại cảm giác bình yên và thư thái...
-                            </p>
-                            <div class="price">2,100,000 VNĐ</div>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
                     <article class="post-card">
-                        <a href="tac-pham.html" class="post-image-link">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
                             <div class="post-image">
-                                <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968"
-                                    alt="Tác phẩm nghệ thuật Phong cảnh">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk54bj4-e96eba4e-5c61-47c0-9695-99dcbdcf3b7b.png/v1/fill/w_1190,h_672,q_70,strp/the_shape_of_what_remains_by_linaewendreams_dk54bj4-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs1NGJqNC1lOTZlYmE0ZS01YzYxLTQ3YzAtOTY5NS05OWRjYmRjZjNiN2IucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.5grn6yvD8R7JY12cXLjLo8RcxSukRD1o_-h9MwZe7Eg"
+                                    alt="Tên tác phẩm">
                             </div>
                         </a>
+
                         <div class="post-card-content">
                             <div class="post-author">
                                 <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
                                     alt="Avatar Nghệ sĩ">
                                 <div class="author-details">
-                                    <h4>Elena Rodriguez</h4>
-                                    <p>Đăng 5 giờ trước</p>
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
                                 </div>
                             </div>
-                            <a href="tac-pham.html" class="post-title-link">
-                                <h3>Xưởng Vẽ Mùa Thu</h3>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
                             </a>
-                            <p class="post-description">Cảnh sắc mùa thu tuyệt đẹp được tái hiện qua từng nét cọ...</p>
-                            <div class="price">1,800,000 VNĐ</div>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
                         </div>
+
                         <div class="post-actions">
-                            <button class="action-button like-button">👍 Thích</button>
-                            <button class="action-button">💬 Bình luận</button>
-                            <button class="action-button">🔗 Chia sẻ</button>
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk8g1ac-a3c6b469-98c2-4a9f-bc3e-d625c8a58a86.png/v1/fill/w_1197,h_668,q_70,strp/no_one_saw_him_leave_by_linaewendreams_dk8g1ac-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA3MSIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs4ZzFhYy1hM2M2YjQ2OS05OGMyLTRhOWYtYmMzZS1kNjI1YzhhNThhODYucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.x4PZl8uKVZL-xR7LbThDaFUNhRflm9Uc1LCre3GB0yQ"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkcntyq-f7764514-f35f-4bf8-9d44-35dd432be8f8.png/v1/fill/w_1190,h_672,q_70,strp/_sea_at_the_end_of_the_tracks_by_linaewendreams_dkcntyq-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtjbnR5cS1mNzc2NDUxNC1mMzVmLTRiZjgtOWQ0NC0zNWRkNDMyYmU4ZjgucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.EgTm4GH5SNsWd0Q9NDp_zjLM0tq-WcNL8C_shDcB9RM"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkbfjp0-3385d6dc-e628-4990-8a5d-3e8e14ae1f05.png/v1/fill/w_1190,h_672,q_70,strp/_the_last_platform_by_linaewendreams_dkbfjp0-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtiZmpwMC0zMzg1ZDZkYy1lNjI4LTQ5OTAtOGE1ZC0zZThlMTRhZTFmMDUucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.jujOkvU6KCwfrUnMhqC7j1C6ct92DuDykcaAZLU4jOA"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/djqdfxy-82c26d2f-6300-447f-8f17-637d9ee57a83.png/v1/fill/w_1189,h_672,q_70,strp/the_stone_that_speaks_at_dusk_by_linaewendreams_djqdfxy-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NiIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGpxZGZ4eS04MmMyNmQyZi02MzAwLTQ0N2YtOGYxNy02MzdkOWVlNTdhODMucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.zWuphivHJJ0ZOFH89JohjcrqiJRz4ztehns9pq2NLl0"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="post-card">
+                        <div class="card-edit-button">
+                            <a href="/edit-artwork.html">✏️ Chỉnh sửa</a>
+                        </div>
+
+                        <a href="/product-detail.html" class="post-image-link">
+                            <div class="post-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dkeaqr3-4bb22366-3876-4f0e-9746-3a3cae72d57c.png/v1/fill/w_1190,h_672,q_70,strp/_the_forest_that_lingers_by_linaewendreams_dkeaqr3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGtlYXFyMy00YmIyMjM2Ni0zODc2LTRmMGUtOTc0Ni0zYTNjYWU3MmQ1N2MucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.MR8EKmyEJN4WbGnElgYpS1oza09rAVO-mB2KWWBu9Fo"
+                                    alt="Tên tác phẩm">
+                            </div>
+                        </a>
+
+                        <div class="post-card-content">
+                            <div class="post-author">
+                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                                    alt="Avatar Nghệ sĩ">
+                                <div class="author-details">
+                                    <h4>Tên nghệ sĩ</h4>
+                                    <p>Thời gian đăng</p>
+                                </div>
+                            </div>
+
+                            <a href="/product-detail.html" class="post-title-link">
+                                <h3>Tên tác phẩm</h3>
+                            </a>
+
+                            <p class="post-description">Một tác phẩm nghệ thuật đương đại với những đường nét táo
+                                bạo, thể hiện cảm xúc sâu sắc...</p>
+
+                            <div class="price">3,500,000 VNĐ</div>
+                        </div>
+
+                        <div class="post-actions">
+                            <button class="action-button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span>Thích</span>
+
+                                <div class="reaction-popup">
+                                    <i class="fa-solid fa-thumbs-up reaction-icon" data-reaction="like"
+                                        title="Thích"></i>
+                                    <i class="fa-solid fa-heart reaction-icon" data-reaction="love"
+                                        title="Yêu thích"></i>
+                                    <i class="fa-solid fa-face-laugh-squint reaction-icon" data-reaction="haha"
+                                        title="Haha"></i>
+                                    <i class="fa-solid fa-face-surprise reaction-icon" data-reaction="wow"
+                                        title="Wow"></i>
+                                    <i class="fa-solid fa-face-sad-tear reaction-icon" data-reaction="sad"
+                                        title="Buồn"></i>
+                                    <i class="fa-solid fa-face-angry reaction-icon" data-reaction="angry"
+                                        title="Phẫn nộ"></i>
+                                </div>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-regular fa-comment"></i>
+                                <span>Bình luận</span>
+                            </button>
+
+                            <button class="action-button">
+                                <i class="fa-solid fa-share"></i>
+                                <span>Chia sẻ</span>
+                            </button>
                         </div>
                     </article>
 
@@ -373,6 +1225,7 @@
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/profile.js"></script>
+    <script src="assets/js/post-card.js"></script>
 </body>
 
 </html>

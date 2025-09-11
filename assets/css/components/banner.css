@@ -1,4 +1,4 @@
-/* Banner Section */
+/* --- Cấu trúc và Nền của Banner --- */
 .banner {
     height: 100vh;
     display: flex;
@@ -10,6 +10,7 @@
     background-blend-mode: multiply;
 }
 
+/* --- Nội dung chính của Banner --- */
 .banner-content {
     max-width: 800px;
     padding: 0 2rem;
@@ -35,6 +36,7 @@
     line-height: 1.6;
 }
 
+/* --- Form Tìm kiếm trong Banner --- */
 .banner-search-form {
     display: flex;
     max-width: 600px;
@@ -78,14 +80,13 @@
     box-shadow: 0 5px 15px rgba(197, 165, 126, 0.3);
 }
 
-/* Floating Elements */
+/* --- Các vật thể nổi trang trí --- */
 .floating-art {
     position: absolute;
     opacity: 0.7;
     animation: float 6s ease-in-out infinite;
     z-index: 1;
     font-size: 2rem;
-    /* Thêm font-size để emoji hiển thị rõ hơn */
 }
 
 .art-1 {
@@ -106,7 +107,7 @@
     animation-delay: 4s;
 }
 
-/* Responsive adjustments for banner text size */
+/* --- Responsive RIÊNG cho Banner --- */
 @media (max-width: 768px) {
     .banner h1 {
         font-size: 2.5rem;
@@ -114,5 +115,9 @@
 
     .banner p {
         font-size: 1.1rem;
+    }
+
+    .floating-art {
+        display: none;
     }
 }

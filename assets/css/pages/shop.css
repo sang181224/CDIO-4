@@ -1,0 +1,56 @@
+.shop-page {
+    padding-top: 80px;
+    /* Khoảng trống cho header */
+}
+
+/* --- Tiêu đề trang --- */
+.shop-header {
+    padding: 3rem 2rem;
+    background-color: #1f1f1f;
+    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+}
+
+.shop-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.shop-header h1 {
+    font-size: 3rem;
+    color: #c5a57e;
+    margin-bottom: 0.5rem;
+}
+
+.shop-header p {
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Lưới Tác phẩm --- */
+.shop-artwork-grid .artwork-list {
+    column-count: 2;
+    /* Layout Masonry */
+    column-gap: 1.5rem;
+}
+
+/* --- Phân trang --- */
+.pagination {
+    margin-top: 3rem;
+    /* Tách biệt với lưới tác phẩm */
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .shop-artwork-grid .artwork-list {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .shop-artwork-grid .artwork-list {
+        column-count: 1;
+    }
+}
