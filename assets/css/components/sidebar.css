@@ -1,9 +1,9 @@
 /* Sidebar */
 .sidebar {
-    background: #252525;
+    background: var(--color-surface);
     padding: 1.5rem;
     border-radius: 15px;
-    border: 1px solid rgba(197, 165, 126, 0.2);
+    border: 1px solid var(--color-border);
     height: fit-content;
     position: sticky;
     top: 100px;
@@ -13,10 +13,10 @@
 }
 
 .filter-group h3 {
-    color: #c5a57e;
+    color: var(--color-accent);
     margin-bottom: 1.2rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    border-bottom: 1px solid var(--color-border);
     font-size: 1.2rem;
 }
 
@@ -32,7 +32,7 @@
     align-items: center;
     padding: 12px 15px;
     text-decoration: none;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     border-radius: 8px;
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
@@ -43,13 +43,13 @@
 .category-list li a:hover,
 .price-range li a:hover {
     background-color: rgba(197, 165, 126, 0.1);
-    color: #c5a57e;
+    color: var(--color-accent);
     transform: translateX(5px);
 }
 
 .sort-options li a.active {
-    background-color: rgba(197, 165, 126, 0.2);
-    color: #c5a57e;
+    background-color: var(--color-border);
+    color: var(--color-accent);
     font-weight: bold;
 }
 
@@ -61,7 +61,7 @@
 
 .tag {
     background-color: #333;
-    color: #bbb;
+    color: var(--color-text-secondary);
     padding: 6px 12px;
     border-radius: 20px;
     text-decoration: none;
@@ -71,8 +71,8 @@
 }
 
 .tag:hover {
-    background-color: #c5a57e;
-    color: #1a1a1a;
-    border-color: #c5a57e;
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+    border-color: var(--color-accent);
     transform: translateY(-2px);
 }

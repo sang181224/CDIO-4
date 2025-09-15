@@ -1,8 +1,8 @@
 /* --- Cấu trúc Card Cơ bản --- */
 .post-card {
-    background: #252525;
+    background: var(--color-surface);
     border-radius: 20px;
-    border: 1px solid rgba(197, 165, 126, 0.2);
+    border: 1px solid var(--color-border);
     position: relative;
     break-inside: avoid;
     margin-bottom: 1.5rem;
@@ -71,14 +71,14 @@
 }
 
 .author-details h4 {
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     font-size: 1rem;
     font-weight: 500;
     margin: 0;
 }
 
 .author-details p {
-    color: #888;
+    color: var(--color-text-muted);
     font-size: 0.85rem;
     margin: 0.2rem 0 0 0;
 }
@@ -86,11 +86,11 @@
 .post-card h3 {
     font-size: 1.3rem;
     margin-bottom: 0.75rem;
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 .post-description {
-    color: #bbb;
+    color: var(--color-text-secondary);
     line-height: 1.6;
     margin-bottom: 1rem;
     font-size: 0.9rem;
@@ -99,14 +99,14 @@
 .price {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #8ab6c4;
+    color: var(--color-link);
     margin-top: auto;
     padding-top: 1rem;
 }
 
 /* --- Phần Nút Tương tác --- */
 .post-actions {
-    border-top: 1px solid rgba(197, 165, 126, 0.2);
+    border-top: 1px solid var(--color-border);
     padding: 5px 1rem;
     display: flex;
     justify-content: space-around;
@@ -115,7 +115,7 @@
 .action-button {
     background: none;
     border: none;
-    color: #bbb;
+    color: var(--color-text-secondary);
     cursor: pointer;
     padding: 10px;
     font-size: 0.9rem;
@@ -130,7 +130,7 @@
 
 .action-button:hover {
     background-color: rgba(197, 165, 126, 0.1);
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 .action-button i {
@@ -236,13 +236,13 @@
     display: block;
     padding: 8px 16px;
     text-decoration: none;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     font-weight: 500;
     font-size: 0.9rem;
 }
 
 .card-edit-button a:hover {
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 /* --- Responsive RIÊNG cho Post Card --- */

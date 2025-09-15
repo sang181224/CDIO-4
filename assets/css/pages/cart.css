@@ -1,7 +1,7 @@
 .cart-page {
     padding-top: 120px;
     padding-bottom: 4rem;
-    background-color: #1f1f1f;
+    background-color: var(--color-background-light);
     min-height: 100vh;
 }
 
@@ -13,9 +13,9 @@
 
 .cart-container h1 {
     font-size: 2.5rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin-bottom: 2.5rem;
-    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    border-bottom: 1px solid var(--color-border);
     padding-bottom: 1rem;
 }
 
@@ -55,7 +55,7 @@
     /* Checkbox | Ảnh | Chi tiết | Giá | Xóa */
     gap: 1.5rem;
     align-items: center;
-    background-color: #252525;
+    background-color: var(--color-surface);
     padding: 1rem;
     border-radius: 15px;
     border: 1px solid #333;
@@ -84,7 +84,7 @@
     height: 0.8em;
     transform: scale(0);
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em #c5a57e;
+    box-shadow: inset 1em 1em var(--color-accent);
     transform-origin: bottom left;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
@@ -102,7 +102,7 @@
 
 .item-details h4 {
     font-size: 1.2rem;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     margin: 0 0 0.25rem 0;
 }
 
@@ -115,7 +115,7 @@
 .item-price {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     white-space: nowrap;
 }
 
@@ -124,17 +124,17 @@
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #888;
+    color: var(--color-text-muted);
     transition: color 0.3s ease;
 }
 
 .item-remove button:hover {
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 /* --- Cột phải: Tóm tắt đơn hàng --- */
 .cart-summary {
-    background-color: #252525;
+    background-color: var(--color-surface);
     padding: 2rem;
     border-radius: 15px;
     border: 1px solid #333;
@@ -145,7 +145,7 @@
 
 .cart-summary h2 {
     font-size: 1.5rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin: 0 0 1.5rem 0;
     padding-bottom: 1rem;
     border-bottom: 1px solid #444;
@@ -167,7 +167,7 @@
 }
 
 .summary-total strong {
-    color: #e0e0e0;
+    color: var(--color-text-primary);
 }
 
 .btn-checkout {

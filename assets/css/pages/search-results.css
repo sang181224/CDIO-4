@@ -5,8 +5,8 @@
 /* --- Tiêu đề trang --- */
 .search-header {
     padding: 3rem 2rem;
-    background-color: #1f1f1f;
-    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    background-color: var(--color-background-light);
+    border-bottom: 1px solid var(--color-border);
     text-align: center;
 }
 
@@ -17,12 +17,12 @@
 
 .search-header-content h1 {
     font-size: 3rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin: 0.5rem 0;
 }
 
 .search-header-content span {
-    color: #888;
+    color: var(--color-text-muted);
 }
 
 /* --- Khu vực không có kết quả --- */
@@ -33,7 +33,7 @@
     justify-content: center;
     text-align: center;
     padding: 4rem 2rem;
-    background-color: #252525;
+    background-color: var(--color-surface);
     border-radius: 15px;
     height: 100%;
 }
@@ -45,7 +45,7 @@
 
 .no-results h2 {
     font-size: 2rem;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     margin-bottom: 1rem;
 }
 

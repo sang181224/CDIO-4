@@ -6,8 +6,8 @@
 /* --- Tiêu đề trang --- */
 .shop-header {
     padding: 3rem 2rem;
-    background-color: #1f1f1f;
-    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    background-color: var(--color-background-light);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .shop-header-content {
@@ -18,7 +18,7 @@
 
 .shop-header h1 {
     font-size: 3rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin-bottom: 0.5rem;
 }
 

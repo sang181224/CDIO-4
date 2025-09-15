@@ -11,7 +11,7 @@
 .pagination a,
 .pagination span {
     text-decoration: none;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     padding: 10px 15px;
     border: 1px solid rgba(197, 165, 126, 0.3);
     border-radius: 8px;
@@ -24,14 +24,14 @@
 }
 
 .pagination a:hover {
-    background: #c5a57e;
-    color: #1a1a1a;
-    border-color: #c5a57e;
+    background: var(--color-accent);
+    color: var(--color-background-dark);
+    border-color: var(--color-accent);
 }
 
 .pagination a.active {
-    background: linear-gradient(45deg, #c5a57e, #a38561);
-    color: #1a1a1a;
-    border-color: #c5a57e;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+    color: var(--color-background-dark);
+    border-color: var(--color-accent);
     font-weight: bold;
 }

@@ -17,8 +17,8 @@
 
 /* --- Primary Button --- */
 .btn-primary {
-    background: linear-gradient(45deg, #c5a57e, #a38561);
-    color: #1a1a1a;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+    color: var(--color-background-dark);
 }
 
 .btn-primary:hover {
@@ -29,11 +29,11 @@
 /* --- Secondary Button (Outline Style) --- */
 .btn-secondary {
     background: #2a2a2a;
-    color: #c5a57e;
-    border: 1px solid #c5a57e;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
 }
 
 .btn-secondary:hover {
-    background: #c5a57e;
-    color: #1a1a1a;
+    background: var(--color-accent);
+    color: var(--color-background-dark);
 }

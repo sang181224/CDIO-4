@@ -15,7 +15,7 @@
 }
 
 .footer-section h3 {
-    color: #c5a57e;
+    color: var(--color-accent);
     margin-bottom: 1rem;
     font-size: 1.3rem;
 }
@@ -34,7 +34,7 @@
 }
 
 .footer-section a:hover {
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 .social-links {
@@ -49,9 +49,9 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: linear-gradient(45deg, #c5a57e, #3a6b7e);
+    background: linear-gradient(45deg, var(--color-accent), #3a6b7e);
     border-radius: 50%;
-    color: #1a1a1a;
+    color: var(--color-background-dark);
     font-size: 1.2rem;
     transition: transform 0.3s ease;
 }

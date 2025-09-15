@@ -1,7 +1,7 @@
 .order-detail-page {
     padding-top: 120px;
     padding-bottom: 4rem;
-    background-color: #1a1a1a;
+    background-color: var(--color-background-dark);
     min-height: 100vh;
 }
 
@@ -9,7 +9,7 @@
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 2rem;
-    background-color: #1f1f1f;
+    background-color: var(--color-background-light);
     border: 1px solid #333;
     border-radius: 20px;
 }
@@ -17,7 +17,7 @@
 /* --- Header Đơn hàng --- */
 .order-header {
     padding: 2rem;
-    border-bottom: 1px solid rgba(197, 165, 126, 0.2);
+    border-bottom: 1px solid var(--color-border);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -27,7 +27,7 @@
 
 .order-header h1 {
     font-size: 2rem;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .order-header span {
-    color: #888;
+    color: var(--color-text-muted);
 }
 
 .order-status {
@@ -50,13 +50,13 @@
 }
 
 .order-status.completed {
-    background-color: rgba(197, 165, 126, 0.2);
-    color: #c5a57e;
+    background-color: var(--color-border);
+    color: var(--color-accent);
 }
 
 .order-status.processing {
     background-color: rgba(138, 182, 196, 0.2);
-    color: #8ab6c4;
+    color: var(--color-link);
 }
 
 .order-status.cancelled {
@@ -78,7 +78,7 @@
     gap: 1.5rem;
 }
 .info-box {
-    background-color: #252525;
+    background-color: var(--color-surface);
     padding: 1.5rem;
     border-radius: 15px;
     flex: 1;
@@ -86,7 +86,7 @@
 
 .info-box h3 {
     font-size: 1.2rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin: 0 0 1rem 0;
     padding-bottom: 0.75rem;
     border-bottom: 1px solid #444;
@@ -100,14 +100,14 @@
 
 /* --- Cột phải: Tóm tắt Đơn hàng --- */
 .order-items-summary {
-    background-color: #252525;
+    background-color: var(--color-surface);
     padding: 1.5rem;
     border-radius: 15px;
 }
 
 .order-items-summary h3 {
     font-size: 1.2rem;
-    color: #c5a57e;
+    color: var(--color-accent);
     margin: 0 0 1rem 0;
 }
 
@@ -132,7 +132,7 @@
 
 .order-item-row p {
     flex-grow: 1;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
 }
 
 .order-item-row span {
@@ -160,7 +160,7 @@
 }
 
 .summary-total strong {
-    color: #e0e0e0;
+    color: var(--color-text-primary);
 }
 
 /* --- Thông tin thanh toán --- */

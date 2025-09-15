@@ -12,7 +12,7 @@
 }
 
 .header.header-scrolled {
-    background: #1a1a1a;
+    background: var(--color-background-dark);
     padding: 1rem 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -41,7 +41,7 @@
 }
 
 .nav-menu a {
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -49,7 +49,7 @@
 }
 
 .nav-menu a:hover {
-    color: #c5a57e;
+    color: var(--color-accent);
 }
 
 .nav-menu a:not(.nav-button):not(.nav-button-outline):not(.nav-icon)::after {
@@ -59,7 +59,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #c5a57e, #b48a5c);
+    background: linear-gradient(90deg, var(--color-accent), #b48a5c);
     transition: width 0.3s ease;
 }
 
@@ -72,7 +72,7 @@
     border: 1px solid rgba(197, 165, 126, 0.3);
     border-radius: 20px;
     padding: 8px 15px;
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     font-family: inherit;
     font-size: 0.9rem;
     width: 250px;
@@ -80,13 +80,13 @@
 }
 
 .nav-search input::placeholder {
-    color: #888;
+    color: var(--color-text-muted);
 }
 
 .nav-search input:focus {
     outline: none;
-    border-color: #c5a57e;
-    box-shadow: 0 0 10px rgba(197, 165, 126, 0.2);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-border);
 }
 
 .nav-icon {
@@ -106,8 +106,8 @@
 }
 
 .nav-button {
-    background: linear-gradient(45deg, #c5a57e, #a38561);
-    color: #1a1a1a !important;
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+    color: var(--color-background-dark) !important;
 }
 
 .nav-button:hover {
@@ -116,13 +116,13 @@
 }
 
 .nav-button-outline {
-    border: 1px solid #c5a57e;
-    color: #c5a57e;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
 }
 
 .nav-button-outline:hover {
-    background-color: #c5a57e;
-    color: #1a1a1a !important;
+    background-color: var(--color-accent);
+    color: var(--color-background-dark) !important;
 }
 
 /* --- Logic Ẩn/Hiện cho Trạng thái Đăng nhập --- */
@@ -174,7 +174,7 @@
     position: absolute;
     top: calc(100% + 15px);
     right: 0;
-    background-color: #252525;
+    background-color: var(--color-surface);
     border: 1px solid #333;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
@@ -201,8 +201,8 @@
 }
 
 .profile-dropdown a:hover {
-    background-color: #c5a57e;
-    color: #1a1a1a !important;
+    background-color: var(--color-accent);
+    color: var(--color-background-dark) !important;
 }
 
 /* --- Menu Mobile (Hamburger & Panel) --- */
@@ -222,7 +222,7 @@
 .hamburger-menu .bar {
     width: 2rem;
     height: 0.25rem;
-    background: #e0e0e0;
+    background: var(--color-text-primary);
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -250,7 +250,7 @@
     width: 70%;
     max-width: 300px;
     height: 100vh;
-    background: #1f1f1f;
+    background: var(--color-background-light);
     z-index: 100;
     flex-direction: column;
     align-items: center;
@@ -276,7 +276,7 @@
 }
 
 .mobile-nav ul a {
-    color: #e0e0e0;
+    color: var(--color-text-primary);
     text-decoration: none;
     font-size: 1.5rem;
     padding: 10px;
@@ -292,7 +292,7 @@
 
 /* --- Responsive RIÊNG cho Header --- */
 @media (max-width: 992px) {
-    .nav-menu {
+    .nav-container > nav {
         display: none;
     }
 
