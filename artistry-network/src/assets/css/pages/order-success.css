@@ -1,0 +1,62 @@
+.order-success-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+    /* Chiều cao màn hình trừ đi header */
+    padding: 2rem;
+    padding-top: 80px;
+    /* Bù lại cho header */
+    background-color: var(--color-background-light);
+}
+
+.success-box {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+.success-icon {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+}
+
+.success-box h1 {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.success-box p {
+    color: #ccc;
+    line-height: 1.6;
+    max-width: 450px;
+    margin: 0 auto 2rem auto;
+}
+
+.order-info {
+    background-color: #2a2a2a;
+    border: 1px dashed #444;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 0 auto 2.5rem auto;
+    display: inline-block;
+}
+
+.order-info strong {
+    color: var(--color-accent);
+}
+
+.success-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    /* Cho phép nút xuống dòng trên mobile */
+}

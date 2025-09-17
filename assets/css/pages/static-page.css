@@ -1,0 +1,140 @@
+/* --- Style chung cho các trang tĩnh --- */
+
+
+/* --- Tiêu đề trang --- */
+.page-header {
+    height: 40vh;
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+.page-header::after {
+    /* Lớp phủ tối */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.page-header-content {
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+.page-header h1 {
+    font-size: 3.5rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* --- Container nội dung chính --- */
+.static-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.about-section {
+    margin-bottom: 4rem;
+}
+
+.about-section h2 {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+}
+
+/* --- Khu vực Sứ mệnh --- */
+.about-mission {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.mission-text p {
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+.mission-image img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+/* --- Khu vực Đội ngũ --- */
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-surface);
+    margin-bottom: 1rem;
+}
+
+.team-member h4 {
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.team-member p {
+    color: var(--color-text-muted);
+}
+
+.text-content h2 {
+    font-size: 2rem;
+    color: var(--color-accent);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.text-content p {
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* --- Responsive --- */
+@media(max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .static-container {
+        padding: 3rem 1rem;
+    }
+
+    .about-mission {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-image {
+        order: -1;
+    }
+
+    /* Đưa ảnh lên đầu trên mobile */
+}

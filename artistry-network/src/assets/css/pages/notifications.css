@@ -1,0 +1,112 @@
+.notifications-page {
+    padding-top: 120px;
+    padding-bottom: 4rem;
+    background-color: var(--color-background-light);
+    min-height: 100vh;
+}
+
+.notifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.notifications-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.notifications-header h1 {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+}
+
+.mark-all-read-btn {
+    background: none;
+    border: none;
+    color: var(--color-link);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: color 0.3s ease;
+}
+
+.mark-all-read-btn:hover {
+    color: var(--color-accent);
+}
+
+.notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notification-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #ccc;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.notification-item:hover {
+    background-color: #2a2a2a;
+}
+
+/* Thông báo chưa đọc */
+.notification-item.unread {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+.noti-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.noti-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+.noti-content p {
+    margin: 0 0 0.25rem 0;
+    line-height: 1.5;
+}
+
+.noti-content strong {
+    color: var(--color-text-primary);
+}
+
+.noti-time {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.unread-dot {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #5890ff;
+    border-radius: 50%;
+}

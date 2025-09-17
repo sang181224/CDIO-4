@@ -1,0 +1,318 @@
+/* --- Cấu trúc Header chính --- */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.8);
+    padding: 1.5rem 0;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--color-border);
+    transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+.header.header-scrolled {
+    background: var(--color-background-dark);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    transition: padding 0.3s ease;
+}
+
+.logo {
+    width: 140px;
+    z-index: 101;
+}
+
+/* --- Menu Desktop --- */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-menu a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--color-accent);
+}
+
+.nav-menu a:not(.nav-button):not(.nav-button-outline):not(.nav-icon)::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), #b48a5c);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:not(.nav-button):not(.nav-button-outline):not(.nav-icon):hover::after {
+    width: 100%;
+}
+
+.nav-search input {
+    background: #2a2a2a;
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.nav-search input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.nav-search input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-border);
+}
+
+.nav-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.nav-button,
+.nav-button-outline {
+    padding: 8px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nav-button {
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+    color: var(--color-background-dark) !important;
+}
+
+.nav-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--color-border);
+}
+
+.nav-button-outline {
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+}
+
+.nav-button-outline:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark) !important;
+}
+
+/* --- Logic Ẩn/Hiện cho Trạng thái Đăng nhập --- */
+.nav-user-actions,
+.nav-user-profile {
+    display: none;
+}
+
+.nav-guest {
+    display: list-item;
+}
+
+.header.logged-in .nav-user-actions,
+.header.logged-in .nav-user-profile {
+    display: flex;
+}
+
+.header.logged-in .nav-guest {
+    display: none;
+}
+
+/* --- Style cho Khu vực User đã đăng nhập --- */
+.nav-user-profile {
+    position: relative;
+    align-items: center;
+}
+
+.user-avatar-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 5px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.user-avatar-link:hover {
+    background-color: #2a2a2a;
+}
+
+.header-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 15px);
+    right: 0;
+    background-color: var(--color-surface);
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    width: 200px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.nav-user-profile:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-dropdown a {
+    display: block;
+    padding: 12px 15px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.profile-dropdown a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark) !important;
+}
+
+/* --- Menu Mobile (Hamburger & Panel) --- */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+}
+
+.hamburger-menu .bar {
+    width: 2rem;
+    height: 0.25rem;
+    background: var(--color-text-primary);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--color-background-light);
+    z-index: 100;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    border-left: 1px solid var(--color-border);
+    padding-top: 60px;
+}
+
+.mobile-nav.show-nav {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-nav ul li {
+    margin-bottom: 2rem;
+}
+
+.mobile-nav ul li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--color-border);
+    color: var(--color-accent);
+    background: linear-gradient(45deg, var(--color-accent), var(--color-accent-dark));
+}
+.mobile-nav ul a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 10px;
+    display: block;
+}
+
+.mobile-nav .nav-button,
+.mobile-nav .nav-button-outline {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* --- Responsive RIÊNG cho Header --- */
+@media (max-width: 992px) {
+    .nav-container>nav {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+}

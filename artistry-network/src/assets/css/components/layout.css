@@ -1,0 +1,48 @@
+/* File: assets/css/components/layout.css */
+
+.feed-section {
+    padding: 3rem 0;
+    background-color: var(--color-background-dark);
+}
+
+.feed-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    padding: 0 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Đây là tên chung cho tất cả các lưới tác phẩm */
+.artwork-grid {
+    column-count: 2;
+    /* Hiển thị 2 cột như bạn muốn */
+    column-gap: 1.5rem;
+}
+
+
+/* --- Responsive cho bố cục chung --- */
+@media (max-width: 992px) {
+    .feed-layout {
+        grid-template-columns: 1fr;
+        /* Sidebar sẽ nhảy lên trên */
+    }
+
+    /* Trên tablet vẫn giữ 2 cột */
+    .artwork-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .feed-layout {
+        padding: 0 1rem;
+    }
+
+    .artwork-grid {
+        column-count: 1;
+        /* Trên mobile chỉ hiển thị 1 cột */
+    }
+}

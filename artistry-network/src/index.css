@@ -1,0 +1,91 @@
+:root {
+    /* BẢNG MÀU */
+
+    /** @desc Màu chủ đạo (vàng gold). Dùng cho các chi tiết cần nhấn mạnh, 
+    các link khi hover, và các nút quan trọng. */
+    --color-accent: #c5a57e;
+    /** @desc Màu chủ đạo đậm. Dùng để tạo hiệu ứng chiều sâu (gradient) cho các nút hoặc các chi tiết nhỏ. */
+    --color-accent-dark: #a38561;
+    /** @desc Màu nền chính (tối nhất). Dùng cho `body` và các khu vực nền chính của trang. */
+    --color-background-dark: #1a1a1a;
+    /** @desc Màu nền phụ (sáng hơn một chút). Dùng cho các khu vực nội dung (section) 
+    để tạo sự phân tách với nền chính. */
+    --color-background-light: #1f1f1f;
+    /** @desc Màu bề mặt. 
+    Dùng cho màu nền của các thành phần "nổi" lên trên như card, sidebar, popup, ô input. */
+    --color-surface: #252525;
+    /** @desc Màu viền. Dùng cho các đường viền của card và các khu vực.*/
+    --color-border: rgba(197, 165, 126, 0.2);
+    /** @desc Màu chữ chính. Dùng cho các tiêu đề và nội dung quan trọng nhất. */
+    --color-text-primary: #e0e0e0;
+    /** @desc Màu chữ phụ. Dùng cho các đoạn mô tả, nội dung ít quan trọng hơn để tạo sự phân cấp. */
+    --color-text-secondary: #bbb;
+    /** @desc Màu chữ mờ. Dùng cho các thông tin phụ như thời gian đăng, chú thích nhỏ, placeholder. */
+    --color-text-muted: #888;
+    /** @desc Màu liên kết/đặc biệt. Dùng cho các đường link trong bài viết hoặc các thông tin đặc biệt như giá tiền. */
+    --color-link: #8ab6c4;
+
+    /* Font chữ */
+    --font-primary: 'Garamond', 'Times New Roman', serif;
+}
+
+/* --- Reset & Nền tảng chung --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: #1a1a1a;
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    /* Đảm bảo mọi thẻ a đều không có gạch chân mặc định */
+}
+
+
+/* --- Các Animation dùng chung --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}

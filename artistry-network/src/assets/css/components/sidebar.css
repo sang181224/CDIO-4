@@ -1,0 +1,78 @@
+/* Sidebar */
+.sidebar {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid var(--color-border);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.filter-group h3 {
+    color: var(--color-accent);
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1.2rem;
+}
+
+.filter-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sort-options li a,
+.category-list li a,
+.price-range li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.sort-options li a:hover,
+.category-list li a:hover,
+.price-range li a:hover {
+    background-color: rgba(197, 165, 126, 0.1);
+    color: var(--color-accent);
+    transform: translateX(5px);
+}
+
+.sort-options li a.active {
+    background-color: var(--color-border);
+    color: var(--color-accent);
+    font-weight: bold;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tag {
+    background-color: #333;
+    color: var(--color-text-secondary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+}
+
+.tag:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+}
