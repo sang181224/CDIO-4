@@ -24,7 +24,13 @@
     --color-text-muted: #888;
     /** @desc Màu liên kết/đặc biệt. Dùng cho các đường link trong bài viết hoặc các thông tin đặc biệt như giá tiền. */
     --color-link: #8ab6c4;
-
+    /** @desc icon*/
+    --like-color: #5890ff;
+    --love-color: #e15131;
+    --haha-color: #f7b223;
+    --wow-color: #f7b223;
+    --sad-color: #f7b223;
+    --angry-color: #e15131;
     /* Font chữ */
     --font-primary: 'Garamond', 'Times New Roman', serif;
 }

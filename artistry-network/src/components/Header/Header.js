@@ -26,7 +26,7 @@ function Header() {
         setIsMenuOpen(!isMenuOpen);
     };
     return (
-        <header className="header">
+        <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
             <div className="nav-container">
                 <a href="index.html">
                     <img className="logo" src={logo} alt="ArtistryNetwork Logo" />

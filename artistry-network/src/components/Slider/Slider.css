@@ -1,0 +1,53 @@
+/* --- Slider Ngang & Dấu chấm --- */
+.slider-container {
+    position: relative;
+    padding-bottom: 2.5rem;
+}
+
+.horizontal-slider {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.horizontal-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.horizontal-slider .post-card {
+    flex: 0 0 350px;
+    scroll-snap-align: start;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #555;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.dot:hover {
+    background-color: var(--color-text-muted);
+}
+
+.dot.active {
+    background-color: var(--color-accent);
+}

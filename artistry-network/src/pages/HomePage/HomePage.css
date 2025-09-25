@@ -1,0 +1,185 @@
+/* --- Bố cục chung cho các khu vực trang chủ --- */
+.homepage-content {
+    background-color: var(--color-background-dark);
+}
+
+.home-section {
+    padding: 4rem 2rem;
+    overflow: hidden;
+}
+
+.home-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.home-section-title {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    text-align: left;
+    margin-bottom: 0;
+}
+
+.btn-view-all {
+    text-decoration: none;
+    color: var(--color-accent);
+    font-weight: 500;
+    font-size: 1rem;
+    border: 1px solid var(--color-accent);
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-view-all:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+}
+
+
+
+/* --- Các khu vực khác (Category, Artist, CTA) --- */
+.category-showcase {
+    background-color: var(--color-background-light);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.category-card {
+    height: 300px;
+    border-radius: 15px;
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover {
+    transform: scale(1.03);
+}
+
+.category-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+
+.category-card h3 {
+    color: #fff;
+    font-size: 1.8rem;
+    z-index: 2;
+}
+
+.artist-card {
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text-primary);
+    flex: 0 0 150px;
+    scroll-snap-align: center;
+}
+
+.artist-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #444;
+    transition: border-color 0.3s ease;
+}
+
+.artist-card:hover img {
+    border-color: var(--color-accent);
+}
+
+.artist-card h4 {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.cta-section {
+    background-color: var(--color-background-light);
+    text-align: center;
+}
+
+.cta-section .home-section-title {
+    text-align: center;
+}
+
+.cta-content p {
+    max-width: 600px;
+    margin: 1rem auto 2rem auto;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.latest-artworks .artwork-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+}
+
+/* --- Responsive RIÊNG cho trang Home --- */
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .latest-artworks .artwork-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-section {
+        padding: 3rem 1rem;
+    }
+
+    .home-section-header {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .home-section-title {
+        text-align: center;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .latest-artworks .artwork-grid {
+        column-count: 1;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-buttons .btn {
+        width: 80%;
+    }
+}
