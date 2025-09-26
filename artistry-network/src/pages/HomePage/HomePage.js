@@ -22,7 +22,7 @@ const dummyArtWorks = [
         description: 'Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo, thể hiện cảm xúc sâu sắc...',
         imageUrl: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cfdd8d93-55a1-4533-992c-6ce766867e07/dk54bj4-e96eba4e-5c61-47c0-9695-99dcbdcf3b7b.png/v1/fill/w_1190,h_672,q_70,strp/the_shape_of_what_remains_by_linaewendreams_dk54bj4-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4NCIsInBhdGgiOiIvZi9jZmRkOGQ5My01NWExLTQ1MzMtOTkyYy02Y2U3NjY4NjdlMDcvZGs1NGJqNC1lOTZlYmE0ZS01YzYxLTQ3YzAtOTY5NS05OWRjYmRjZjNiN2IucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.5grn6yvD8R7JY12cXLjLo8RcxSukRD1o_-h9MwZe7Eg',
         author: { name: 'Nghệ sĩ C', avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop' }
-    },{
+    }, {
         id: 4, title: 'Tác phẩm Mẫu 4', postTime: '16/09/2005',
         description: 'Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo, thể hiện cảm xúc sâu sắc...',
         price: '1,500,000 VNĐ',
@@ -59,7 +59,7 @@ const dummyArtWorks = [
         description: 'Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo, thể hiện cảm xúc sâu sắc...',
         imageUrl: 'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d70397b1-3c21-4150-9b5e-4159c26486a4/dgbfs30-3ca52e68-9c0d-437a-8af7-2264784195ce.png/v1/fill/w_1024,h_574,q_80,strp/tiger_s_embrace__azure_night_by_odysseyorigins_dgbfs30-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi9kNzAzOTdiMS0zYzIxLTQxNTAtOWI1ZS00MTU5YzI2NDg2YTQvZGdiZnMzMC0zY2E1MmU2OC05YzBkLTQzN2EtOGFmNy0yMjY0Nzg0MTk1Y2UucG5nIiwiaGVpZ2h0IjoiPD01NzQiLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS53YXRlcm1hcmsiXSwid21rIjp7InBhdGgiOiIvd20vZDcwMzk3YjEtM2MyMS00MTUwLTliNWUtNDE1OWMyNjQ4NmE0L29keXNzZXlvcmlnaW5zLTQucG5nIiwib3BhY2l0eSI6OTUsInByb3BvcnRpb25zIjowLjQ1LCJncmF2aXR5IjoiY2VudGVyIn19.QgXulVfwVMsB3N93stRxBNuvr0-FblFB5_WKj5Eqt_c',
         author: { name: 'Nghệ sĩ C', avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop' }
-    },{
+    }, {
         id: 10, title: 'Tác phẩm Mẫu 10', postTime: '16/09/2005',
         description: 'Một tác phẩm nghệ thuật đương đại với những đường nét táo bạo, thể hiện cảm xúc sâu sắc...',
         price: '1,500,000 VNĐ',
