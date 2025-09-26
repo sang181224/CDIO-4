@@ -1,4 +1,4 @@
-import './LoginPage.css';
+import './AuthPage.css';
 import axios from 'axios'
 import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
@@ -33,7 +33,7 @@ function LoginPage() {
             errorSubmit.password = 'Vui lòng nhập password';
             flag = false;
         }
-        if (flag == false) {
+        if (flag === false) {
             setErrors(errorSubmit);
         } else {
             const data = {

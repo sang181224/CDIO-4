@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from '../../assets/images/logomain.jpg';
 import './Header.css';
+import { Link } from 'react-router-dom';
 function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -57,7 +58,7 @@ function Header() {
                             </div>
                         </li>
                         <li className="nav-guest"><a href="register.html" className="nav-button-outline">Đăng Ký</a></li>
-                        <li className="nav-guest"><a href="login.html" className="nav-button">Đăng Nhập</a></li>
+                        <li className="nav-guest"><Link to={'/login'} className="nav-button">Đăng Nhập</Link></li>
                     </ul>
                 </nav>
                 <button className={`hamburger-menu ${isMenuOpen ? 'open' : ''}`} aria-label="Toggle menu" onClick={toggleMenu}>
