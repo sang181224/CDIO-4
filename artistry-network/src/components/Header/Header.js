@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 import logo from '../../assets/images/logomain.jpg';
 import './Header.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 function Header() {
+    const navigate = useNavigate();
+    const { logout, isAuthenticated } = useAuth();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     //Xử lý cuộn trang
     useEffect(() => {
         const handleScroll = () => {
@@ -27,7 +31,7 @@ function Header() {
         setIsMenuOpen(!isMenuOpen);
     };
     return (
-        <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
+        <header className={`header ${isAuthenticated ? 'logged-in' : ''} ${isScrolled ? 'header-scrolled' : ''}`}>
             <div className="nav-container">
                 <a href="index.html">
                     <img className="logo" src={logo} alt="ArtistryNetwork Logo" />
@@ -54,7 +58,7 @@ function Header() {
                                 <a href="profile.html">Hồ sơ của tôi</a>
                                 <a href="#">Lịch sử đơn hàng</a>
                                 <a href="#">Cài đặt</a>
-                                <a href="#">Đăng xuất</a>
+                                <a onClick={logout} href="#">Đăng xuất</a>
                             </div>
                         </li>
                         <li className="nav-guest"><a href="register.html" className="nav-button-outline">Đăng Ký</a></li>
@@ -74,7 +78,7 @@ function Header() {
                     <li><a href="/notifications.html">Thông Báo</a></li>
                     <li><a href="./upload.html" class="nav-button">Đăng Bài</a></li>
                     <li><a href="#signup" class="nav-button-outline">Đăng Ký</a></li>
-                    <li><a href="#login" class="nav-button">Đăng Nhập</a></li>
+                    <li><Link to={'/login'} class="nav-button">Đăng Nhập</Link></li>
                 </ul>
             </nav>
         </header>

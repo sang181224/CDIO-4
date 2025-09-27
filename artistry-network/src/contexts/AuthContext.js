@@ -42,7 +42,6 @@ export function AuthProvider({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
-            {/* Chỉ render các component con khi đã kiểm tra xong */}
             {!loading && children}
         </AuthContext.Provider>
     );

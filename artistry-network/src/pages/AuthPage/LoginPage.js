@@ -1,9 +1,13 @@
 import './AuthPage.css';
 import axios from 'axios'
+import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
 import RenderError from '../../components/Error/RenderError';
+import { useAuth } from '../../hooks/useAuth';
 function LoginPage() {
+    const { login } = useAuth();
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
         email: '',
         password: '',
@@ -42,11 +46,14 @@ function LoginPage() {
             }
             await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
                 .then(response => {
-                    console.log(response.data)
+                    console.log(response.data);
+                    login('',response.data.token);
+                    navigate('/');
+
                 })
                 .catch(error => {
-                    console.log(error.response.data);
-                    setErrors(error.response.data);
+                    console.log(error?.response?.data);
+                    setErrors(error?.response?.data);
                 })
         }
     }
@@ -77,7 +84,7 @@ function LoginPage() {
                         <button type="submit" className="btn-auth">Đăng nhập</button>
                     </form>
                     <div className="auth-switch">
-                        <p>Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+                        <p>Chưa có tài khoản? <Link to={'/register'}>Đăng ký ngay</Link></p>
                     </div>
                 </div>
             </div>
