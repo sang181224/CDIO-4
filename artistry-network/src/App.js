@@ -40,11 +40,11 @@ function App() {
         {/* ADMIN */}
         <Route
           path="/admin"
-          // element={
-          //   <PrivateRoute role="ADMIN">
-          //     <AdminLayout />
-          //   </PrivateRoute>
-          // }
+          element={
+            // <PrivateRoute role="ADMIN">
+              <AdminLayout />
+            // </PrivateRoute>
+          }
         >
           <Route index element={<Dashboard />} />
           <Route path="users" element={<UsersPage />} />
