@@ -5,6 +5,7 @@ import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
 import RenderError from '../../components/Error/RenderError';
 import { useAuth } from '../../hooks/useAuth';
+import apiService from '../../api/apiService';
 function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -44,17 +45,23 @@ function LoginPage() {
                 emailSdt: inputs.email,
                 matKhau: inputs.password
             }
-            await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
+            await apiService.post('/TaiKhoan/dangnhap', data)
                 .then(response => {
-                    console.log(response.data);
-                    login('',response.data.token);
-                    navigate('/');
+                    const token = response.data.token;
+                    login(token);
 
+                    const payload = JSON.parse(atob(token.split(".")[1]));
+                    if (payload.role === "admin") {
+                        navigate('/admin');
+                    } else {
+                        navigate('/');
+                    }
                 })
                 .catch(error => {
                     console.log(error?.response?.data);
-                    setErrors(error?.response?.data);
+                    setErrors(error?.response?.data || { error: 'Đã có lỗi xảy ra, vui lòng thử lại sau!' });
                 })
+
         }
     }
     return (
