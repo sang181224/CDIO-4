@@ -20,6 +20,7 @@ import Dashboard from './Admin/page/dashBoard/index';
 import UsersPage from './Admin/page/users/index';
 import ContentManagement from './Admin/page/contentManagement/index';
 import InvoicesPage from './Admin/page/invoices/index';
+import UploadPage from './pages/UploadPage/UploadPage';
 
 // Route bảo vệ (tạm comment, để dùng sau)
 // const PrivateRoute = ({ children, role }) => {
@@ -40,10 +41,12 @@ function App() {
           {/* USER */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<HomePage />} />
-            <Route path="/artwork" element={<DetailPage />} />
+            <Route path="/artwork/:id" element={<DetailPage />} />
+            <Route path="/upload" element={<UploadPage />} />
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />
+          
 
           {/* ADMIN */}
           <Route

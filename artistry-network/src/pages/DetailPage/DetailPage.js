@@ -1,76 +1,111 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-// import axios from 'axios';
-import ArtworkSlider from '../../components/Slider/ArtworkSlider';
+import { useParams } from 'react-router-dom';
+// import axios from 'axios'; // Bỏ comment khi kết nối API thật
 import './DetailPage.css';
+import ProductInfo from '../ProductInfo/ProductInfo';
+import ArtworkSlider from '../../components/ArtworkSlider/ArtworkSlider';
+import CommentSection from '../../components/CommentSection/CommentSection';
 
-// Dữ liệu giả lập
+// Import các component con (chúng ta sẽ tạo chúng sau)
+// import ArtworkSlider from '../../components/ArtworkSlider/ArtworkSlider';
+// import ProductInfo from '../../components/ProductInfo/ProductInfo';
+// import CommentSection from '../../components/CommentSection/CommentSection';
+// import RelatedProducts from '../../components/RelatedProducts/RelatedProducts';
+
+// Dữ liệu giả lập cho đến khi có API
 const dummyArtworkDetail = {
-    id: 'art01',
-    ten: 'Vũ Điệu Của Sắc Màu',
-    gia: '3,500,000 VNĐ',
-    moTaDayDu: 'Đây là mô tả đầy đủ và chi tiết về tác phẩm...',
-    thuVienAnh: [
-        { id: 'img1', url: 'https://images.saatchiart.com/saatchi/352287/art/10636865/9699351-KDSYLQQO-7.jpg' },
-        { id: 'img2', url: 'https://images.saatchiart.com/saatchi/352287/art/10636865/additional_daba6f5030155cb724b496973b592b7f395e054b-AICC2-7.jpg' },
-        { id: 'img3', url: 'https://images.saatchiart.com/saatchi/352287/art/10636865/additional_bb3c8397a9ef919eafe8805bd2836517812829a8-AICC2-7.jpg' },
+    id: "art001",
+    ten: "Vũ Điệu Dưới Ánh Hoàng Hôn",
+    anh: [
+        "https://images.saatchiart.com/saatchi/599547/art/6249103/5318875-HSC00002-7.jpg",
+        "https://images.saatchiart.com/saatchi/599547/art/6249103/additional_1d85926ba8708f1d58473d3d324801ad06ca2708-AICC2-7.jpg",
+        "https://images.saatchiart.com/saatchi/599547/art/6249103/additional_329d05e6604ebb216cc0ed6289ecb8feed9ca799-AICC2-7.jpg"
     ],
-    thuocTinh: { kichThuoc: '80cm x 120cm', chatLieu: 'Sơn dầu' },
-    nguoiTao: { id: 'user123', ten: 'Elena Rodriguez', avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop', email: 'elena.r@example.com' },
-    // ... các dữ liệu khác
+    gia: "3,500,000 VNĐ",
+    ngayDang: "5 phút trước",
+    mota: "Sử dụng kỹ thuật sơn dầu đa lớp, tác phẩm này thể hiện sự chuyển động của ánh sáng và màu sắc trong khoảnh khắc cuối ngày, mang lại cảm giác ấm áp nhưng cũng đầy suy tư. Bức tranh không chỉ ghi lại một phong cảnh, mà còn là sự suy tư về dòng chảy của thời gian và vẻ đẹp của những khoảnh khắc thoáng qua. Mỗi lớp màu được đắp nổi, tạo ra một bề mặt có chiều sâu và kết cấu độc đáo, mời gọi người xem không chỉ nhìn mà còn cảm nhận.",
+    thuocTinh: {
+        kichThuoc: "80cm x 120cm",
+        chatLieu: "Sơn dầu trên vải canvas",
+        namSangTac: 2024,
+        trangThai: "Còn hàng"
+    },
+    thongKe: {
+        luotThich: 125,
+        luotBinhLuan: 12
+    },
+    nguoiTao: {
+        id: "user123",
+        ten: "Elena Rodriguez",
+        anhDaiDien: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop",
+        email: "elena.r@example.com"
+    },
+    camXucCuaToi: "love",
+    is_owner: true
 };
+
 
 function DetailPage() {
     const { id } = useParams();
-    const [artwork, setArtwork] = useState(dummyArtworkDetail); // Dùng dữ liệu giả lập
 
-    if (!artwork) return <div>Đang tải...</div>;
+    const [artwork, setArtwork] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // useEffect để gọi API khi component được render hoặc id thay đổi
+    useEffect(() => {
+        const fetchArtworkDetail = async () => {
+            setIsLoading(true);
+            setError(null);
+            try {
+                // const response = await axios.get(`http://localhost:3100/api/artworks/${id}`);
+                // setArtwork(response.data);
+
+                setArtwork(dummyArtworkDetail);
+
+            } catch (err) {
+                setError('Không thể tải được thông tin tác phẩm. Vui lòng thử lại.');
+                console.error(err);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchArtworkDetail();
+    }, [id]); // Mảng phụ thuộc [id] giúp component tự tải lại dữ liệu khi bạn chuyển qua xem tác phẩm khác
+
+    if (isLoading) {
+        return <div className="page-loading">Đang tải...</div>;
+    }
+
+    if (error) {
+        return <div className="page-error">{error}</div>;
+    }
+
+    if (!artwork) {
+        return <div className="page-error">Không tìm thấy tác phẩm.</div>;
+    }
 
     return (
         <main className="product-detail-page">
             <div className="detail-container">
-                {/* Cột trái: Slider ảnh */}
                 <div className="product-image-gallery">
-                    <ArtworkSlider images={artwork.thuVienAnh} />
+                    <ArtworkSlider images={artwork.anh} />
                 </div>
-
-                {/* Cột phải: Thông tin */}
                 <div className="product-info">
-                    <div className="artist-info">
-                        <Link to={`/profile/${artwork.nguoiTao.id}`}>
-                            <img src={artwork.nguoiTao.avatarUrl} alt={artwork.nguoiTao.ten} className="artist-avatar" />
-                        </Link>
-                        <div>
-                            <Link to={`/profile/${artwork.nguoiTao.id}`}>
-                                <h3 className="artist-name">{artwork.nguoiTao.ten}</h3>
-                            </Link>
-                            {/* Nút theo dõi có thể thêm sau */}
-                        </div>
-                    </div>
-
-                    <h1 className="product-title">{artwork.ten}</h1>
-                    <p className="product-price">{artwork.gia}</p>
-
-                    {/* Nút liên hệ */}
-                    <div className="action-buttons">
-                        <a href={`mailto:${artwork.nguoiTao.email}`} className="btn btn-primary">
-                            Liên hệ nghệ sĩ để mua
-                        </a>
-                    </div>
-
-                    {/* Mô tả và các thông tin khác */}
-                    <div className="product-description">
-                        <h4>Mô tả tác phẩm</h4>
-                        <p>{artwork.moTaDayDu}</p>
-                    </div>
-                    <div className="product-meta">
-                        <p><strong>Kích thước:</strong> {artwork.thuocTinh.kichThuoc}</p>
-                        <p><strong>Chất liệu:</strong> {artwork.thuocTinh.chatLieu}</p>
-                    </div>
+                    <ProductInfo artwork={artwork} />
+                    <p>Thông tin tác phẩm sẽ ở đây</p>
                 </div>
             </div>
-            {/* ... Khu vực bình luận và tác phẩm liên quan sẽ được thêm sau ... */}
+
+            <CommentSection artworkId={artwork.id} />
+
+            <section className="related-products">
+                {/* <RelatedProducts /> */}
+                <p>Tác phẩm liên quan sẽ ở đây</p>
+            </section>
         </main>
     );
 }
+
 export default DetailPage;

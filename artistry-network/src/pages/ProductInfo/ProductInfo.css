@@ -1,0 +1,138 @@
+/* --- Cột phải: Thông tin tác phẩm --- */
+.product-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.artist-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.artist-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    object-fit: cover;
+}
+
+.artist-name {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--color-text-primary);
+    padding-right: 10px;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.product-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-link);
+    margin-bottom: 1rem;
+}
+
+/* --- Khu vực nút tương tác xã hội --- */
+.product-social-actions {
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #444;
+}
+
+/* --- Khu vực nút mua hàng --- */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Mô tả và thông tin meta --- */
+.product-description h4 {
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.product-description p {
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.product-meta p {
+    margin-bottom: 0.5rem;
+}
+
+.product-meta a {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.product-meta a:hover {
+    text-decoration: underline;
+}
+
+.tags-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background-color: #333;
+    color: var(--color-text-secondary);
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.follow-button {
+    background: none;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin-top: 0.25rem;
+    display: inline-block;
+}
+
+.follow-button:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons .btn {
+        width: 100%;
+    }
+}

@@ -1,10 +1,10 @@
 import './AuthPage.css';
-import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
 import RenderError from '../../components/Error/RenderError';
 import { useAuth } from '../../hooks/useAuth';
+import { apiClient } from '../../api/apiService';
 function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -41,19 +41,24 @@ function LoginPage() {
             setErrors(errorSubmit);
         } else {
             const data = {
-                emailSdt: inputs.email,
-                matKhau: inputs.password
+                email: inputs.email,
+                password: inputs.password
             }
-            await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
+            await apiClient.post('/login', data)
+            // await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
                 .then(response => {
                     console.log(response.data);
-                    login('',response.data.token);
+                    login(response.data.user, response.data.token);
                     navigate('/');
 
                 })
                 .catch(error => {
                     console.log(error?.response?.data);
-                    setErrors(error?.response?.data);
+                    if (error.response) {
+                        setErrors(error?.response?.data);
+                    } else {
+                        setErrors({error: 'Lỗi sever'});
+                    }
                 })
         }
     }

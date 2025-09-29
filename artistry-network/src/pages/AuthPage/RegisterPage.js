@@ -1,107 +1,150 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import logo from '../../assets/images/logomain.jpg'
-import axios from 'axios';
+import logo from '../../assets/images/logomain.jpg';
+import './AuthPage.css';
+import { apiClient } from '../../api/apiService';
 import RenderError from '../../components/Error/RenderError';
-function Register() {
-    const navigate = useNavigate()
+
+function RegisterPage() {
+    const navigate = useNavigate();
     const [inputs, setInputs] = useState({
-        fullname: '',
+        name: '',
         email: '',
         password: '',
         confirmPassword: ''
     });
+    const [avatarFile, setAvatarFile] = useState(null);
+
     const [errors, setErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleInput = (e) => {
-        setErrors({});
-        const name = e.target.name;
-        const value = e.target.value;
-        setInputs(prev => ({...prev, [name]: value}));
-    }
+        const { name, value } = e.target;
+        setInputs(prev => ({ ...prev, [name]: value }));
+        if (errors[name]) {
+            setErrors(prev => ({ ...prev, [name]: null }));
+        }
+    };
+
+    const handleFileChange = (e) => {
+        setAvatarFile(e.target.files[0]);
+        if (errors.avatar) {
+            setErrors(prev => ({ ...prev, avatar: null }));
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        let errorSubmit = {};
         let flag = true;
-        if(!inputs.fullname){
+        let errorSubmit = {};
+        if (!inputs.name) {
             errorSubmit.name = 'Vui lòng nhập name';
             flag = false;
         }
-        if(!inputs.email){
+        if (!inputs.email) {
             errorSubmit.email = 'Vui lòng nhập email';
             flag = false;
-        } else {
-            const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if (!emailRegex.test(inputs.email)) {
-                errorSubmit.email = 'Email không hợp lệ';
-                flag = false;
-            }
         }
-        if(!inputs.password){
+        if (!inputs.password) {
             errorSubmit.password = 'Vui lòng nhập mật khẩu';
             flag = false;
         }
-        if(!inputs.confirmPassword){
-            errorSubmit.passwordCofirm = 'Vui lòng nhập mật khẩu xác nhận';
+        if (!inputs.confirmPassword) {
+            errorSubmit.confirmPassword = ' Vui lòng nhập mật khẩu xác thực';
             flag = false;
         }
-        if(!flag){
+        if (!avatarFile) {
+            errorSubmit.avatar = 'Vui lòng chọn avatar';
+            flag = false;
+        } else {
+            const arrFile = [
+                'jpeg', 'png', 'gif'
+            ];
+            const fileType = avatarFile.type;
+            const fileSize = avatarFile.size;
+            const fileExt = fileType.split("/").pop();
+            if (!arrFile.includes(fileExt)) {
+                errorSubmit.avatar = "File không hợp lệ";
+                flag = false;
+            } else if (fileSize > 1024 * 1024) {
+                errorSubmit.avatar = "Vui lòng chọn file <= 1024KB";
+                flag = false;
+            }
+        }
+        if (!flag) {
             setErrors(errorSubmit);
         } else {
-            const data = {
-                ten: inputs.fullname,
-                emailSdt: inputs.email,
-                matKhau: inputs.password,
-                nhapLaiMatKhau: inputs.confirmPassword
-            };
-            await axios.post('http://localhost:3100/api/TaiKhoan/dangky', data)
-                .then(response => {
-                    const confirmed = window.confirm("Đăng ký thành công! Bạn có muốn chuyển sang trang đăng nhập không?");
-                    if(confirmed){
-                        navigate('/login');
+            const formData = new FormData();
+            formData.append('name', inputs.name);
+            formData.append('email', inputs.email);
+            formData.append('password', inputs.password);
+            formData.append('confirmPassword', inputs.confirmPassword);
+            if (avatarFile) {
+                formData.append('avatar', avatarFile);
+            }
+
+            try {
+                await apiClient.post('/register', formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
                     }
-                })
-                .catch(error => {
-                    console.log(error?.response?.data);
-                    setErrors({passwordCofirm: 'Mật khẩu không khớp'})
-                })
+                });
+
+                alert('Đăng ký thành công! Vui lòng đăng nhập.');
+                navigate('/login');
+
+            } catch (error) {
+                console.error(error?.response?.data);
+                setErrors({ api: error?.response?.data?.message || 'Đã có lỗi xảy ra.' });
+            } finally {
+                setIsLoading(false);
+            }
         }
-    }
+
+    };
+
     return (
         <div className="auth-body">
             <div className="auth-container">
                 <div className="auth-box">
-                    <a href="index.html" className="auth-logo">
+                    <Link to="/" className="auth-logo">
                         <img src={logo} alt="ArtistryNetwork Logo" />
-                    </a>
+                    </Link>
                     <h2>Tạo tài khoản mới</h2>
-                    <p className="auth-subtitle">Tham gia cộng đồng và chia sẻ đam mê của bạn</p>
-                    <form className="auth-form" onSubmit={handleSubmit}>
+                    <form className="auth-form" onSubmit={handleSubmit} noValidate>
                         <div className="input-group">
-                            <label htmlFor="fullname">Họ và Tên</label>
-                            <input type="text" id="fullname" name="fullname" required onChange={handleInput}/>
+                            <label htmlFor="name">Họ và Tên</label>
+                            <input type="text" id="name" name="name" onChange={handleInput} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="email" required onChange={handleInput}/>
+                            <input type="email" id="email" name="email" onChange={handleInput} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="password">Mật khẩu</label>
-                            <input type="password" id="password" name="password" required onChange={handleInput}/>
+                            <input type="password" id="password" name="password" onChange={handleInput} />
                         </div>
                         <div className="input-group">
                             <label htmlFor="confirmPassword">Xác nhận Mật khẩu</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required onChange={handleInput}/>
+                            <input type="password" id="confirmPassword" name="confirmPassword" onChange={handleInput} />
                         </div>
-                        <RenderError err={errors}/>
-                        <button type="submit" className="btn-auth">Tạo tài khoản</button>
+
+                        <div className="input-group">
+                            <label htmlFor="avatar">Ảnh đại diện (Tùy chọn)</label>
+                            <input type="file" id="avatar" name="avatar" onChange={handleFileChange} />
+                        </div>
+                        <RenderError err={errors} />
+                        <button type="submit" className="btn-auth" disabled={isLoading}>
+                            {isLoading ? 'Đang xử lý...' : 'Tạo tài khoản'}
+                        </button>
                     </form>
                     <div className="auth-switch">
-                        <p>Đã có tài khoản? <Link to={'/login'}>Đăng nhập</Link></p>
+                        <p>Đã có tài khoản? <Link to="/login">Đăng nhập</Link></p>
                     </div>
                 </div>
             </div>
-
         </div>
-    )
+    );
 }
-export default Register;
+
+export default RegisterPage;

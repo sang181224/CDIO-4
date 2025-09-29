@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 function Header() {
     const navigate = useNavigate();
-    const { logout, isAuthenticated } = useAuth();
+    const { user, logout, isAuthenticated } = useAuth();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,15 +44,20 @@ function Header() {
                             <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm..." />
                         </li>
                         <li className="nav-user-actions">
-                            <a href="upload.html" className="nav-button">Đăng Bài</a>
+                            <Link to={'/upload'} className="nav-button">Đăng Bài</Link>
                         </li>
                         <li className="nav-user-actions">
                             <a href="notifications.html" className="nav-icon" title="Thông báo">🔔</a>
                         </li>
                         <li className="nav-user-profile">
                             <a href="profile.html" className="user-avatar-link">
-                                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" alt="User Avatar" className="header-avatar" />
-                                <span>Elena Rodriguez</span>
+                                {user && (
+                                    <>
+                                        <img src={user.avatarUrl ? `http://localhost:3000/${user.avatarUrl}` : ''} alt="User Avatar" className="header-avatar" />
+                                        <span>{user.name}</span>
+                                    </>
+                                )}
+
                             </a>
                             <div className="profile-dropdown">
                                 <a href="profile.html">Hồ sơ của tôi</a>
