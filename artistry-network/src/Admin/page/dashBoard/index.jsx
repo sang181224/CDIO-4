@@ -39,13 +39,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const token = localStorage.getItem("token"); // token login của admin
-        const res = await apiService.get("/Admin/thongke/tong-quan", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const res = await apiService.get("/Admin/thongke/tong-quan");
         const data = res.data;
         setStats((prev) =>
           prev.map((s) => {
