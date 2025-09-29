@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       const decoded = parseJwt(token);
       if (decoded && decoded.exp * 1000 > Date.now()) {
@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
         });
         setIsAuthenticated(true);
       } else {
-        localStorage.removeItem("authToken"); // token hết hạn
+        localStorage.removeItem("token"); // token hết hạn
       }
     }
     setLoading(false);
@@ -44,14 +44,14 @@ export function AuthProvider({ children }) {
         role: decoded.role,
       });
       setIsAuthenticated(true);
-      localStorage.setItem("authToken", token);
+      localStorage.setItem("token", token);
     }
   };
 
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
-    localStorage.removeItem("authToken");
+    localStorage.removeItem("token");
   };
 
   const value = { user, isAuthenticated, loading, login, logout };
