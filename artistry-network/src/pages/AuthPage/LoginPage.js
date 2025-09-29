@@ -4,7 +4,9 @@ import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
 import RenderError from '../../components/Error/RenderError';
 import { useAuth } from '../../hooks/useAuth';
+
 import { apiClient } from '../../api/apiService';
+
 function LoginPage() {
     const { login } = useAuth();
     const navigate = useNavigate();
@@ -45,21 +47,28 @@ function LoginPage() {
                 password: inputs.password
             }
             await apiClient.post('/login', data)
-            // await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
+                // await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
                 .then(response => {
                     console.log(response.data);
                     login(response.data.user, response.data.token);
                     navigate('/');
 
-                })
-                .catch(error => {
-                    console.log(error?.response?.data);
-                    if (error.response) {
-                        setErrors(error?.response?.data);
+                    const payload = JSON.parse(atob(token.split(".")[1]));
+                    if (payload.role === "admin") {
+                        navigate('/admin');
                     } else {
-                        setErrors({error: 'Lỗi sever'});
+                        navigate('/');
                     }
                 })
+                .catch(error => {
+                    if (error.response) {
+                        setErrors(error?.response?.data);
+                        console.log(error?.response?.data);
+                    } else {
+                        setErrors({ error: 'Lỗi sever' });
+                    }
+                })
+
         }
     }
     return (

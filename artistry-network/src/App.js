@@ -1,9 +1,9 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 // Context
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthContext, AuthProvider } from './contexts/AuthContext';
 
 // Layouts
 import MainLayout from './components/Layout/MainLayout';   // cho user
@@ -22,16 +22,14 @@ import ContentManagement from './Admin/page/contentManagement/index';
 import InvoicesPage from './Admin/page/invoices/index';
 import UploadPage from './pages/UploadPage/UploadPage';
 
-// Route bảo vệ (tạm comment, để dùng sau)
-// const PrivateRoute = ({ children, role }) => {
-//   const token = localStorage.getItem("token");
-//   const userRole = localStorage.getItem("role");
+const PrivateRoute = ({ children, role }) => {
+  const { user, isAuthenticated } = useContext(AuthContext);
 
-//   if (!token) return <Navigate to="/login" />;
-//   if (role && userRole !== role) return <Navigate to="/" />;
+  if (!isAuthenticated) return <Navigate to="/login" />;
+  if (role && user?.role !== role) return <Navigate to="/" />;
 
-//   return children;
-// };
+  return children;
+};
 
 function App() {
   return (
@@ -52,9 +50,9 @@ function App() {
           <Route
             path="/admin"
             element={
-              // <PrivateRoute role="ADMIN">
-              <AdminLayout />
-              // </PrivateRoute>
+              <PrivateRoute role="admin">
+                <AdminLayout />
+              </PrivateRoute>
             }
           >
             <Route index element={<Dashboard />} />

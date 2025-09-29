@@ -1,9 +1,20 @@
-import axios from 'axios';
+import axios from "axios";
 
+// Tạo client API với baseURL chính
 export const apiClient = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: "http://localhost:3000/api", // hoặc đổi sang https://localhost:44332/api
 });
-// Dữ liệu giả lập cuối cùng
+
+// interceptor (tự động gắn token nếu có)
+apiClient.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+// Dữ liệu giả
 const dummyArtworks = [
     {
         "id": 1,
@@ -112,27 +123,20 @@ const dummyArtworks = [
     }
 ];
 
-
 // Hàm giả lập lấy tác phẩm nổi bật
 export const getFeaturedArtworks = () => {
-    console.log("API giả lập: Đang lấy tác phẩm nổi bật...");
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("API giả lập: Đã trả về tác phẩm nổi bật.");
-            // Lấy 4 tác phẩm đầu tiên làm nổi bật
             resolve(dummyArtworks.slice(0, 4));
-        }, 800); // Giả lập độ trễ mạng 0.8 giây
+        }, 800);
     });
 };
 
 // Hàm giả lập lấy tác phẩm mới nhất
 export const getLatestArtworks = () => {
-    console.log("API giả lập: Đang lấy tác phẩm mới nhất...");
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         setTimeout(() => {
-            console.log("API giả lập: Đã trả về tác phẩm mới nhất.");
-            // Lấy 4 tác phẩm cuối cùng làm mới nhất
             resolve(dummyArtworks.slice(2, 6));
-        }, 1200); // Giả lập độ trễ mạng 1.2 giây
+        }, 1200);
     });
 };
