@@ -8,7 +8,7 @@ const Sidebar = ({ open = true }) => {
     { id: "dashboard", label: "Tổng quan", to: "/admin", icon: BarChart3 },
     { id: "users", label: "Quản lý người dùng", to: "/admin/users", icon: Users },
     { id: "content", label: "Quản lý nội dung", to: "/admin/content", icon: FileText },
-    { id: "invoices", label: "Quản lý hóa đơn", to: "/admin/invoices", icon: Receipt },
+    { id: "category", label: "Quản lý danh mục", to: "/admin/category", icon: Receipt },
   ];
 
   return (
