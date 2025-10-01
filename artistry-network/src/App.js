@@ -28,10 +28,15 @@ const PrivateRoute = ({ children, role }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) return <Navigate to="/login" />;
-  if (role && user?.role !== role) return <Navigate to="/" />;
+
+  // role = "admin" -> map sang roleId === 1
+  if (role === "admin" && user?.roleId !== 1) {
+    return <Navigate to="/" />;
+  }
 
   return children;
 };
+
 
 function App() {
   return (

@@ -37,32 +37,33 @@ const Dashboard = () => {
     },
   ]);
 
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const res = await apiClient.get("/Admin/thongke/tong-quan");
-        const data = res.data;
-        setStats((prev) =>
-          prev.map((s) => {
-            if (s.title === "Tổng người dùng") {
-              return { ...s, value: data.tongNguoiDung };
-            }
-            if (s.title === "Tác phẩm nghệ thuật") {
-              return { ...s, value: data.tongSanPham };
-            }
-            if (s.title === "Đơn hàng") {
-              return { ...s, value: data.tongDonHang };
-            }
-            return s; // Doanh thu giữ nguyên fake
-          })
-        );
-      } catch (error) {
-        console.error("Lỗi khi fetch thống kê:", error);
-      }
-    };
 
-    fetchStats();
-  }, []);
+  // useEffect(() => {
+  //   const fetchStats = async () => {
+  //     try {
+  //       const res = await apiService.get("/Admin/thongke/tong-quan");
+  //       const data = res.data;
+  //       setStats((prev) =>
+  //         prev.map((s) => {
+  //           if (s.title === "Tổng người dùng") {
+  //             return { ...s, value: data.tongNguoiDung };
+  //           }
+  //           if (s.title === "Tác phẩm nghệ thuật") {
+  //             return { ...s, value: data.tongSanPham };
+  //           }
+  //           if (s.title === "Đơn hàng") {
+  //             return { ...s, value: data.tongDonHang };
+  //           }
+  //           return s; // Doanh thu giữ nguyên fake
+  //         })
+  //       );
+  //     } catch (error) {
+  //       console.error("Lỗi khi fetch thống kê:", error);
+  //     }
+  //   };
+
+  //   fetchStats();
+  // }, []);
 
   return (
     <div className="space-y-6">

@@ -50,16 +50,14 @@ function LoginPage() {
             await apiClient.post('/login', data)
                 // await axios.post('http://localhost:3100/api/TaiKhoan/dangnhap', data)
                 .then(response => {
+                    const { token, user } = response.data;
                     console.log(response.data);
                     login(response.data.user, response.data.token);
-                    navigate('/');
-
-                    // const payload = JSON.parse(atob(token.split(".")[1]));
-                    // if (payload.role === "admin") {
-                    //     navigate('/admin');
-                    // } else {
-                    //     navigate('/');
-                    // }
+                    if (user.roleId === 1) {
+                        navigate('/admin');
+                    } else {
+                        navigate('/');
+                    }
                 })
                 .catch(error => {
                     if (error.response) {
