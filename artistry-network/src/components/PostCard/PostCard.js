@@ -64,14 +64,14 @@ function PostCard({ artwork, isOwner }) {
 
             <Link to={`/artwork/${artwork.id}`} className="post-image-link">
                 <div className="post-image">
-                    {/* <img src={artwork.imageUrls[0]} alt={artwork.title} /> */}
+                    <img src={`http://localhost:3000/${JSON.parse(artwork.imageUrls)[0]}`} alt={artwork.title} />
                 </div>
             </Link>
 
             <div className="post-card-content">
                 <div className="post-author">
                     <Link to={`/profile/${artwork.author.id}`}>
-                        <img src={artwork.author.avatarUrl} alt={artwork.author.name} />
+                        <img src={`http://localhost:3000/${artwork.author.avatarUrl}`} alt={artwork.author.name} />
                     </Link>
                     <div className="author-details">
                         <Link to={`/profile/${artwork.author.id}`} className="post-author-link">
@@ -87,8 +87,8 @@ function PostCard({ artwork, isOwner }) {
                 <div className="card-footer">
                     <div className="price">{artwork.price.toLocaleString('vi-VN')} VNĐ</div>
                     <div className="card-stats">
-                        <span className="stat-item" title="Lượt cảm xúc"><i className="fa-solid fa-heart"></i> {artwork.stats.reactions}</span>
-                        <span className="stat-item" title="Lượt bình luận"><i className="fa-solid fa-comment"></i> {artwork.stats.comments}</span>
+                        <span className="stat-item" title="Lượt cảm xúc"><i className="fa-solid fa-heart"></i> {artwork._count.reactions}</span>
+                        <span className="stat-item" title="Lượt bình luận"><i className="fa-solid fa-comment"></i> {artwork._count.comments}</span>
                     </div>
                 </div>
             </div>

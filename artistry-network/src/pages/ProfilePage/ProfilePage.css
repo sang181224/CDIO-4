@@ -1,0 +1,275 @@
+/* File: src/pages/ProfilePage/ProfilePage.css (Phiên bản Hoàn chỉnh) */
+
+.profile-page {
+    padding-top: 80px;
+}
+
+/* --- Header Hồ sơ (Thiết kế mới) --- */
+.profile-header {
+    position: relative;
+    margin-bottom: 120px;
+    /* Tạo khoảng trống cho card thông tin bị đẩy xuống */
+}
+
+.profile-cover {
+    width: 100%;
+    height: 350px;
+    background-color: var(--color-surface);
+}
+
+.profile-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card thông tin chính, nằm đè lên ảnh bìa */
+.profile-info-card {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--color-surface);
+    border-radius: 20px;
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    padding-top: 80px;
+    /* Tạo khoảng trống cho avatar */
+    text-align: center;
+}
+
+/* Avatar nằm đè lên card thông tin */
+.profile-avatar-wrapper {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--color-surface);
+    object-fit: cover;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-name {
+    font-size: 2.2rem;
+    color: var(--color-text-primary);
+}
+
+.profile-level {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+}
+
+.profile-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.profile-stats strong {
+    color: var(--color-text-primary);
+}
+
+/* Nút hành động nằm trên ảnh bìa */
+.profile-actions {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    z-index: 5;
+}
+
+.btn-profile {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(26, 26, 26, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.btn-primary-profile {
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}
+
+.btn-primary-profile:hover {
+    background-color: var(--color-accent);
+    color: var(--color-background-dark);
+}
+
+.btn-secondary-profile {
+    color: var(--color-text-primary);
+    border: 1px solid #555;
+}
+
+.btn-secondary-profile:hover {
+    background-color: var(--color-surface);
+}
+
+/* --- Nội dung chính của Hồ sơ --- */
+.profile-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.profile-tabs {
+    display: flex;
+    gap: 1rem;
+    border-bottom: 1px solid #333;
+    margin-bottom: 2rem;
+}
+
+.tab-item {
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    position: relative;
+    border-bottom: 3px solid transparent;
+}
+
+.tab-item.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* --- CSS cho Tab Giới thiệu --- */
+.about-tab {
+    background-color: var(--color-surface);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-tab h3 {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-tab p {
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 1.5rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #333;
+    color: var(--color-text-secondary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: 1px solid #444;
+    font-size: 0.9rem;
+}
+
+
+/* --- Responsive --- */
+@media(max-width: 768px) {
+    .profile-header {
+        margin-bottom: 150px;
+    }
+
+    .profile-cover {
+        height: 250px;
+    }
+
+    .profile-info-card {
+        padding-top: 60px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+    }
+
+    .profile-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .profile-actions {
+        top: 0.5rem;
+        right: 0.5rem;
+    }
+
+    .btn-profile {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+
+    .profile-body {
+        padding: 1rem;
+    }
+
+    .profile-tabs {
+        justify-content: space-around;
+    }
+}
+
+.artwork-grid {
+    display: grid;
+    /* Hiển thị 3 cột trên màn hình lớn */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Responsive cho lưới */
+@media (max-width: 992px) {
+    .artwork-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 cột trên tablet */
+    }
+}
+
+@media (max-width: 768px) {
+    .artwork-grid {
+        grid-template-columns: 1fr;
+        /* 1 cột trên mobile */
+    }
+}
+
+/* Style cho thông báo "Chưa có tác phẩm" */
+.profile-content>p {
+    color: var(--color-text-muted);
+    text-align: center;
+    padding: 2rem;
+}

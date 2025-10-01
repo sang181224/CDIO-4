@@ -18,7 +18,8 @@
 .artwork-grid {
     display: grid;
     /* Mặc định 2 cột, mỗi cột chiếm 1 phần bằng nhau */
-    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 1.5rem;
 }
 

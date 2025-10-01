@@ -8,7 +8,7 @@ import './HomePage.css';
 import '../../components/Button/button.css';
 
 // Import các hàm API giả lập
-import { getFeaturedArtworks, getLatestArtworks } from '../../api/apiService';
+import { apiClient, getFeaturedArtworks, getLatestArtworks } from '../../api/apiService';
 
 const dummyArtists = [
     { id: 'user123', name: 'Elena Rodriguez', avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956' },
@@ -26,11 +26,14 @@ function HomePage() {
         const fetchData = async () => {
             try {
                 const [featuredData, latestData] = await Promise.all([
-                    getFeaturedArtworks(),
-                    getLatestArtworks()
+                    apiClient.get('/artwork/featured'),
+                    apiClient.get('/artwork/latest'),
+                    // getFeaturedArtworks(),
+                    // getLatestArtworks()
                 ]);
-                setFeaturedArtworks(featuredData);
-                setLatestArtworks(latestData);
+                console.log(featuredData)
+                setFeaturedArtworks(featuredData.data);
+                setLatestArtworks(latestData.data);
             } catch (err) {
                 setError('Không thể tải dữ liệu trang chủ. Vui lòng thử lại sau.');
             } finally {

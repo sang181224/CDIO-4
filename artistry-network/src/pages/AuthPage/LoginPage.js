@@ -4,8 +4,9 @@ import logo from '../../assets/images/logomain.jpg';
 import { useState } from 'react';
 import RenderError from '../../components/Error/RenderError';
 import { useAuth } from '../../hooks/useAuth';
-
 import { apiClient } from '../../api/apiService';
+
+// import { apiClient } from '../../api/apiService';
 
 function LoginPage() {
     const { login } = useAuth();
@@ -53,12 +54,12 @@ function LoginPage() {
                     login(response.data.user, response.data.token);
                     navigate('/');
 
-                    const payload = JSON.parse(atob(token.split(".")[1]));
-                    if (payload.role === "admin") {
-                        navigate('/admin');
-                    } else {
-                        navigate('/');
-                    }
+                    // const payload = JSON.parse(atob(token.split(".")[1]));
+                    // if (payload.role === "admin") {
+                    //     navigate('/admin');
+                    // } else {
+                    //     navigate('/');
+                    // }
                 })
                 .catch(error => {
                     if (error.response) {

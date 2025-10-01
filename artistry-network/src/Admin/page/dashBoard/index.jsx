@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import StatCard from "../../../Admin/components/statCard/index";
 import { Users, FileText, Receipt, DollarSign } from "lucide-react";
-import apiService from "../../../api/apiService";
+import { apiClient } from "../../../api/apiService";
+// import apiService from "../../../api/apiService";
 
 const Dashboard = () => {
   const [stats, setStats] = useState([
@@ -39,7 +40,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await apiService.get("/Admin/thongke/tong-quan");
+        const res = await apiClient.get("/Admin/thongke/tong-quan");
         const data = res.data;
         setStats((prev) =>
           prev.map((s) => {
