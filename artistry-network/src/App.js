@@ -23,6 +23,7 @@ import UploadPage from './pages/UploadPage/UploadPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
 import CategoryPage from './Admin/page/category/index';
+import ShopPage from './pages/ShopPage/ShopPage';
 
 const PrivateRoute = ({ children, role }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
@@ -50,6 +51,8 @@ function App() {
             <Route path="/upload" element={<UploadPage />} />
             <Route path="/profile/:userId" element={<ProfilePage />} />
             <Route path="/profile/edit" element={<EditProfilePage />} />
+            <Route path="/shop" element={<ShopPage />} />
+
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<Register />} />

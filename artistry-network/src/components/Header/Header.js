@@ -39,7 +39,7 @@ function Header() {
                 <nav>
                     <ul className="nav-menu">
                         <li><Link to={'/'}>Trang Chủ</Link></li>
-                        <li><a href="shop.html">Cửa Hàng</a></li>
+                        <li><Link to={'/shop'}>Cửa Hàng</Link></li>
                         <li className="nav-search">
                             <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm..." />
                         </li>
@@ -78,7 +78,7 @@ function Header() {
             <nav class={`mobile-nav ${isMenuOpen ? 'show-nav' : ''}`}>
                 <ul>
                     <li><Link to={'/'}>Trang Chủ</Link></li>
-                    <li><a href="/shop.html">Cửa Hàng</a></li>
+                    <li><Link href="/shop">Cửa Hàng</Link></li>
                     <li><a href="/notifications.html">Thông Báo</a></li>
                     <li><Link to={'/upload'} class="nav-button">Đăng Bài</Link></li>
                     <li><Link to={'/register'} class="nav-button-outline">Đăng Ký</Link></li>
