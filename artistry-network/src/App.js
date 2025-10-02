@@ -19,10 +19,10 @@ import DetailPage from './pages/DetailPage/DetailPage';
 import Dashboard from './Admin/page/dashBoard/index';
 import UsersPage from './Admin/page/users/index';
 import ContentManagement from './Admin/page/contentManagement/index';
-import InvoicesPage from './Admin/page/invoices/index';
 import UploadPage from './pages/UploadPage/UploadPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
+import CategoryPage from './Admin/page/category/index';
 
 const PrivateRoute = ({ children, role }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
@@ -67,7 +67,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="content" element={<ContentManagement />} />
-            <Route path="invoices" element={<InvoicesPage />} />
+            <Route path="category" element={<CategoryPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
