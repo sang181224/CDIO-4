@@ -9,6 +9,7 @@ import '../../components/Button/button.css';
 
 // Import các hàm API giả lập
 import { apiClient, getFeaturedArtworks, getLatestArtworks } from '../../api/apiService';
+import { useAuth } from '../../hooks/useAuth';
 
 const dummyArtists = [
     { id: 'user123', name: 'Elena Rodriguez', avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956' },
@@ -17,21 +18,28 @@ const dummyArtists = [
 ];
 
 function HomePage() {
+    const { token } = useAuth();
     const [featuredArtworks, setFeaturedArtworks] = useState([]);
     const [latestArtworks, setLatestArtworks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    // console.log(token);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                const config = {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                }
+                
                 const [featuredData, latestData] = await Promise.all([
-                    apiClient.get('/artwork/featured'),
-                    apiClient.get('/artwork/latest'),
+                    apiClient.get('/artwork/featured', config),
+                    apiClient.get('/artwork/latest', config ),
                     // getFeaturedArtworks(),
                     // getLatestArtworks()
                 ]);
-                console.log(featuredData)
                 setFeaturedArtworks(featuredData.data);
                 setLatestArtworks(latestData.data);
             } catch (err) {
@@ -41,7 +49,7 @@ function HomePage() {
             }
         };
         fetchData();
-    }, []);
+    }, [token]);
 
     if (isLoading) {
         return <div style={{ paddingTop: '100px', textAlign: 'center' }}>Đang tải trang...</div>;

@@ -38,7 +38,7 @@ function Header() {
                 </a>
                 <nav>
                     <ul className="nav-menu">
-                        <li><a href="index.html">Trang Chủ</a></li>
+                        <li><Link to={'/'}>Trang Chủ</Link></li>
                         <li><a href="shop.html">Cửa Hàng</a></li>
                         <li className="nav-search">
                             <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm..." />
@@ -50,7 +50,7 @@ function Header() {
                             <a href="notifications.html" className="nav-icon" title="Thông báo">🔔</a>
                         </li>
                         <li className="nav-user-profile">
-                            <a href="profile.html" className="user-avatar-link">
+                            <Link to={`/profile/${user?.id}`} className="user-avatar-link">
                                 {user && (
                                     <>
                                         <img src={user.avatarUrl ? `http://localhost:3000/${user.avatarUrl}` : ''} alt="User Avatar" className="header-avatar" />
@@ -58,15 +58,14 @@ function Header() {
                                     </>
                                 )}
 
-                            </a>
+                            </Link>
                             <div className="profile-dropdown">
-                                <a href="profile.html">Hồ sơ của tôi</a>
-                                <a href="#">Lịch sử đơn hàng</a>
+                                <Link to={`/profile/${user?.id}`}>Hồ sơ của tôi</Link>
                                 <a href="#">Cài đặt</a>
                                 <a onClick={logout} href="#">Đăng xuất</a>
                             </div>
                         </li>
-                        <li className="nav-guest"><a href="register.html" className="nav-button-outline">Đăng Ký</a></li>
+                        <li className="nav-guest"><Link to={'/register'} className="nav-button-outline">Đăng Ký</Link></li>
                         <li className="nav-guest"><Link to={'/login'} className="nav-button">Đăng Nhập</Link></li>
                     </ul>
                 </nav>
@@ -78,11 +77,11 @@ function Header() {
             </div>
             <nav class={`mobile-nav ${isMenuOpen ? 'show-nav' : ''}`}>
                 <ul>
-                    <li><a href="/index.html">Trang Chủ</a></li>
+                    <li><Link to={'/'}>Trang Chủ</Link></li>
                     <li><a href="/shop.html">Cửa Hàng</a></li>
                     <li><a href="/notifications.html">Thông Báo</a></li>
-                    <li><a href="./upload.html" class="nav-button">Đăng Bài</a></li>
-                    <li><a href="#signup" class="nav-button-outline">Đăng Ký</a></li>
+                    <li><Link to={'/upload'} class="nav-button">Đăng Bài</Link></li>
+                    <li><Link to={'/register'} class="nav-button-outline">Đăng Ký</Link></li>
                     <li><Link to={'/login'} class="nav-button">Đăng Nhập</Link></li>
                 </ul>
             </nav>

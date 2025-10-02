@@ -10,7 +10,7 @@ import DraftCard from '../../components/DraftCard/DraftCard';
 
 function ProfilePage() {
     const { userId } = useParams();
-    const { user: loggedInUser } = useAuth();
+    const { token } = useAuth();
 
     // State cho từng phần dữ liệu
     const [profileData, setProfileData] = useState(null);
@@ -27,14 +27,14 @@ function ProfilePage() {
             setIsLoading(true);
             setError(null);
             try {
-                const token = localStorage.getItem('authToken');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
+                console.log(config);
 
                 // Gọi song song các API chính để tăng tốc
                 const [profileRes, statsRes, artworksRes] = await Promise.all([
                     apiClient.get(`/profiles/${userId}`, config),
                     apiClient.get(`/profiles/${userId}/stats`),
-                    apiClient.get(`/profiles/${userId}/artworks`)
+                    apiClient.get(`/profiles/${userId}/artworks`, config)
                 ]);
 
                 // Gán dữ liệu vào state
@@ -98,7 +98,7 @@ function ProfilePage() {
                     <div className="draft-list">
                         {drafts.length > 0 ? (
                             drafts.map(draft => (
-                                <DraftCard key={draft.id} draft={draft}/>
+                                <DraftCard key={draft.id} draft={draft} />
                                 // Bạn có thể tạo một component DraftCard riêng cho đẹp hơn
                                 // <div key={draft.id} className="draft-card">
                                 //     {/* ... nội dung bản nháp ... */}
@@ -124,7 +124,11 @@ function ProfilePage() {
                     {isOwner ? (
                         <button className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</button>
                     ) : (
-                        <button className="btn-profile btn-primary-profile">Theo dõi</button>
+                        <div style={{gap: '5px', display: 'flex'}}>
+                            <button className="btn-profile btn-primary-profile">Theo dõi</button>
+                            <button className="btn-profile btn-primary-profile">Nhắn tin</button>
+                        </div>
+
                     )}
                 </div>
                 <div className="profile-info-card">
