@@ -68,6 +68,7 @@ function ProfilePage() {
 
     const { isOwner, profile } = profileData;
 
+    // Xử lý khi nhấn nút "Nhắn tin"
     const handleStartChat = () => {
         // profile chứa thông tin người đang xem: id, name, avatarUrl
         setChattingWith({
@@ -172,7 +173,9 @@ function ProfilePage() {
                 </section>
             </div>
 
+            {/* Hiển thị cửa sổ chat */}
             {chattingWith && (
+                // để ChatWindow tự handle việc đóng cửa sổ chat
                 <ChatWindow receiver={chattingWith} onClose={() => setChattingWith(null)} />
             )}
         </main>

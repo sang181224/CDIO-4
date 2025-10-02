@@ -1,6 +1,8 @@
 import './App.css';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Context
 import { AuthContext, AuthProvider } from './contexts/AuthContext';
@@ -40,38 +42,52 @@ const PrivateRoute = ({ children, role }) => {
 
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          {/* USER */}
-          <Route element={<MainLayout />}>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/artwork/:id" element={<DetailPage />} />
-            <Route path="/upload" element={<UploadPage />} />
-            <Route path="/profile/:userId" element={<ProfilePage />} />
-            <Route path="/profile/edit" element={<EditProfilePage />} />
-          </Route>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<Register />} />
+    <div>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* USER */}
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/artwork/:id" element={<DetailPage />} />
+              <Route path="/upload" element={<UploadPage />} />
+              <Route path="/profile/:userId" element={<ProfilePage />} />
+              <Route path="/profile/edit" element={<EditProfilePage />} />
+            </Route>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
 
 
-          {/* ADMIN */}
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute role="admin">
-                <AdminLayout />
-              </PrivateRoute>
-            }
-          >
-            <Route index element={<Dashboard />} />
-            <Route path="users" element={<UsersPage />} />
-            <Route path="content" element={<ContentManagement />} />
-            <Route path="category" element={<CategoryPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+            {/* ADMIN */}
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute role="admin">
+                  <AdminLayout />
+                </PrivateRoute>
+              }
+            >
+              <Route index element={<Dashboard />} />
+              <Route path="users" element={<UsersPage />} />
+              <Route path="content" element={<ContentManagement />} />
+              <Route path="category" element={<CategoryPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
+    </div>
   );
 }
 

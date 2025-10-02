@@ -1,40 +1,62 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import StatusBadge from "../../../Admin/components/table/StatusBadge";
-import { Eye, Edit, Trash2, Search } from "lucide-react";
+import { Search, Check, X } from "lucide-react";
+import { apiClient } from "../../../api/apiService";
+import { toast } from "react-toastify";
+import ArtworkDetailModal from "./ArtworkDetailModal";
 
 const ContentManagement = () => {
-  const artworks = [
-    {
-      id: 1,
-      title: "Tác phẩm 1",
-      artist: "Nguyễn Văn A",
-      category: "Hội họa",
-      price: "3,500,000 VND",
-      status: "Đã duyệt",
-      uploadDate: "2024-03-01",
-      views: 1250,
-    },
-    {
-      id: 2,
-      title: "Tác phẩm 2",
-      artist: "Lê Văn C",
-      category: "Điêu khắc",
-      price: "5,200,000 VND",
-      status: "Chờ duyệt",
-      uploadDate: "2024-03-05",
-      views: 850,
-    },
-    {
-      id: 3,
-      title: "Tác phẩm 3",
-      artist: "Nguyễn Văn A",
-      category: "Nhiếp ảnh",
-      price: "2,800,000 VND",
-      status: "Từ chối",
-      uploadDate: "2024-02-28",
-      views: 320,
-    },
-  ];
+  const [artworks, setArtworks] = useState([]); // Danh sách tác phẩm đang chờ xử lý
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedArtwork, setSelectedArtwork] = useState(null); // Tác phẩm được chọn để xem chi tiết
+
+  // Lấy các tác phẩm đang chờ xử lý từ API
+  const fetchPendingArtworks = async () => {
+    setIsLoading(true);
+    try {
+      const res = await apiClient.get("/admin/artworks/pending");
+      setArtworks(res.data);
+    } catch (err) {
+      setError("Không thể tải danh sách tác phẩm. Vui lòng thử lại.");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Gọi API khi component load
+  useEffect(() => {
+    fetchPendingArtworks();
+  }, []);
+
+  // Xử lý duyệt hoặc từ chối tác phẩm
+  const handleAction = async (action, artworkId) => {
+    // Lưu lại trạng thái ban đầu để hoàn tác nếu có lỗi
+    const originalArtworks = [...artworks];
+    // Cập nhật UI ngay lập tức để tăng trải nghiệm người dùng
+    setArtworks(artworks.filter((art) => art.id !== artworkId));
+    if (selectedArtwork) setSelectedArtwork(null); // Đóng modal nếu đang mở
+
+    try {
+      if (action === "approve") {
+        await apiClient.put(`/admin/artworks/approve/${artworkId}`);
+        toast.success("Đã duyệt tác phẩm thành công!");
+      } else {
+        await apiClient.put(`/admin/artworks/reject/${artworkId}`);
+        toast.success("Đã từ chối tác phẩm.");
+      }
+    } catch (err) {
+      // Hoàn tác lại nếu có lỗi
+      setArtworks(originalArtworks);
+      toast.error("Thao tác thất bại. Vui lòng thử lại.");
+      console.error(err);
+    }
+  };
+
+  
+  const handleApprove = (artworkId) => handleAction("approve", artworkId);
+  const handleReject = (artworkId) => handleAction("reject", artworkId);
 
   return (
     <div className="space-y-6">
@@ -66,10 +88,7 @@ const ContentManagement = () => {
                 Tác phẩm
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                Nghệ sĩ
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
-                Danh mục
+                Tác giả
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
                 Giá
@@ -89,50 +108,85 @@ const ContentManagement = () => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-700">
-            {artworks.map((art) => (
-              <tr
-                key={art.id}
-                className="bg-gray-700 hover:bg-gray-600 transition-colors"
-              >
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.title}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.artist}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.category}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.price}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <StatusBadge status={art.status} />
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.uploadDate}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  {art.views.toLocaleString()}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
-                  <div className="flex space-x-2">
-                    <button className="p-1 text-blue-400 hover:text-blue-300">
-                      <Eye className="w-4 h-4" />
-                    </button>
-                    <button className="p-1 text-green-400 hover:text-green-300">
-                      <Edit className="w-4 h-4" />
-                    </button>
-                    <button className="p-1 text-red-400 hover:text-red-300">
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
+            {isLoading ? (
+              <tr>
+                <td colSpan="7" className="text-center py-10 text-gray-400">
+                  Đang tải dữ liệu...
                 </td>
               </tr>
-            ))}
+            ) : error ? (
+              <tr>
+                <td colSpan="7" className="text-center py-10 text-red-400">
+                  {error}
+                </td>
+              </tr>
+            ) : artworks.length === 0 ? (
+              <tr>
+                <td colSpan="7" className="text-center py-10 text-gray-400">
+                  Không có tác phẩm nào đang chờ duyệt.
+                </td>
+              </tr>
+            ) : (
+              artworks.map((art) => (
+                <tr
+                  key={art.id}
+                  className="bg-gray-700 hover:bg-gray-600 transition-colors"
+                >
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-white font-medium">
+                    <button
+                      onClick={() => setSelectedArtwork(art)}
+                      className="hover:text-purple-400 hover:underline text-left"
+                    >
+                      {art.title}
+                    </button>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    {art.author.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    {art.price.toLocaleString("vi-VN")} VND
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <StatusBadge status={art.status} />
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    {new Date(art.createdAt).toLocaleDateString("vi-VN")}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    {art.views.toLocaleString()}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => handleAction("approve", art.id)}
+                        className="p-1 text-green-400 hover:text-green-300"
+                        title="Duyệt"
+                      >
+                        <Check className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={() => handleAction("reject", art.id)}
+                        className="p-1 text-red-400 hover:text-red-300"
+                        title="Từ chối"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
+      {selectedArtwork && (
+        <ArtworkDetailModal
+          artwork={selectedArtwork}
+          onClose={() => setSelectedArtwork(null)}
+          onApprove={handleApprove}
+          onReject={handleReject}
+        />
+      )}
     </div>
   );
 };

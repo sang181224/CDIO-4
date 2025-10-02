@@ -4,18 +4,18 @@ import { apiClient, pusherClient } from '../../api/apiService';
 import './Chat.css';
 
 const ChatWindow = ({ receiver, onClose }) => {
-    const { user: currentUser } = useAuth();
+    const { user: currentUser } = useAuth(); // người gửi
     const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
+    const [newMessage, setNewMessage] = useState(''); // nội dung input
     const [loading, setLoading] = useState(true);
-    const messagesEndRef = useRef(null);
+    const messagesEndRef = useRef(null); // cuộn
 
-    // Hàm cuộn xuống dưới cùng mỗi khi có tin nhắn mới
+    // Hàm cuộn xuống cuối
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Lấy tin nhắn khi mở cửa sổ chat
+    // 1. Lấy lịch sử tin nhắn khi mở cửa sổ chat
     useEffect(() => {
         const fetchMessages = async () => {
             try {
@@ -23,50 +23,59 @@ const ChatWindow = ({ receiver, onClose }) => {
                 const response = await apiClient.get(`/messages/${receiver.id}`);
                 setMessages(response.data);
             } catch (error) {
-                console.error("Error fetching messages:", error);
+                console.error("Lỗi khi tải tin nhắn:", error);
             } finally {
+                // Bỏ trạng thái loading dù thành công hay lỗi
                 setLoading(false);
             }
         };
 
-        // Chỉ fetch khi có người nhận
         if (receiver?.id) {
             fetchMessages();
         }
     }, [receiver]);
 
-    // Cuộn xuống dưới cùng khi có tin nhắn mới
+    // 2. Tự động cuộn xuống khi có tin nhắn mới
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
 
-    // Thiết lập Pusher để nhận tin nhắn mới
+
+    // Lắng nghe Pusher cho tin nhắn mới (theo cặp user), cập nhật có tin nhắn mới
     useEffect(() => {
+
+        //ngăn việc thực thi các đoạn code phía dưới khi dữ liệu chưa sẵn sàng, tránh gây ra lỗi.
         if (!currentUser?.id || !receiver?.id) return;
 
-        // Sắp xếp ID để đảm bảo tên channel nhất quán dù ai là người gửi hay nhận 
+        //cùng "đăng ký" và "lắng nghe" trên cùng một kênh duy nhất
         const ids = [currentUser.id, receiver.id].sort((a, b) => a - b);
         const channelName = `private-chat-${ids[0]}-${ids[1]}`;
-
         const channel = pusherClient.subscribe(channelName);
 
-        // Lắng nghe sự kiện 'new-message' từ server 
-        channel.bind('new-message', (newMessage) => {
-            setMessages((prevMessages) => [...prevMessages, newMessage]);
+        // lắng nghe sự kiện 'message:new', incomingMessage là dữ liệu tin nhắn mới nhận được từ server
+        channel.bind('message:new', (incomingMessage) => {
+            setMessages((prevMessages) => {
+                // tránh trùng lặp tin nhắn
+                if (prevMessages.find(msg => msg.id === incomingMessage.id)) {
+                    return prevMessages;
+                }
+                return [...prevMessages, incomingMessage];
+            });
         });
 
-        // Cleanup khi component unmount hoặc receiver thay đổi 
+        // Hủy đăng ký và hủy lắng nghe khi currentUser/receiver thay đổi, tránh rò rỉ bộ nhớ
         return () => {
-            pusherClient.unsubscribe(channelName);
-            channel.unbind_all();
+            channel.unbind_all();// hủy tất cả hàm lắng nghe sự kiện
+            pusherClient.unsubscribe(channelName); // hủy đăng ký kênh để không nhận tin nhắn nữa
         };
     }, [currentUser, receiver]);
 
 
-    // Hàm gửi tin nhắn 
+    // Gửi tin nhắn
     const handleSendMessage = async (e) => {
+        // Ngăn form submit reload trang
         e.preventDefault();
-        // nếu tin nhắn rỗng thì không gửi
+        // .trim() sẽ loại bỏ các khoảng trắng ở đầu và cuối chuỗi.
         if (!newMessage.trim()) return;
 
         const messageData = {
@@ -74,19 +83,21 @@ const ChatWindow = ({ receiver, onClose }) => {
             content: newMessage,
         };
 
+        setNewMessage('');
+
         try {
-            // Gửi tin nhắn lên server
             const response = await apiClient.post('/messages', messageData);
-            // Không cần thêm tin nhắn ở đây nữa vì Pusher sẽ lo việc đó
-            // setMessages((prev) => [...prev, response.data]);
-            // sau khi gửi xong thì xóa ô nhập tin nhắn
-            setNewMessage('');
+
+            // Optimistic update (tạm thời thêm tin nhắn vào giao diện ngay lập tức)
+            setMessages((prev) => [...prev, response.data]);
+
         } catch (error) {
-            console.error("Error sending message:", error);
+            console.error("Lỗi khi gửi tin nhắn:", error);
+            alert("Không thể gửi tin nhắn, vui lòng thử lại.");
         }
     };
 
-    // Nếu không có người nhận thì không hiển thị gì
+    // Nếu chưa có người nhận, không hiển thị gì
     if (!receiver) return null;
 
     return (
@@ -108,18 +119,19 @@ const ChatWindow = ({ receiver, onClose }) => {
                             className={`message-bubble ${msg.senderId === currentUser.id ? 'sent' : 'received'}`}
                         >
                             <p>{msg.content}</p>
-                            <span className="message-time">{new Date(msg.createdAt).toLocaleTimeString()}</span>
+                            <span className="message-time">{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
                     ))
                 )}
                 <div ref={messagesEndRef} />
             </div>
-            <form className="chat-footer" onSubmit={handleSendMessage}>
+            <form className="chat-footer text-black" onSubmit={handleSendMessage}>
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                     placeholder="Nhập tin nhắn..."
+                    autoFocus
                 />
                 <button type="submit">Gửi</button>
             </form>
