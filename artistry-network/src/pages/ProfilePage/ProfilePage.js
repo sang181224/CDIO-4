@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
-// import '../../components/Layout/Layout.css';
 import PostCard from '../../components/PostCard/PostCard';
 import './ProfilePage.css';
 import { apiClient } from '../../api/apiService';
 import DraftCard from '../../components/DraftCard/DraftCard';
+import ChatWindow from '../../components/Chat/ChatWindow';
 
 function ProfilePage() {
     const { userId } = useParams();
@@ -17,6 +16,9 @@ function ProfilePage() {
     const [stats, setStats] = useState(null);
     const [artworks, setArtworks] = useState([]);
     const [drafts, setDrafts] = useState([]);
+
+    // State cho cửa sổ chat
+    const [chattingWith, setChattingWith] = useState(null);
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -66,6 +68,15 @@ function ProfilePage() {
 
     const { isOwner, profile } = profileData;
 
+    const handleStartChat = () => {
+        // profile chứa thông tin người đang xem: id, name, avatarUrl
+        setChattingWith({
+            id: profile.id,
+            name: profile.name,
+            avatarUrl: profile.avatarUrl
+        });
+    };
+
     const renderTabContent = () => {
         switch (activeTab) {
             case 'artworks':
@@ -98,7 +109,7 @@ function ProfilePage() {
                     <div className="draft-list">
                         {drafts.length > 0 ? (
                             drafts.map(draft => (
-                                <DraftCard key={draft.id} draft={draft}/>
+                                <DraftCard key={draft.id} draft={draft} />
                                 // Bạn có thể tạo một component DraftCard riêng cho đẹp hơn
                                 // <div key={draft.id} className="draft-card">
                                 //     {/* ... nội dung bản nháp ... */}
@@ -124,7 +135,10 @@ function ProfilePage() {
                     {isOwner ? (
                         <button className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</button>
                     ) : (
-                        <button className="btn-profile btn-primary-profile">Theo dõi</button>
+                        <>
+                            <button className="btn-profile btn-primary-profile">Theo dõi</button>
+                            <button onClick={handleStartChat} className="btn-profile btn-secondary-profile">Nhắn tin</button>
+                        </>
                     )}
                 </div>
                 <div className="profile-info-card">
@@ -157,6 +171,10 @@ function ProfilePage() {
                     {renderTabContent()}
                 </section>
             </div>
+
+            {chattingWith && (
+                <ChatWindow receiver={chattingWith} onClose={() => setChattingWith(null)} />
+            )}
         </main>
     );
 }
