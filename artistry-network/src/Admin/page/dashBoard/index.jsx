@@ -23,7 +23,7 @@ const Dashboard = () => {
     },
     {
       title: "Doanh thu tháng",
-      value: "₫125.5M", // giữ dữ liệu fake
+      value: "₫125.5M", 
       change: -3,
       Icon: DollarSign,
       gradient: "from-green-500 to-emerald-500",

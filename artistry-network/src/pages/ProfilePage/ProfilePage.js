@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import axios from 'axios';
 import { useAuth } from '../../hooks/useAuth';
-// import '../../components/Layout/Layout.css';
 import PostCard from '../../components/PostCard/PostCard';
 import './ProfilePage.css';
 import { apiClient } from '../../api/apiService';
 import DraftCard from '../../components/DraftCard/DraftCard';
+import ChatWindow from '../../components/Chat/ChatWindow';
 
 function ProfilePage() {
     const { userId } = useParams();
@@ -17,6 +16,9 @@ function ProfilePage() {
     const [stats, setStats] = useState(null);
     const [artworks, setArtworks] = useState([]);
     const [drafts, setDrafts] = useState([]);
+
+    // State cho cửa sổ chat
+    const [chattingWith, setChattingWith] = useState(null);
 
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -65,6 +67,16 @@ function ProfilePage() {
     if (!profileData) return <div style={{ paddingTop: '120px', textAlign: 'center' }}>Không tìm thấy hồ sơ.</div>;
 
     const { isOwner, profile } = profileData;
+
+    // Xử lý khi nhấn nút "Nhắn tin"
+    const handleStartChat = () => {
+        // profile chứa thông tin người đang xem: id, name, avatarUrl
+        setChattingWith({
+            id: profile.id,
+            name: profile.name,
+            avatarUrl: profile.avatarUrl
+        });
+    };
 
     const renderTabContent = () => {
         switch (activeTab) {
@@ -124,10 +136,11 @@ function ProfilePage() {
                     {isOwner ? (
                         <button className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</button>
                     ) : (
-                        <div style={{gap: '5px', display: 'flex'}}>
+
+                        <>
                             <button className="btn-profile btn-primary-profile">Theo dõi</button>
-                            <button className="btn-profile btn-primary-profile">Nhắn tin</button>
-                        </div>
+                            <button onClick={handleStartChat} className="btn-profile btn-secondary-profile">Nhắn tin</button>
+                        </>
 
                     )}
                 </div>
@@ -161,6 +174,12 @@ function ProfilePage() {
                     {renderTabContent()}
                 </section>
             </div>
+
+            {/* Hiển thị cửa sổ chat */}
+            {chattingWith && (
+                // để ChatWindow tự handle việc đóng cửa sổ chat
+                <ChatWindow receiver={chattingWith} onClose={() => setChattingWith(null)} />
+            )}
         </main>
     );
 }
