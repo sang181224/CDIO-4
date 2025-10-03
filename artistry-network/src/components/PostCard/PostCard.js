@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PostCard.css';
+import { apiClient } from '../../api/apiService';
+import { useAuth } from '../../hooks/useAuth';
 
 // Dữ liệu về các reaction để dễ quản lý
 const reactions = {
@@ -13,25 +15,75 @@ const reactions = {
 };
 
 function PostCard({ artwork, isOwner }) {
+    const { token } = useAuth();
     // --- STATE ---
     const [currentReaction, setCurrentReaction] = useState(artwork.userReaction); // Lấy trạng thái ban đầu từ prop
+    const [reactionCount, setReactionCount] = useState(artwork._count.reactions);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-
+    // console.log(artwork);       
     let leaveTimeout;
     let longPressTimer;
     let isLongPress = false;
 
-    // --- EVENT HANDLERS ---
-    const handleLikeClick = () => {
-        if (isLongPress) return;
-        setCurrentReaction(currentReaction ? null : 'like');
-        // ... API call logic
-    };
-
-    const handleReactionSelect = (reactionType) => {
+    const handleReactionSelect = async (reactionType) => {
+        const oldReaction = currentReaction;
         setCurrentReaction(reactionType);
         setIsPopupVisible(false);
-        // ... API call logic
+
+        // Chỉ tăng count nếu trước đó chưa có reaction
+        if (!oldReaction) {
+            setReactionCount(prev => prev + 1);
+        }
+
+        try {
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer: ' + token
+                }
+            }
+            apiClient.post(`/artwork/${artwork.id}/react`, { reactionType }, config);
+        } catch (error) {
+            console.error("Lỗi cập nhật reaction:", error);
+            setCurrentReaction(oldReaction);
+            if (!oldReaction) setReactionCount(prev => prev - 1);
+        }
+    }
+
+
+    const handleLikeClick = async () => {
+        if (isLongPress) return;
+
+        const oldReaction = currentReaction;
+        const newReaction = oldReaction ? null : 'like';
+
+        // 1. Cập nhật giao diện lạc quan
+        setCurrentReaction(newReaction);
+        if (newReaction && !oldReaction) {
+            setReactionCount(prev => prev + 1); // Tăng count
+        } else if (!newReaction && oldReaction) {
+            setReactionCount(prev => prev - 1); // Giảm count
+        }
+
+        // 2. Gọi API
+        try {
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer: ' + token
+                }
+            }
+            if (newReaction) {
+                apiClient.post(`/artwork/${artwork.id}/react`, { reactionType: newReaction }, config);
+                console.log(newReaction);
+            } else {
+                apiClient.delete(`/artwork/${artwork.id}/react`, config);
+            }
+        } catch (error) {
+            console.error("Lỗi cập nhật reaction:", error);
+            // 3. Nếu lỗi, quay lại trạng thái cũ
+            setCurrentReaction(oldReaction);
+            if (newReaction && !oldReaction) setReactionCount(prev => prev - 1);
+            if (!newReaction && oldReaction) setReactionCount(prev => prev + 1);
+        }
     };
 
     const handleMouseEnter = () => { clearTimeout(leaveTimeout); setIsPopupVisible(true); };
@@ -87,7 +139,7 @@ function PostCard({ artwork, isOwner }) {
                 <div className="card-footer">
                     <div className="price">{artwork.price.toLocaleString('vi-VN')} VNĐ</div>
                     <div className="card-stats">
-                        <span className="stat-item" title="Lượt cảm xúc"><i className="fa-solid fa-heart"></i> {artwork._count.reactions}</span>
+                        <span className="stat-item" title="Lượt cảm xúc"><i className="fa-solid fa-heart"></i> {reactionCount}</span>
                         <span className="stat-item" title="Lượt bình luận"><i className="fa-solid fa-comment"></i> {artwork._count.comments}</span>
                     </div>
                 </div>

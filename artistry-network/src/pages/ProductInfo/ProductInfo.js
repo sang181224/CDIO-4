@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './ProductInfo.css';
+import { useAuth } from '../../hooks/useAuth';
+import { apiClient } from '../../api/apiService';
 
 const reactions = {
     like: { icon: 'fa-solid fa-thumbs-up', title: 'Thích', color: 'var(--like-color)' },
@@ -12,19 +14,72 @@ const reactions = {
 };
 
 function ProductInfo({ artwork }) {
-    const [currentReaction, setCurrentReaction] = useState(artwork.camXucCuaToi);
+    const { token } = useAuth();
+    const [currentReaction, setCurrentReaction] = useState(artwork.userReaction);
+    const [reactionCount, setReactionCount] = useState(artwork._count.reactions);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
     let leaveTimeout, longPressTimer;
     let isLongPress = false;
 
-    const handleLikeClick = () => {
-        if (isLongPress) return;
-        setCurrentReaction(currentReaction ? null : 'like');
-    };
-
-    const handleReactionSelect = (reactionType) => {
+    const handleReactionSelect = async (reactionType) => {
+        const oldReaction = currentReaction;
         setCurrentReaction(reactionType);
         setIsPopupVisible(false);
+
+        // Chỉ tăng count nếu trước đó chưa có reaction
+        if (!oldReaction) {
+            setReactionCount(prev => prev + 1);
+        }
+
+        try {
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
+            apiClient.post(`/artwork/${artwork.id}/react`, { reactionType }, config);
+        } catch (error) {
+            console.error("Lỗi cập nhật reaction:", error);
+            setCurrentReaction(oldReaction);
+            if (!oldReaction) setReactionCount(prev => prev - 1);
+        }
+    }
+
+
+    const handleLikeClick = async () => {
+        if (isLongPress) return;
+
+        const oldReaction = currentReaction;
+        const newReaction = oldReaction ? null : 'like';
+
+        // 1. Cập nhật giao diện lạc quan
+        setCurrentReaction(newReaction);
+        if (newReaction && !oldReaction) {
+            setReactionCount(prev => prev + 1); // Tăng count
+        } else if (!newReaction && oldReaction) {
+            setReactionCount(prev => prev - 1); // Giảm count
+        }
+
+        // 2. Gọi API
+        try {
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
+            if (newReaction) {
+                apiClient.post(`/artwork/${artwork.id}/react`, { reactionType: newReaction }, config);
+                console.log(newReaction);
+            } else {
+                apiClient.delete(`/artwork/${artwork.id}/react`, config);
+            }
+        } catch (error) {
+            console.error("Lỗi cập nhật reaction:", error);
+            // 3. Nếu lỗi, quay lại trạng thái cũ
+            setCurrentReaction(oldReaction);
+            if (newReaction && !oldReaction) setReactionCount(prev => prev - 1);
+            if (!newReaction && oldReaction) setReactionCount(prev => prev + 1);
+        }
     };
 
     const handleMouseEnter = () => { clearTimeout(leaveTimeout); setIsPopupVisible(true); };
@@ -42,19 +97,19 @@ function ProductInfo({ artwork }) {
     return (
         <div className="product-info">
             <div className="artist-info">
-                <Link to={`/profile/${artwork.nguoiTao.id}`}>
-                    <img src={artwork.nguoiTao.anhDaiDien} alt={artwork.nguoiTao.ten} className="artist-avatar" />
+                <Link to={`/profile/${artwork.author.id}`}>
+                    <img src={`http://localhost:3000/${artwork.author.avatarUrl}`} alt={artwork.author.name} className="artist-avatar" />
                 </Link>
                 <div>
-                    <Link to={`/profile/${artwork.nguoiTao.id}`} className="artist-name">
-                        {artwork.nguoiTao.ten}
+                    <Link to={`/profile/${artwork.author.id}`} className="artist-name">
+                        {artwork.author.name}
                     </Link>
                     <button className="follow-button">Theo dõi</button>
                 </div>
             </div>
 
-            <h1 className="product-title">{artwork.ten}</h1>
-            <p className="product-price">{artwork.gia}</p>
+            <h1 className="product-title">{artwork.title}</h1>
+            <p className="product-price">{artwork.price.toLocaleString('vi-VN')} VNĐ</p>
 
             <div className="product-social-actions">
                 <button
@@ -91,20 +146,34 @@ function ProductInfo({ artwork }) {
             </div>
 
             <div className="action-buttons">
-                <a href={`mailto:${artwork.nguoiTao.email}`} className="btn btn-primary">
+                <a href={artwork.author.email ? `mailto:${artwork.author.email}` : '#'} className="btn btn-primary">
                     Liên hệ nghệ sĩ
                 </a>
             </div>
-
+            <div className="product-stats">
+                <div className="stat-item">
+                    <i className="fa-solid fa-heart"></i>
+                    <span>{reactionCount} lượt thích</span>
+                </div>
+                <div className="stat-item">
+                    <i className="fa-solid fa-comment"></i>
+                    <span>{artwork._count.comments} bình luận</span>
+                </div>
+                <div className="stat-item">
+                    <i className="fa-solid fa-eye"></i>
+                    <span>{artwork.views} lượt xem</span>
+                </div>
+            </div>
             <div className="product-description">
                 <h4>Mô tả tác phẩm</h4>
-                <p>{artwork.moTaDayDu}</p>
+                <p>{artwork.description}</p>
             </div>
 
             <div className="product-meta">
-                <p><strong>Kích thước:</strong> {artwork.thuocTinh.kichThuoc}</p>
-                <p><strong>Chất liệu:</strong> {artwork.thuocTinh.chatLieu}</p>
-                <p><strong>Năm sáng tác:</strong> {artwork.thuocTinh.namSangTac}</p>
+                <p><strong>Kích thước:</strong> {artwork.dimensions}</p>
+                {/* <p><strong>Chất liệu:</strong> {artwork.thuocTinh.chatLieu}</p> */}
+                {/* { year = new Date(createdAt).getFullYear() } */}
+                <p><strong>Năm sáng tác:</strong> {artwork.createdAt}</p>
             </div>
         </div>
     );

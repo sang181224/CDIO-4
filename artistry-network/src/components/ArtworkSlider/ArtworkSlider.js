@@ -32,7 +32,7 @@ function ArtworkSlider({ images }) {
                 <div className="slider-wrapper" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                     {images.map((imageUrl, index) => (
                         <div className="slider-slide" key={index}>
-                            <img src={imageUrl} alt={`Artwork view ${index + 1}`} />
+                            <img src={`http://localhost:3000/${imageUrl}`} alt={`Artwork view ${index + 1}`} />
                         </div>
                     ))}
                 </div>
@@ -42,7 +42,7 @@ function ArtworkSlider({ images }) {
                 {images.map((imageUrl, index) => (
                     <img
                         key={index}
-                        src={imageUrl}
+                        src={`http://localhost:3000/${imageUrl}`}
                         alt={`Thumbnail ${index + 1}`}
                         className={`thumbnail-img ${index === currentIndex ? 'active' : ''}`}
                         onClick={() => goToSlide(index)}

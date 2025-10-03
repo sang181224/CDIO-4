@@ -56,6 +56,21 @@
     margin-bottom: 2rem;
 }
 
+.product-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #444;
+    color: var(--color-text-secondary);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 /* --- Mô tả và thông tin meta --- */
 .product-description h4 {
     font-size: 1.2rem;

@@ -25,6 +25,7 @@ import UploadPage from './pages/UploadPage/UploadPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import EditProfilePage from './pages/ProfilePage/EditProfilePage';
 import CategoryPage from './Admin/page/category/index';
+import ShopPage from './pages/ShopPage/ShopPage';
 
 const PrivateRoute = ({ children, role }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
@@ -56,6 +57,7 @@ function App() {
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
+
 
 
             {/* ADMIN */}

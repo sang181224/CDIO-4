@@ -9,7 +9,7 @@ import ChatWindow from '../../components/Chat/ChatWindow';
 
 function ProfilePage() {
     const { userId } = useParams();
-    const { user: loggedInUser } = useAuth();
+    const { token } = useAuth();
 
     // State cho từng phần dữ liệu
     const [profileData, setProfileData] = useState(null);
@@ -29,14 +29,14 @@ function ProfilePage() {
             setIsLoading(true);
             setError(null);
             try {
-                const token = localStorage.getItem('authToken');
                 const config = { headers: { Authorization: `Bearer ${token}` } };
+                console.log(config);
 
                 // Gọi song song các API chính để tăng tốc
                 const [profileRes, statsRes, artworksRes] = await Promise.all([
                     apiClient.get(`/profiles/${userId}`, config),
                     apiClient.get(`/profiles/${userId}/stats`),
-                    apiClient.get(`/profiles/${userId}/artworks`)
+                    apiClient.get(`/profiles/${userId}/artworks`, config)
                 ]);
 
                 // Gán dữ liệu vào state
@@ -136,10 +136,12 @@ function ProfilePage() {
                     {isOwner ? (
                         <button className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</button>
                     ) : (
+
                         <>
                             <button className="btn-profile btn-primary-profile">Theo dõi</button>
                             <button onClick={handleStartChat} className="btn-profile btn-secondary-profile">Nhắn tin</button>
                         </>
+
                     )}
                 </div>
                 <div className="profile-info-card">
