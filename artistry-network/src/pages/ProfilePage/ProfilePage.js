@@ -133,7 +133,7 @@ function ProfilePage() {
                 </div>
                 <div className="profile-info-card">
                     <div className="profile-avatar-wrapper">
-                        <img src={profile.avatarUrl} alt={profile.name} className="profile-avatar" />
+                        <img src={`http://localhost:3000/${profile.avatarUrl}`} alt={profile.name} className="profile-avatar" />
                     </div>
                     <div className="profile-details">
                         <h1 className="profile-name">{profile.name}</h1>

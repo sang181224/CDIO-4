@@ -6,25 +6,21 @@ import { useAuth } from '../../hooks/useAuth'; // Giả sử để lấy avatar 
 // Dữ liệu giả lập
 
 
-function CommentForm ({ artworkId }) {
+function CommentForm({ blogId, parentId, handlePostSuccess, replyingToComment, onCancelReply }) {
+    const { token } = useAuth();
     const { isAuthenticated, user } = useAuth(); // Lấy thông tin user đã đăng nhập
-
-    const [newComment, setNewComment] = useState('');
-
-    // useEffect(() => {
-    //     const fetchComments = async () => {
-    //         const response = await axios.get(`http://localhost:3100/api/artworks/${artworkId}/comments`);
-    //         setComments(response.data);
-    //     };
-    //     fetchComments();
-    // }, [artworkId]);
+    const [content, setContent] = useState('');
 
     const handleCommentSubmit = (e) => {
         e.preventDefault();
-        if (newComment.trim() === '') return;
-        // Logic gửi comment mới lên server ở đây
-        console.log('Submitting comment:', newComment);
-        setNewComment(''); // Xóa nội dung trong ô input
+        
+        if(!token){
+            console.error('Bạn cần đăng nhập để bình luận');
+            return;
+        }
+        if (content.trim() === '') return;
+        console.log('Submitting comment:', content);
+        setContent('');
     };
 
     return (
@@ -41,18 +37,18 @@ function CommentForm ({ artworkId }) {
                         <textarea
                             rows="3"
                             placeholder="Viết bình luận của bạn..."
-                            value={newComment}
-                            onChange={(e) => setNewComment(e.target.value)}
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
                         />
                         <button type="submit" className="btn btn-primary">Gửi</button>
                     </div>
                 </form>
             )}
 
-            
+
         </section>
     );
 }
 
 export default CommentForm
-;
+    ;
