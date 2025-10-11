@@ -265,6 +265,9 @@
     transition: all 0.3s ease;
     pointer-events: none;
 }
+.card-delete-button {
+    right: 16rem;
+}
 
 .post-card.is-owner:hover .card-edit-button {
     opacity: 1;

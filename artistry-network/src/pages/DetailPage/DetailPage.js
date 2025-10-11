@@ -4,22 +4,19 @@ import { useParams } from 'react-router-dom';
 import './DetailPage.css';
 import ProductInfo from '../ProductInfo/ProductInfo';
 import ArtworkSlider from '../../components/ArtworkSlider/ArtworkSlider';
-import CommmentForm from '../../components/CommentSection/CommentForm';
 import { apiClient } from '../../api/apiService';
 import { useAuth } from '../../hooks/useAuth';
-
-
-
+import CommentSection from '../../components/CommentSection/CommentSection';
 
 function DetailPage() {
     const { id } = useParams();
     const { token } = useAuth();
     const [artwork, setArtwork] = useState(null);
     const [comments, setComments] = useState([]);
-    const [replyingToId, setReplyingToId] = useState(null);
+    // const [replyingToId, setReplyingToId] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const useRefView = new useRef(false);
+    const useRefView = useRef(false);
     // useEffect để gọi API khi component được render hoặc id thay đổi
     useEffect(() => {
         if (useRefView.current === false) {
@@ -34,10 +31,12 @@ function DetailPage() {
                 try {
                     const response = await apiClient.get(`/artwork/detail/${id}`, config);
                     const { comments: fetchComment, ...artworkDetail } = response.data;
-                    console.log(fetchComment);
+                    // console.log(fetchComment);
                     setComments(fetchComment);
                     setArtwork(artworkDetail);
-                    apiClient.post(`/artwork/${id}/view`);
+                    // console.log(artworkDetail);
+                    // console.log(fetchComment)
+                    apiClient.post(`/artwork/${id}/view `);
                     console.log(response.data)
                 } catch (err) {
                     setError('Không thể tải được thông tin tác phẩm. Vui lòng thử lại.');
@@ -76,7 +75,7 @@ function DetailPage() {
 
     const handlePostSuccess = () => {
         fetchComment();
-        setReplyingToId(null);
+        // setReplyingToId(null);
     }
 
     if (isLoading) {
@@ -101,14 +100,11 @@ function DetailPage() {
                     <ProductInfo artwork={artwork} />
                 </div>
             </div>
-
-            <CommmentForm
-                artworkId={id}
-                parentId={replyingToId}
-                handlePostSuccess={handlePostSuccess}
-                onCancelReply={() => setReplyingToId(null)}
+            <CommentSection 
+                artworkId={artwork.id} 
+                comments={comments} 
+                onPostSuccess={handlePostSuccess} 
             />
-            {/* <CommentSection artworkId={artwork.id} /> */}
 
 
 

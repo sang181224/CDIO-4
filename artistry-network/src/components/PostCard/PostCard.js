@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './PostCard.css';
 import { apiClient } from '../../api/apiService';
 import { useAuth } from '../../hooks/useAuth';
@@ -14,7 +14,8 @@ const reactions = {
     angry: { icon: 'fa-solid fa-face-angry', title: 'Phẫn nộ', color: 'var(--angry-color)' },
 };
 
-function PostCard({ artwork, isOwner }) {
+function PostCard({ artwork, isOwner, onDeleteSuccess }) {
+    const navigate = useNavigate();
     const { token } = useAuth();
     // --- STATE ---
     const [currentReaction, setCurrentReaction] = useState(artwork.userReaction); // Lấy trạng thái ban đầu từ prop
@@ -24,8 +25,46 @@ function PostCard({ artwork, isOwner }) {
     let leaveTimeout;
     let longPressTimer;
     let isLongPress = false;
+    const handleDelete = async (id) => {
+        // Thêm một bước xác nhận để an toàn hơn
+        const isConfirmed = window.confirm("Bạn có chắc chắn muốn xóa tác phẩm này vĩnh viễn?");
+        if (!isConfirmed) {
+            return;
+        }
+
+        try {
+            const config = { headers: { 'Authorization': `Bearer ${token}` } };
+
+            // Chờ cho API xóa thực hiện xong
+            await apiClient.put(`/artwork/remove/${id}`, config);
+
+            alert('Xóa tác phẩm thành công');
+
+            // Sau khi xóa thành công, gọi hàm callback được truyền từ cha
+            if (onDeleteSuccess) {
+                onDeleteSuccess(artwork.id); // Gửi ID của tác phẩm đã xóa lên cho cha
+            }
+
+        } catch (error) {
+            console.error('Lỗi khi xóa tác phẩm:', error);
+            alert('Xóa tác phẩm thất bại.');
+        }
+    };
+    const CheckLogin = () => {
+        if (!token) {
+            const confirm = window.confirm('Bạn vui lòng đăng nhập để sử dụng tính năng này');
+            if (confirm) {
+                navigate('/login');
+            }
+            return false;
+        }
+        return true;
+    }
 
     const handleReactionSelect = async (reactionType) => {
+        if (!CheckLogin()) {
+            return;
+        }
         const oldReaction = currentReaction;
         setCurrentReaction(reactionType);
         setIsPopupVisible(false);
@@ -51,6 +90,9 @@ function PostCard({ artwork, isOwner }) {
 
 
     const handleLikeClick = async () => {
+        if (!CheckLogin()) {
+            return;
+        }
         if (isLongPress) return;
 
         const oldReaction = currentReaction;
@@ -109,9 +151,15 @@ function PostCard({ artwork, isOwner }) {
     return (
         <article className={cardClassName}>
             {isOwner && (
-                <div className="card-edit-button">
-                    <Link to={`/edit-artwork/${artwork.id}`}>✏️ Chỉnh sửa</Link>
+                <div className='card-button' style={{ display: 'flex', gap: '20px' }}>
+                    <div className="card-edit-button">
+                        <Link to={`/edit-artwork/${artwork.id}`}>✏️ Chỉnh sửa</Link>
+                    </div>
+                    <div className="card-edit-button card-delete-button">
+                        <a onClick={() => handleDelete(artwork.id)} >🗑️ Xoá</a>
+                    </div>
                 </div>
+
             )}
 
             <Link to={`/artwork/${artwork.id}`} className="post-image-link">

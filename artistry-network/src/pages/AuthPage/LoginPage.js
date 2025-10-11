@@ -53,12 +53,11 @@ function LoginPage() {
                     const { token, user } = response.data;
                     console.log(response.data);
                     login(response.data.user, response.data.token);
-                    // if (user.roleId === 1) {
-                    //     navigate('/admin');
-                    // } else {
-                    //     navigate('/');
-                    // }
-                    navigate('/')
+                    if (user.roleId === 1) {
+                        navigate('/admin');
+                    } else {
+                        navigate('/');
+                    }
                 })
                 .catch(error => {
                     if (error.response) {

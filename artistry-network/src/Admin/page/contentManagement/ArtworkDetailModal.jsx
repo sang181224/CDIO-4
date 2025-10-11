@@ -8,10 +8,10 @@ const ArtworkDetailModal = ({ artwork, onClose, onApprove, onReject }) => {
   let imageUrls = [];
   try {
     // Thay thế các dấu backslash kép bằng slash đơn và parse chuỗi JSON
-    const parsedUrls = JSON.parse(artwork.imageUrls.replace(/\\\\/g, "/"));
+    const parsedUrls = JSON.parse(artwork.imageUrls);
     // Thêm tiền tố URL cơ sở cho mỗi URL trong mảng 
     imageUrls = parsedUrls.map(
-      (url) => `http://localhost:3001/${url.replace(/^public\//, "")}`
+      (url) => `http://localhost:3000/${url}`
     );
   } catch (e) {
     console.error("Lỗi xử lý imageUrls:", e);

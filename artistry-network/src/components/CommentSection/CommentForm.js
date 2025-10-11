@@ -1,54 +1,90 @@
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import React, { useState } from 'react';
+import { useAuth } from '../../hooks/useAuth';
+import { apiClient } from '../../api/apiService';
 import './CommentForm.css';
-import { useAuth } from '../../hooks/useAuth'; // Giả sử để lấy avatar user hiện tại
 
-// Dữ liệu giả lập
-
-
-function CommentForm({ blogId, parentId, handlePostSuccess, replyingToComment, onCancelReply }) {
-    const { token } = useAuth();
-    const { isAuthenticated, user } = useAuth(); // Lấy thông tin user đã đăng nhập
+function CommentForm({ artworkId, parentId, onPostSuccess, commentCount, isReplyForm = false }) {
+    const { isAuthenticated, user, token } = useAuth();
     const [content, setContent] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleCommentSubmit = (e) => {
+    const handleCommentSubmit = async (e) => {
         e.preventDefault();
-        
-        if(!token){
-            console.error('Bạn cần đăng nhập để bình luận');
+        setError(''); // Xóa lỗi cũ trước khi submit
+
+        if (!isAuthenticated) {
+            setError('Bạn cần đăng nhập để bình luận.');
             return;
         }
-        if (content.trim() === '') return;
-        console.log('Submitting comment:', content);
-        setContent('');
+        if (content.trim() === '') {
+            setError('Nội dung bình luận không được để trống.');
+            return; 
+        }
+
+        setIsLoading(true);
+
+        try {
+            const data = { content, parentId };
+            const config = { headers: { 'Authorization': `Bearer ${token}` } };
+
+            await apiClient.post(`/artwork/detail/comment/${artworkId}`, data, config);
+
+            setContent('');
+            if (onPostSuccess) {
+                onPostSuccess();
+            }
+
+        } catch (err) {
+            console.log(err)
+            setError(err.response?.data?.error || 'Đã có lỗi xảy ra.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
+    if (!isAuthenticated && !isReplyForm) {
+        return (
+            <section className="comment-section-wrapper">
+                <div className="login-prompt">
+                    <h2 className="comment-heading">Bình luận <span className="comment-count-badge">{commentCount}</span></h2>
+                    <p>Vui lòng <a href="/login">đăng nhập</a> để tham gia bình luận.</p>
+                </div>
+            </section>
+        );
+    }
+
+    if (!isAuthenticated && isReplyForm) {
+        return null;
+    }
+
     return (
-        <section className="comment-section">
-            <h2 className="comment-heading">
-                {/* Bình luận <span className="comment-count-badge">{comments.length}</span> */}
-                Bình luận <span className="comment-count-badge">5</span>
-            </h2>
-
-            {isAuthenticated && (
-                <form className="comment-form" onSubmit={handleCommentSubmit}>
-                    <img src={user?.avatarUrl} alt="Your Avatar" className="user-avatar" />
-                    <div className="textarea-wrapper">
-                        <textarea
-                            rows="3"
-                            placeholder="Viết bình luận của bạn..."
-                            value={content}
-                            onChange={(e) => setContent(e.target.value)}
-                        />
-                        <button type="submit" className="btn btn-primary">Gửi</button>
-                    </div>
-                </form>
+        <section className={`comment-form-wrapper ${isReplyForm ? 'is-reply' : ''}`}>
+            {!isReplyForm && (
+                <h2 className="comment-heading">
+                    Bình luận <span className="comment-count-badge">{commentCount}</span>
+                </h2>
             )}
-
-
+            <form className="comment-form" onSubmit={handleCommentSubmit}>
+                <img src={`http://localhost:3000/${user?.avatarUrl}`} alt="Your Avatar" className="user-avatar" />
+                <div className="textarea-wrapper">
+                    <textarea
+                        rows={isReplyForm ? 2 : 3}
+                        placeholder={isReplyForm ? "Viết phản hồi của bạn..." : "Viết bình luận của bạn..."}
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                    />
+                    {error && <small className="error-feedback">{error}</small>}
+                    <div className="form-actions">
+                        {isReplyForm && <button type="button" className="btn btn-secondary" onClick={onPostSuccess}>Hủy</button>}
+                        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                            {isLoading ? 'Đang gửi...' : (isReplyForm ? 'Trả lời' : 'Gửi')}
+                        </button>
+                    </div>
+                </div>
+            </form>
         </section>
     );
 }
 
-export default CommentForm
-    ;
+export default CommentForm;

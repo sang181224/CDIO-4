@@ -23,8 +23,15 @@ function HomePage() {
     const [latestArtworks, setLatestArtworks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    // console.log(token);
 
+    const handleDeleteSuccess = (deletedArtworkId) => {
+        setFeaturedArtworks(currentArtworks => 
+            currentArtworks.filter(art => art.id !== deletedArtworkId)
+        );
+        setLatestArtworks(currentArtworks => 
+            currentArtworks.filter(art => art.id !== deletedArtworkId)
+        );
+    };
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,10 +40,10 @@ function HomePage() {
                         'Authorization': 'Bearer ' + token
                     }
                 }
-                
+
                 const [featuredData, latestData] = await Promise.all([
                     apiClient.get('/artwork/featured', config),
-                    apiClient.get('/artwork/latest', config ),
+                    apiClient.get('/artwork/latest', config),
                     // getFeaturedArtworks(),
                     // getLatestArtworks()
                 ]);
@@ -70,7 +77,7 @@ function HomePage() {
                         </div>
                         <Slider>
                             {featuredArtworks.map(art => (
-                                <PostCard key={art.id} artwork={art} isOwner={art.is_owner} />
+                                <PostCard key={art.id} artwork={art} isOwner={art.isOwner} onDeleteSuccess={handleDeleteSuccess}/>
                             ))}
                         </Slider>
                     </div>
@@ -107,7 +114,7 @@ function HomePage() {
                         <h2>Trở thành một phần của ArtistryNetwork</h2>
                         <p>Tham gia cộng đồng, chia sẻ tác phẩm và kết nối với những người yêu nghệ thuật.</p>
                         <div className="cta-buttons">
-                            <Link to="/register" className="btn btn-primary">Đăng ký ngay</Link>
+                            {!token && (<Link to="/register" className="btn btn-primary">Đăng ký ngay</Link>)}
                             <Link to="/upload" className="btn btn-secondary">Đăng tải Tác phẩm</Link>
                         </div>
                     </div>
@@ -121,12 +128,12 @@ function HomePage() {
                         </div>
                         <Slider>
                             {latestArtworks.map(art => (
-                                <PostCard key={art.id} artwork={art} isOwner={art.is_owner} />
+                                <PostCard key={art.id} artwork={art} isOwner={art.isOwner} onDeleteSuccess={handleDeleteSuccess}/>
                             ))}
                         </Slider>
                     </div>
                 </section>
-            </main>
+            </main >
         </>
     );
 }

@@ -5,6 +5,7 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import Pagination from '../../components/Pagination/Pagination';
 import '../../components/Layout/Layout.css';
 import './ShopPage.css';
+import { useAuth } from '../../hooks/useAuth';
 
 // Ánh xạ key của khoảng giá sang giá trị min/max để gửi cho API
 const priceRangeMap = {
@@ -14,6 +15,7 @@ const priceRangeMap = {
 };
 
 function ShopPage() {
+    const { token } = useAuth();
     const [artworks, setArtworks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [filters, setFilters] = useState({
@@ -43,12 +45,15 @@ function ShopPage() {
                     if (priceFilter.minPrice !== undefined) params.append('minPrice', priceFilter.minPrice);
                     if (priceFilter.maxPrice !== undefined) params.append('maxPrice', priceFilter.maxPrice);
                 }
-
-                const response = await axios.get(`http://localhost:3000/api/artworks?${params.toString()}`);
-
+                const config = {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                };
+                const response = await axios.get(`http://localhost:3000/api/artworks?${params.toString()}`, config);
                 setArtworks(response.data.artworks);
                 setPagination(prev => ({ ...prev, totalPages: response.data.totalPages }));
-
+                console.log(response.data.artworks)
             } catch (error) {
                 console.error("Lỗi khi tải tác phẩm:", error);
             } finally {
@@ -85,7 +90,7 @@ function ShopPage() {
                         ) : (
                             <main className="artwork-grid">
                                 {artworks.length > 0 ? (
-                                    artworks.map(art => <PostCard key={art.id} artwork={art} />)
+                                    artworks.map(art => <PostCard key={art.id} artwork={art} isOwner={art.isOwner} />)
                                 ) : (
                                     <p>Không tìm thấy tác phẩm nào phù hợp.</p>
                                 )}

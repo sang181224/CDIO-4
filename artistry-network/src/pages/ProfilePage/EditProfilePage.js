@@ -1,28 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import './EditProfilePage.css'; // Đảm bảo bạn đã tạo file CSS này
+import { apiClient } from '../../api/apiService';
+import './EditProfilePage.css';
 
 function EditProfilePage() {
     const { user, token } = useAuth();
     const navigate = useNavigate();
 
-    // State cho các trường input
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        bio: '',
-    });
-
-    // State riêng cho các file ảnh
+    // State cho dữ liệu form
+    const [formData, setFormData] = useState({ name: '', bio: '' });
+    // State riêng cho các file ảnh mới
     const [avatarFile, setAvatarFile] = useState(null);
     const [coverFile, setCoverFile] = useState(null);
-
-    // State để hiển thị ảnh xem trước (preview)
+    // State cho ảnh xem trước
     const [avatarPreview, setAvatarPreview] = useState('');
     const [coverPreview, setCoverPreview] = useState('');
 
-    const [isLoading, setIsLoading] = useState(true); // Bắt đầu với loading
+    const [isLoading, setIsLoading] = useState(true);
     const [errors, setErrors] = useState({});
 
     // Ref để có thể "bấm" vào các input file bị ẩn
@@ -32,27 +27,18 @@ function EditProfilePage() {
     // Tải dữ liệu profile hiện tại của người dùng khi trang được mở
     useEffect(() => {
         const fetchCurrentProfile = async () => {
+            setIsLoading(true);
             try {
-                // Sau này, bạn sẽ gọi API thật ở đây, ví dụ:
-                // const response = await axios.get('/api/profiles/me', { headers: { Authorization: `Bearer ${token}` } });
-                // const currentUserData = response.data.profile;
-
-                // Hiện tại dùng dữ liệu giả lập từ context
-                const currentUserData = {
-                    name: user.name,
-                    email: user.email,
-                    avatarUrl: user.avatarUrl,
-                    coverPhotoUrl: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809', // Ảnh bìa mẫu
-                    bio: 'Đây là tiểu sử của tôi...',
-                };
-
+                // Gọi API thật để lấy dữ liệu mới nhất
+                const response = await apiClient.get(`/profiles/${user.id}`);
+                const currentUserData = response.data.profile;
+                console.log(currentUserData)
                 setFormData({
-                    name: currentUserData.name,
-                    email: currentUserData.email,
-                    bio: currentUserData.bio,
+                    name: currentUserData.name || '',
+                    bio: currentUserData.bio || '',
                 });
-                setAvatarPreview(currentUserData.avatarUrl);
-                setCoverPreview(currentUserData.coverPhotoUrl);
+                if (currentUserData.avatarUrl) setAvatarPreview(`http://localhost:3000/${currentUserData.avatarUrl}`);
+                if (currentUserData.coverPhotoUrl) setCoverPreview(`http://localhost:3000/${currentUserData.coverPhotoUrl}`);
 
             } catch (error) {
                 console.error("Lỗi khi tải thông tin hồ sơ:", error);
@@ -61,17 +47,16 @@ function EditProfilePage() {
                 setIsLoading(false);
             }
         };
+        fetchCurrentProfile();
+    }, []); // Chỉ chạy 1 lần khi component được mount
 
-        if (user) {
-            fetchCurrentProfile();
-        }
-    }, [user]);
-
+    // Hàm xử lý khi người dùng nhập text
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
+    // Hàm xử lý khi người dùng chọn file ảnh
     const handleFileChange = (e) => {
         const { name, files } = e.target;
         if (files && files[0]) {
@@ -87,30 +72,44 @@ function EditProfilePage() {
         }
     };
 
+    const validate = () => {
+        const newErrors = {};
+        if (!formData.name.trim()) newErrors.name = 'Họ tên không được để trống.';
+        if (formData.bio && formData.bio.length > 500) newErrors.bio = 'Tiểu sử không được dài quá 500 ký tự.';
+        // Có thể thêm validation cho file ở đây
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+    // Hàm xử lý khi gửi form
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        if (!validate()) return;
 
+        setIsLoading(true);
         const data = new FormData();
         data.append('name', formData.name);
-        data.append('email', formData.email);
         data.append('bio', formData.bio);
         if (avatarFile) data.append('avatar', avatarFile);
         if (coverFile) data.append('coverPhoto', coverFile);
 
         try {
-            // await axios.put('/api/profiles/me', data, { headers: ... });
+            const config = {
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
+            await apiClient.put('/profiles/me',data, config);
             alert('Cập nhật hồ sơ thành công!');
             navigate(`/profile/${user.id}`);
         } catch (error) {
             console.error("Lỗi khi cập nhật hồ sơ:", error);
-            setErrors({ general: 'Cập nhật thất bại, vui lòng thử lại.' });
+            setErrors({ general: error.response?.data?.message || 'Cập nhật thất bại.' });
         } finally {
             setIsLoading(false);
         }
     };
 
-    if (isLoading) return <div>Đang tải...</div>;
+    if (isLoading) return <div style={{ paddingTop: '120px', textAlign: 'center' }}>Đang tải...</div>;
 
     return (
         <main className="edit-profile-page">
@@ -123,18 +122,18 @@ function EditProfilePage() {
                         <div className="form-group file-upload">
                             <label>Ảnh đại diện</label>
                             <div className="image-preview avatar-preview" onClick={() => avatarInputRef.current.click()}>
-                                {avatarPreview && <img src={avatarPreview} alt="Xem trước avatar" />}
+                                {avatarPreview ? <img src={avatarPreview} alt="Xem trước avatar" /> : <div className="placeholder-image"></div>}
                                 <div className="upload-overlay">Thay đổi</div>
                             </div>
-                            <input type="file" name="avatar" ref={avatarInputRef} hidden onChange={handleFileChange} />
+                            <input type="file" name="avatar" ref={avatarInputRef} hidden onChange={handleFileChange} accept="image/*" />
                         </div>
                         <div className="form-group file-upload">
                             <label>Ảnh bìa</label>
                             <div className="image-preview cover-preview" onClick={() => coverInputRef.current.click()}>
-                                {coverPreview && <img src={coverPreview} alt="Xem trước ảnh bìa" />}
+                                {coverPreview ? <img src={coverPreview} alt="Xem trước ảnh bìa" /> : <div className="placeholder-image"></div>}
                                 <div className="upload-overlay">Thay đổi</div>
                             </div>
-                            <input type="file" name="coverPhoto" ref={coverInputRef} hidden onChange={handleFileChange} />
+                            <input type="file" name="coverPhoto" ref={coverInputRef} hidden onChange={handleFileChange} accept="image/*" />
                         </div>
                     </div>
 
@@ -142,10 +141,7 @@ function EditProfilePage() {
                         <label htmlFor="name">Họ và Tên</label>
                         <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email (Không thể thay đổi)</label>
-                        <input type="email" id="email" name="email" value={formData.email} readOnly disabled />
-                    </div>
+
                     <div className="form-group">
                         <label htmlFor="bio">Tiểu sử</label>
                         <textarea id="bio" name="bio" rows="5" value={formData.bio} onChange={handleInputChange}></textarea>

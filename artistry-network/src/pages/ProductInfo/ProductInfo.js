@@ -146,9 +146,12 @@ function ProductInfo({ artwork }) {
             </div>
 
             <div className="action-buttons">
-                <a href={artwork.author.email ? `mailto:${artwork.author.email}` : '#'} className="btn btn-primary">
+                {/* <a href={artwork.author.email ? `mailto:${artwork.author.email}` : '#'} className="btn btn-primary">
                     Liên hệ nghệ sĩ
-                </a>
+                </a> */}
+                <Link to={`/profile/${artwork.author.id}`} className="btn btn-primary">
+                    Liên hệ nghệ sĩ
+                </Link>
             </div>
             <div className="product-stats">
                 <div className="stat-item">

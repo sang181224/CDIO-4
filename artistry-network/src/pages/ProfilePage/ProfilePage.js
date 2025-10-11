@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import PostCard from '../../components/PostCard/PostCard';
 import './ProfilePage.css';
@@ -10,13 +10,13 @@ import ChatWindow from '../../components/Chat/ChatWindow';
 function ProfilePage() {
     const { userId } = useParams();
     const { token } = useAuth();
-
+    const navigate = useNavigate();
     // State cho từng phần dữ liệu
     const [profileData, setProfileData] = useState(null);
     const [stats, setStats] = useState(null);
     const [artworks, setArtworks] = useState([]);
     const [drafts, setDrafts] = useState([]);
-
+    const [isFollowing, setIsFollowing] = useState(false);
     // State cho cửa sổ chat
     const [chattingWith, setChattingWith] = useState(null);
 
@@ -24,13 +24,18 @@ function ProfilePage() {
     const [error, setError] = useState(null);
     const [activeTab, setActiveTab] = useState('artworks');
 
+    const handleDeleteSuccess = (deletedArtworkId) => {
+        // Cập nhật cả danh sách tác phẩm công khai và danh sách nháp
+        setArtworks(current => current.filter(art => art.id !== deletedArtworkId));
+        setDrafts(current => current.filter(draft => draft.id !== deletedArtworkId));
+    };
     useEffect(() => {
         const fetchAllProfileData = async () => {
             setIsLoading(true);
             setError(null);
             try {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
-                console.log(config);
+                // console.log(config);
 
                 // Gọi song song các API chính để tăng tốc
                 const [profileRes, statsRes, artworksRes] = await Promise.all([
@@ -41,9 +46,10 @@ function ProfilePage() {
 
                 // Gán dữ liệu vào state
                 setProfileData(profileRes.data);
+                setIsFollowing(profileRes.data.isFollowing);
                 setStats(statsRes.data);
                 setArtworks(artworksRes.data);
-                console.log(artworksRes);
+                // console.log(artworksRes);
 
                 // Nếu là chủ nhân, gọi thêm API lấy bản nháp
                 if (profileRes.data.isOwner) {
@@ -61,6 +67,32 @@ function ProfilePage() {
 
         fetchAllProfileData();
     }, [userId]);
+
+    const handleFollowToggle = async () => {
+        if (!token) return navigate('/login'); // Yêu cầu đăng nhập
+
+        const originalFollowingState = isFollowing;
+        // Cập nhật UI lạc quan
+        setIsFollowing(!originalFollowingState);
+        setStats(prev => ({
+            ...prev,
+            followers: originalFollowingState ? prev.followers - 1 : prev.followers + 1
+        }));
+
+        try {
+            const config = { headers: { Authorization: `Bearer ${token}` } };
+            if (originalFollowingState) {
+                await apiClient.delete(`/profiles/${userId}/follow`, config);
+            } else {
+                await apiClient.post(`/profiles/${userId}/follow`, config);
+            }
+        } catch (error) {
+            console.error("Lỗi khi theo dõi:", error);
+            // Nếu lỗi, quay lại trạng thái cũ
+            setIsFollowing(originalFollowingState);
+            setStats(prev => ({ ...prev, followers: originalFollowingState ? prev.followers + 1 : prev.followers - 1 }));
+        }
+    };
 
     if (isLoading) return <div style={{ paddingTop: '120px', textAlign: 'center' }}>Đang tải hồ sơ...</div>;
     if (error) return <div style={{ paddingTop: '120px', textAlign: 'center' }}>{error}</div>;
@@ -84,7 +116,7 @@ function ProfilePage() {
                 return (
                     <div className="artwork-grid">
                         {artworks.length > 0 ? (
-                            artworks.map(art => <PostCard key={art.id} artwork={art} isOwner={isOwner} />)
+                            artworks.map(art => <PostCard key={art.id} artwork={art} isOwner={isOwner} onDeleteSuccess={handleDeleteSuccess} />)
                         ) : (
                             <p>Chưa có tác phẩm nào được đăng.</p>
                         )}
@@ -110,8 +142,7 @@ function ProfilePage() {
                     <div className="draft-list">
                         {drafts.length > 0 ? (
                             drafts.map(draft => (
-                                <DraftCard key={draft.id} draft={draft} />
-                                // Bạn có thể tạo một component DraftCard riêng cho đẹp hơn
+                                <DraftCard key={draft.id} draft={draft} onDeleteSuccess={handleDeleteSuccess} />
                                 // <div key={draft.id} className="draft-card">
                                 //     {/* ... nội dung bản nháp ... */}
                                 // </div>
@@ -130,17 +161,22 @@ function ProfilePage() {
         <main className="profile-page">
             <header className="profile-header">
                 <div className="profile-cover">
-                    <img src={profile.coverPhotoUrl || 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809'} alt="Ảnh bìa" />
+                    <img src={`http://localhost:3000/${profile.coverPhotoUrl}` || 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809'} alt="Ảnh bìa" />
                 </div>
                 <div className="profile-actions">
                     {isOwner ? (
-                        <button className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</button>
+                        <Link to="/profile/edit" className="btn-profile btn-secondary-profile">Chỉnh sửa hồ sơ</Link>
                     ) : (
 
-                        <>
-                            <button className="btn-profile btn-primary-profile">Theo dõi</button>
+                        <div style={{ display: 'flex', gap: '7px' }}>
+                            <button
+                                className={`btn-profile ${isFollowing ? 'btn-secondary-profile' : 'btn-primary-profile'}`}
+                                onClick={handleFollowToggle}
+                            >
+                                {isFollowing ? 'Bỏ theo dõi' : 'Theo dõi'}
+                            </button>
                             <button onClick={handleStartChat} className="btn-profile btn-secondary-profile">Nhắn tin</button>
-                        </>
+                        </div>
 
                     )}
                 </div>

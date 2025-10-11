@@ -104,7 +104,7 @@ const ChatWindow = ({ receiver, onClose }) => {
         <div className="chat-window">
             <div className="chat-header">
                 <div className="chat-header-info">
-                    <img src={receiver.avatarUrl} alt={receiver.name} className="chat-avatar" />
+                    <img src={`http://localhost:3000/${receiver.avatarUrl}`} alt={receiver.name} className="chat-avatar" />
                     <span>{receiver.name}</span>
                 </div>
                 <button onClick={onClose} className="chat-close-btn">&times;</button>

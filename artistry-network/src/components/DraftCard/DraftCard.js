@@ -8,7 +8,8 @@ const getStatusInfo = (status) => {
     switch (status) {
         case 'pending': return { text: 'Đang chờ duyệt', className: 'status-pending' };
         case 'rejected': return { text: 'Bị từ chối', className: 'status-rejected' };
-        case 'draft': return { text: 'Bản nháp', className: 'status-draft' }; // Có thể thêm style sau
+        case 'draft': return { text: 'Bản nháp', className: 'status-draft' };
+        case 'deleted': return { text: 'Đã xoá', className: 'status-rejected' };
         default: return { text: status, className: '' };
     }
 };
@@ -29,6 +30,7 @@ function DraftCard({ draft }) {
                 {statusInfo.text}
             </div>
             <div className="draft-card-actions">
+                {/* <Link to={`/edit-artwork/${draft.id}`}>✏️ Chỉnh sửa</Link> */}
                 <Link to={`/edit-artwork/${draft.id}`} className="btn-draft-edit">Chỉnh sửa</Link>
                 <button className="btn-draft-delete">Xóa</button>
             </div>

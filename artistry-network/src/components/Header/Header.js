@@ -39,7 +39,7 @@ function Header() {
                 <nav>
                     <ul className="nav-menu">
                         <li><Link to={'/'}>Trang Chủ</Link></li>
-                        <li><Link to={'/shop'}>Cửa Hàng</Link></li>
+                        <li><Link to={'/shop'}>Tác phẩm</Link></li>
                         <li className="nav-search">
                             <input type="text" placeholder="Tìm kiếm nghệ sĩ, tác phẩm..." />
                         </li>
