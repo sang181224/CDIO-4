@@ -112,18 +112,34 @@ function UploadPage() {
         });
 
         try {
-            const token = localStorage.getItem('authToken'); // Lấy token đã lưu
-            await apiClient.post('/artwork/add', formData, {
+            const token = localStorage.getItem('authToken');
+            // Chờ và nhận kết quả trả về từ API
+            const response = await apiClient.post('/artwork/add', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`
                 }
             });
-            alert('Tác phẩm đã được gửi và đang chờ phê duyệt!');
-            navigate(`/profile/${user.id}`); // Chuyển về trang profile
+
+            // Lấy trạng thái từ response
+            const finalStatus = response.data.status;
+
+            if (finalStatus === 'approved') {
+                alert('Tác phẩm của bạn đã được duyệt và đăng tải thành công!');
+            } else { // status === 'pending'
+                alert('Tác phẩm của bạn đã được gửi. Do có nội dung cần xem xét, bài đăng sẽ chờ quản trị viên phê duyệt.');
+            }
+
+            navigate(`/profiles/${user.id}/drafts`); // Chuyển về trang quản lý bài đăng để user thấy trạng thái
         } catch (error) {
             console.error('Lỗi khi đăng bài:', error.response);
-            setErrors(error.response?.data?.errors || { general: 'Đã có lỗi xảy ra.' });
+            // Giữ nguyên phần xử lý lỗi của bạn
+            if (error.response && error.response.data) {
+                // Nếu backend trả về lỗi validation cụ thể
+                setErrors(error.response.data);
+            } else {
+                setErrors({ general: 'Đã có lỗi xảy ra phía máy chủ.' });
+            }
         } finally {
             setIsLoading(false);
         }
@@ -167,7 +183,7 @@ function UploadPage() {
                         <label htmlFor="images">Hình ảnh (tối đa 5)</label>
                         <input type="file" id="images" name="imageUrls" multiple accept="image/*" onChange={handleFileChange} />
                     </div>
-                    <RenderError err={errors}/>
+                    <RenderError err={errors} />
                     <div className="form-actions">
                         <button type="submit" className="btn btn-primary">
                             Đăng tác phẩm
