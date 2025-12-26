@@ -27,6 +27,7 @@ import EditProfilePage from './pages/ProfilePage/EditProfilePage';
 import CategoryPage from './Admin/page/category/index';
 import ShopPage from './pages/ShopPage/ShopPage';
 import EditArtwork from './pages/EditArtwork/EditArtrwork';
+import NotificationsPage from './pages/NotificationsPage/NotificationsPage';
 
 const PrivateRoute = ({ children, role }) => {
   const { user, isAuthenticated } = useContext(AuthContext);
@@ -57,6 +58,7 @@ function App() {
               <Route path="/profile/:userId" element={<ProfilePage />} />
               <Route path="/profile/edit" element={<EditProfilePage />} />
               <Route path="/shop" element={<ShopPage />} />
+              <Route path="/notifications" element={<NotificationsPage />} />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />

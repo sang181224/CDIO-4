@@ -1,0 +1,122 @@
+/* Container chính căn giữa */
+.notif-page-container {
+    max-width: 800px;
+    
+    /* QUAN TRỌNG: Đẩy nội dung xuống */
+    /* Thay 80px bằng chiều cao thực tế Header của bạn + khoảng cách muốn hở ra */
+    margin-top: 100px; 
+    
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+
+    padding: 20px;
+    background-color: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    min-height: 80vh;
+}
+
+/* Header: Tiêu đề + Nút */
+.notif-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.notif-header h2 {
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.mark-all-btn {
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.mark-all-btn:hover {
+    background: var(--color-accent);
+    color: white;
+}
+
+/* Danh sách thông báo (Card) */
+.notif-card {
+    background-color: #252525;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+    border: 1px solid #333;
+}
+
+.notif-card:hover {
+    transform: translateY(-2px);
+    background-color: #2f2f2f;
+}
+
+/* Chưa đọc: Làm nổi bật */
+.notif-card.unread {
+    background-color: rgba(var(--color-accent-rgb), 0.15); /* Màu nhấn nhẹ */
+    border-left: 4px solid var(--color-accent);
+}
+
+.notif-card.read {
+    opacity: 0.8;
+}
+
+.notif-card-link {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    text-decoration: none;
+    color: inherit;
+    gap: 15px;
+}
+
+/* Avatar to hơn dropdown */
+.notif-card-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #444;
+}
+
+/* Content */
+.notif-card-content {
+    flex: 1;
+}
+
+.notif-card-content p {
+    margin: 0 0 5px 0;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+}
+
+.notif-time {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Thumbnail tác phẩm */
+.notif-card-thumb {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+.empty-msg {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-top: 50px;
+    font-size: 1.1rem;
+}

@@ -95,7 +95,7 @@ function RegisterPage() {
 
             } catch (error) {
                 console.error(error?.response?.data);
-                setErrors({ api: error?.response?.data?.message || 'Đã có lỗi xảy ra.' });
+                setErrors({ api: error?.response?.data?.email || 'Đã có lỗi xảy ra.' });
             } finally {
                 setIsLoading(false);
             }

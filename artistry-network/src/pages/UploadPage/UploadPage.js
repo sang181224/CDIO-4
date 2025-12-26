@@ -96,6 +96,7 @@ function UploadPage() {
         }
         if (!flag) {
             setErrors(errorsSubmit);
+            setIsLoading(false)
             return;
         }
 
@@ -130,7 +131,7 @@ function UploadPage() {
                 alert('Tác phẩm của bạn đã được gửi. Do có nội dung cần xem xét, bài đăng sẽ chờ quản trị viên phê duyệt.');
             }
 
-            navigate(`/profiles/${user.id}/drafts`); // Chuyển về trang quản lý bài đăng để user thấy trạng thái
+            navigate(`/profile/${user.id}`); // Chuyển về trang quản lý bài đăng để user thấy trạng thái
         } catch (error) {
             console.error('Lỗi khi đăng bài:', error.response);
             // Giữ nguyên phần xử lý lỗi của bạn
@@ -147,6 +148,14 @@ function UploadPage() {
 
     return (
         <main className="upload-page">
+            {isLoading && (
+                <div className="loading-backdrop">
+                    <div className="loading-box">
+                        <div className="spinner"></div>
+                        <p className="loading-text">Đang xử lý, vui lòng chờ...</p>
+                    </div>
+                </div>
+            )}
             <div className="upload-container">
                 <h1>Đăng tải Tác phẩm mới</h1>
                 <p className="upload-subtitle">Chia sẻ tác phẩm của bạn với cộng đồng</p>
@@ -185,8 +194,12 @@ function UploadPage() {
                     </div>
                     <RenderError err={errors} />
                     <div className="form-actions">
-                        <button type="submit" className="btn btn-primary">
-                            Đăng tác phẩm
+                        <button
+                            type="submit"
+                            className="btn btn-primary"
+                            disabled={isLoading} // Vô hiệu hoá nút khi đang loading
+                        >
+                            {isLoading ? 'Đang xử lý...' : 'Đăng tác phẩm'}
                         </button>
                     </div>
                 </form>
